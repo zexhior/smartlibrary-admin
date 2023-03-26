@@ -1,21 +1,28 @@
-import { Button } from '../../../../styles/button';
-import { Card } from '../../../../styles/card';
-import InputComponent from '../../../../widgets/Input/input';
-import LoginImage from '../../../../common/images/login.png';
-import Logo from '../../../../common/images/logo/colored_logo.png';
+import { Button } from '../../../styles/button';
+import { Card } from '../../../styles/card';
+import InputComponent from '../../../widgets/Input/input';
+import LoginImage from '../../../common/images/login.png';
+import Logo from '../../../common/images/logo/colored_logo.png';
 import './login.scss';
-import { Title } from '../../../../styles/title';
-import { SideTitle } from '../../../../styles/sidetitle';
+import { Title } from '../../../styles/title';
+import { SideTitle } from '../../../styles/sidetitle';
 import Register from '../register/register';
 import { useEffect, useRef, useState } from 'react';
+import useLogin from '../../controllers/Login';
+
+interface DataLogin{
+    email: string,
+    password: string,
+}
 
 const Login = ()=>{
     const [style,setStyle] = useState("");
+    const [data,setData] = useState<DataLogin | object>({email:"",password:""});
     const container = useRef<HTMLDivElement>(null);
 
     useEffect(()=>{
         if(container.current){
-            container.current.style.animation = style;
+            container.current.style.animation = style.toString();
         }
     },[style]);
 
@@ -26,6 +33,12 @@ const Login = ()=>{
             container.current.style.animation = "changepage 600ms ease-in-out forwards";
             setStyle("changepage 600ms ease-in-out forwards");
         }
+    }
+
+    const SendDataLogin = async (e:any)=>{
+        e.preventDefault();
+        const value = data as DataLogin;
+        console.log(await useLogin(value.email, value.password));
     }
 
     return(<div className='body-login color-gray'>
@@ -40,11 +53,11 @@ const Login = ()=>{
                     </div>
                     <Title className='text-color-main'>Salutation!</Title>
                     <SideTitle className='text-color-lightgray'>Veuillez-vous connecter</SideTitle>
-                    <form>
-                        <InputComponent label='E-mail' type='email' placeholder='mail@mail'/>
-                        <InputComponent label='Mot de passe' type='password' placeholder='mot de passe'/>
+                    <form onSubmit={SendDataLogin}>
+                        <InputComponent label='E-mail' type='email' placeholder='mail@mail' required={true} name='email' state={data} setState={setData}/>
+                        <InputComponent label='Mot de passe' type='password' placeholder='mot de passe' required={true} name='password' state={data} setState={setData}/>
                         <div className='container-body-button'>
-                            <Button className='button-login button'>Connexion</Button>
+                            <Button type='submit' className='button-login button' >Connexion</Button>
                             <Button className='button-login button' onClick={MovePage}>Creer</Button>
                         </div>
                     </form>

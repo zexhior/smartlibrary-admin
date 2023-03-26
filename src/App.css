@@ -1,3 +1,7 @@
+body{
+  position: relative;
+}
+
 .color-gray{
   background-color: rgb(235, 232, 232);
 }
@@ -14,11 +18,14 @@
   color: rgb(184, 184, 184);
 }
 
-.button:hover{
-  background-color: #00001A;
+.text-color-white{
+  color: white;
+}
+
+.animation, .animation:hover{
   transition: background-color 200ms ease-in-out;
 }
 
-.button{
-  transition: background-color 200ms ease-in-out
+.button:hover{
+  background-color: #00001A;
 }
