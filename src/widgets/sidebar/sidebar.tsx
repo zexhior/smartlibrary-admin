@@ -4,12 +4,21 @@ import { SideTitle } from '../../styles/sidetitle';
 import './sidebar.scss';
 import User from '../../common/images/user.jpg';
 import SideBarContent from './sidebarcontent/sidebarcontent';
+import { LogOut } from '../../modules/controllers/Logout';
+import { useNavigate } from 'react-router-dom';
 
 interface SideBarProps{
     groupelements: ReactNode[]
 }
 
 const SideBar : React.FC<SideBarProps> = ({groupelements})=>{
+    const navigate = useNavigate();
+    
+    const HandlerLogOut = ()=>{
+        LogOut();
+        navigate('/login');
+    }
+
     return (<div className='sidebar-container'>
         <div className='sidebar-profil animation'>
             <img  className='sidebar-profil-img' src={User} alt='profil-user'/>
@@ -23,7 +32,7 @@ const SideBar : React.FC<SideBarProps> = ({groupelements})=>{
                 return group;
             })
         }
-        <div className='sidebar-bottom animation'>
+        <div className='sidebar-bottom animation' onClick={HandlerLogOut}>
             <SideBarContent icon={<FaSignOutAlt fill='#FFFFFF'/>} element='Deconnexion'/>
         </div>
     </div>)

@@ -1,0 +1,15 @@
+.table-window{
+    width: 100%;
+    & tr{
+        & td{
+            text-align: center;
+            & img{
+                border-radius: 50px;
+            }
+        }
+        & .options{
+            display: flex;
+            padding: 0 10px 0 10px;
+        }
+    }
+}

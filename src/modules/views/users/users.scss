@@ -1,0 +1,20 @@
+.users-container{
+    position: relative;
+    &-content{
+        position: fixed;
+        width: 80%;
+        height: 100%;
+        //&-result{
+        //    width: 100%;
+        //    height: 100%;
+        //}
+    }
+}
+
+@media  screen and (max-width:1250px) {
+    .users-container{
+        &-content{
+            width: 93%;
+        }
+    }
+}

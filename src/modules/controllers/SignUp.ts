@@ -7,7 +7,7 @@ const useSignUp = (user: User)=>{
         return axios.post("http://127.0.0.1:3400/api/v1/users/signup",user).then(response=>{
             localStorage.setItem("bearer",response.data.token);
             localStorage.setItem("id",response.data.data.user._id);
-            return response.data.data.user._id;
+            return response.data.data;
         }).catch(error=>{
             return error.message;
         });

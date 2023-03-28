@@ -12,14 +12,15 @@
         margin: 50px auto;
         box-shadow: none;
         & .container{
+            opacity: 1;
             border-radius: 5px;
-            background-color: white;
             width: 1000px;
             height: 500px;
             display: grid;
             grid-template-columns: 600px 400px;
             &-deco{
-                background-image: linear-gradient(to right, rgb(37, 37, 204), rgb(105, 105, 248));
+                //background-image: linear-gradient(to right, rgb(37, 37, 204), rgb(105, 105, 248));
+                background-color: rgba(255, 255, 255, 0.1);
                 border-radius: 3px 0 0 3px;
                 position: relative;
                 display: flex;
@@ -29,11 +30,12 @@
                 & .button-back{
                     width: 30%;
                 }
-                & img{
-
+                & .deco-img{
+                    opacity: 1;
                 }
             }
             &-body{
+                background-color: white;
                 border-radius: 0 3px 3px 0;
                 padding: 10px;
                 overflow: scroll;

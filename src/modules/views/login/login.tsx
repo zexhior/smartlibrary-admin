@@ -1,6 +1,6 @@
 import { Button } from '../../../styles/button';
 import { Card } from '../../../styles/card';
-import InputComponent from '../../../widgets/Input/input';
+import InputComponent from '../../../widgets/input/input';
 import LoginImage from '../../../common/images/login.png';
 import Logo from '../../../common/images/logo/colored_logo.png';
 import './login.scss';
@@ -9,6 +9,7 @@ import { SideTitle } from '../../../styles/sidetitle';
 import Register from '../register/register';
 import { useEffect, useRef, useState } from 'react';
 import useLogin from '../../controllers/Login';
+import { useNavigate } from 'react-router-dom';
 
 interface DataLogin{
     email: string,
@@ -19,6 +20,7 @@ const Login = ()=>{
     const [style,setStyle] = useState("");
     const [data,setData] = useState<DataLogin | object>({email:"",password:""});
     const container = useRef<HTMLDivElement>(null);
+    const navigation = useNavigate();
 
     useEffect(()=>{
         if(container.current){
@@ -38,7 +40,12 @@ const Login = ()=>{
     const SendDataLogin = async (e:any)=>{
         e.preventDefault();
         const value = data as DataLogin;
-        console.log(await useLogin(value.email, value.password));
+        const response = await useLogin(value.email, value.password);
+        if(response.user._id){
+            navigation('/');
+        }else{
+            console.log(response);
+        }
     }
 
     return(<div className='body-login color-gray'>
@@ -49,7 +56,7 @@ const Login = ()=>{
                 </div>
                 <div className='container-body'>
                     <div className='container-body-img'>
-                        <img src={Logo} alt='logo' width="100px" height="100px"/>
+                        <img className='deco-img'src={Logo} alt='logo' width="100px" height="100px"/>
                     </div>
                     <Title className='text-color-main'>Salutation!</Title>
                     <SideTitle className='text-color-lightgray'>Veuillez-vous connecter</SideTitle>

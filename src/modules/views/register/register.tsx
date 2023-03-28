@@ -2,12 +2,13 @@ import { Button } from "../../../styles/button";
 import { SideTitle } from "../../../styles/sidetitle";
 import { Title } from "../../../styles/title";
 import SignUpImage from '../../../common/images/signup.png';
-import InputComponent from "../../../widgets/Input/input";
+import InputComponent from "../../../widgets/input/input";
 import Logo from '../../../common/images/logo/colored_logo.png';
 import './register.scss';
 import { useEffect, useRef, useState } from "react";
 import { User } from "../../models/users";
 import useSignUp from "../../controllers/SignUp";
+import { useNavigate } from "react-router-dom";
 
 interface MyStyle{
     style: String,
@@ -17,6 +18,7 @@ interface MyStyle{
 const Register: React.FC<MyStyle> = ({style, setStyle})=>{
     const container = useRef<HTMLDivElement>(null)
     const [user,setUser] = useState<User | object | string>({});
+    const navigation = useNavigate();
 
     useEffect(()=>{
         if(container.current){
@@ -30,7 +32,12 @@ const Register: React.FC<MyStyle> = ({style, setStyle})=>{
 
     const SendDataSignUp = async (e:any)=>{
         e.preventDefault();
-        await useSignUp(user as User);
+        const response = await useSignUp(user as User);
+        if(response.user._id){
+            navigation('/')
+        }else{
+            console.log(response);
+        }
     }
 
     return (<div className='container' ref={container}>

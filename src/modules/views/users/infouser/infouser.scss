@@ -1,0 +1,58 @@
+.infouser-container{
+    display: grid;
+    grid-template-columns: 60% 20%;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    &-data{
+        position: relative;
+        background-color: white;
+        width: 98%;
+        height: 100%;
+        & p{
+            margin-left: 10px;
+        }
+        &-bookrecommended, .infouser-favbook{
+            width: 100%;
+            overflow: scroll;
+            scrollbar-width: none;
+            display: flex;
+        }
+    }
+    &-detail{
+        background-color: white;
+        width: 90%;
+        height: 100%;
+        margin-right: 5px;
+        padding: 10px;
+        text-align: center;
+        & .infouser-img{
+            margin: 20px;
+        }
+        & .section{
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            width: 100%;
+            margin-bottom: 10px;
+            border-bottom: 2px solid rgb(247, 247, 247);
+            //background-color: red;
+            &-label{
+                //color: white;
+                //background-color: #00001A;
+                padding: 10px;
+                height: 100%;
+                text-align: left;
+                width: 20%;
+            }
+            &-detail{
+                //background-color: rgb(247, 247, 247);
+                width: 80%;
+                padding: 10px;
+                height: 100%;
+                overflow: scroll;
+                scrollbar-width: none;
+                text-align: left;
+            }
+        }
+    }
+}
