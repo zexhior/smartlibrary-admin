@@ -23,42 +23,47 @@ const InfoUser = ()=>{
     }
     
     return (<div className='infouser-container'>
+        <div className='mini-infouser'>
+        <UserImage className='infouser-img' src={user.photo} alt='user'/>
+            <div>
+                <p>{user.name} {user.first_name}</p>
+                <p>{user.address}</p>
+                <p>{user.birth_date}</p>
+                <p>{user.email}</p>
+                <p>{user.phone_number}</p>
+            </div>
+        </div>
         <div className='infouser-container-data'>
             <SideTitle>Utilisateurs</SideTitle>
             <Onglet options={options}/>
-            {/*
-            <div className='infouser-authorecommended'>
-                
-            </div>
-            <div className='infouser-favauthor'>
-
-            </div>*/}
         </div>
         <div className='infouser-container-detail'>
             <UserImage className='infouser-img' src={user.photo} alt='user'/>
-            <div className='section'>
-                <div className='section-label'>Nom</div>
-                <div className='section-detail'>{user.name}</div>
-            </div>
-            <div className='section'>
-                <div className='section-label'>Prenom</div>
-                <div className='section-detail'>{user.first_name}</div>
-            </div>
-            <div className='section'>
-                <div className='section-label'>Adresse</div>
-                <div className='section-detail'>{user.address}</div>
-            </div>
-            <div className='section'>
-                <div className='section-label'>Date de naissance</div>
-                <div className='section-detail'>{user.birth_date}</div>
-            </div>
-            <div className='section'>
-                <div className='section-label'>Telephone</div>
-                <div className='section-detail'>{user.phone_number}</div>
-            </div>
-            <div className='section'>
-                <div className='section-label'>Email</div>
-                <div className='section-detail'>{user.email}</div>
+            <div className='detail-section'>
+                <div className='section'>
+                    <div className='section-label'>Nom</div>
+                    <div className='section-detail'>{user.name}</div>
+                </div>
+                <div className='section'>
+                    <div className='section-label'>Prenom</div>
+                    <div className='section-detail'>{user.first_name}</div>
+                </div>
+                <div className='section'>
+                    <div className='section-label'>Adresse</div>
+                    <div className='section-detail'>{user.address}</div>
+                </div>
+                <div className='section'>
+                    <div className='section-label'>Date de naissance</div>
+                    <div className='section-detail'>{user.birth_date}</div>
+                </div>
+                <div className='section'>
+                    <div className='section-label'>Telephone</div>
+                    <div className='section-detail'>{user.phone_number}</div>
+                </div>
+                <div className='section'>
+                    <div className='section-label'>Email</div>
+                    <div className='section-detail'>{user.email}</div>
+                </div>
             </div>
         </div>
     </div>);
