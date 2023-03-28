@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 import Book from '../../../../common/images/books/couv_8.png';
 import CardComponent from '../../../../widgets/card/card';
 import StarsComponent from '../../../../widgets/stars/stars';
@@ -36,18 +37,28 @@ const UserBooks = ()=>{
         </>)
     };
 
+    const BooksRecommended = [
+        book,
+        book,
+        book,
+    ]
+
     return (<div className='userbooks'>
         <p>Recommondation : </p>
         <div className='bookrecommended'>
-            <CardComponent img={book.cover} body={Body(book.star)}/>
-            <CardComponent img={book.cover} body={Body(book.star)}/>
-            <CardComponent img={book.cover} body={Body(book.star)}/>
+            {
+                BooksRecommended.map((element:any,i)=>{
+                    return (<CardComponent img={element.cover} body={Body(element.star)}/>);
+                })
+            }
         </div>
         <p>Livres favoris : </p>
         <div className='favbook'>
-            <CardComponent img={book.cover} body={Body(book.star)}/>
-            <CardComponent img={book.cover} body={Body(book.star)}/>
-            <CardComponent img={book.cover} body={Body(book.star)}/>
+        {
+                BooksRecommended.map((element:any,i)=>{
+                    return (<CardComponent img={element.cover} body={Body(element.star)}/>);
+                })
+            }
         </div>
     </div>)
 }

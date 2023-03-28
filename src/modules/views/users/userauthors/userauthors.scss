@@ -1,3 +1,21 @@
 .userauthors{
-    
+    height: 70%;
+    position: relative;
+    overflow: scroll;
+    & .authorrecommended{
+        width: 100%;
+        display: flex;
+        overflow: scroll;
+        scrollbar-width: none;
+    }
+    & .favauthor{
+        position: relative;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        overflow: scroll;
+    }
+}
+
+.author{
+
 }
