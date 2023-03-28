@@ -24,7 +24,7 @@ const InfoUser = ()=>{
     
     return (<div className='infouser-container'>
         <div className='mini-infouser'>
-        <UserImage className='infouser-img' src={user.photo} alt='user'/>
+            <UserImage className='infouser-img' src={user.photo} alt='user'/>
             <div>
                 <p>{user.name} {user.first_name}</p>
                 <p>{user.address}</p>
