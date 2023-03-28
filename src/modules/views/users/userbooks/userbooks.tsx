@@ -1,9 +1,8 @@
-import { ReactNode } from 'react';
 import Book from '../../../../common/images/books/couv_8.png';
 import CardComponent from '../../../../widgets/card/card';
 import StarsComponent from '../../../../widgets/stars/stars';
+import PaginationComponent from '../../../../widgets/pagination/pagination';
 import './userbooks.scss';
-
 
 const UserBooks = ()=>{
 
@@ -41,6 +40,9 @@ const UserBooks = ()=>{
         book,
         book,
         book,
+        book,
+        book,
+        book,
     ]
 
     return (<div className='userbooks'>
@@ -54,12 +56,13 @@ const UserBooks = ()=>{
         </div>
         <p>Livres favoris : </p>
         <div className='favbook'>
-        {
+            {
                 BooksRecommended.map((element:any,i)=>{
                     return (<CardComponent img={element.cover} body={Body(element.star)}/>);
                 })
             }
         </div>
+        <PaginationComponent/>
     </div>)
 }
 

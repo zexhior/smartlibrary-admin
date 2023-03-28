@@ -1,13 +1,9 @@
 .userbooks{
+    width: 100%;
     height: 70%;
     position: relative;
     overflow: scroll;
-    & .bookrecommended{
-        overflow: scroll;
-        scrollbar-width: none;
-        display: flex;
-    }
-    & .favbook{
+    & .favbook, .bookrecommended{
         position: relative;
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;

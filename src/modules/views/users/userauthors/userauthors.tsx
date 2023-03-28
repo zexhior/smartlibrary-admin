@@ -1,5 +1,7 @@
 import AuthorImg from '../../../../common/images/authors/administrator.png';
+import { SideTitle } from '../../../../styles/sidetitle';
 import CardComponent from '../../../../widgets/card/card';
+import PaginationComponent from '../../../../widgets/pagination/pagination';
 import Stars from '../../../../widgets/stars/stars';
 import './userauthors.scss';
 
@@ -13,11 +15,14 @@ const UserAuthors = ()=>{
     }
 
     const Body = (star:number)=>(<>
-        <p>`${author.name} ${author.last_Name}`</p>
+        <SideTitle>{author.name} {author.last_Name}</SideTitle>
         <Stars star={star}/>
     </>)
 
     const AuthorsRecommended = [
+        author,
+        author,
+        author,
         author,
         author,
         author,
@@ -28,7 +33,7 @@ const UserAuthors = ()=>{
         <div className='authorrecommended'>
             {
                 AuthorsRecommended.map((element:any,i)=>{
-                    return (<CardComponent img={element.cover} body={Body(element.star)}/>);
+                    return (<CardComponent img={element.photo} body={Body(element.star)}/>);
                 })
             }
         </div>
@@ -36,10 +41,11 @@ const UserAuthors = ()=>{
         <div className='favauthor'>
             {
                 AuthorsRecommended.map((element:any,i)=>{
-                    return (<CardComponent img={element.cover} body={Body(element.star)}/>);
+                    return (<CardComponent img={element.photo} body={Body(element.star)}/>);
                 })
             }
         </div>
+        <PaginationComponent/>
     </div>)
 }
 
