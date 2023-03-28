@@ -1,40 +1,12 @@
 import { UserImage } from '../../../../styles/userimages';
 import './infouser.scss';
 import User from '../../../../common/images/user.jpg';
-import Book from '../../../../common/images/books/couv_8.png';
-import CardComponent from '../../../../widgets/card/card';
-import { FaStar } from 'react-icons/fa';
-import styled from 'styled-components';
 import Onglet from '../../../../widgets/onglet/onglet';
-
-const StarStyle = styled.div`
-    display: flex;
-`;
+import { SideTitle } from '../../../../styles/sidetitle';
 
 const InfoUser = ()=>{
-    const options = ['Livres','Auteurs'];
-
-    const book = {
-        title: "Toute une nuit", 
-        isbn: "4", 
-        star: 3, 
-        publishing_date: "2022-09-18", 
-        category: 3, 
-        cover: Book,
-        synopsis: `8 personnages. 8 trajectoires qui se croisent. 
-        Toutes leurs vies en une nuit.  Reda, Alexis, Marco, Greg 
-        / Melissa, Joao, Marina, X, François, … Ils sont pute, 
-        étudiant débarqué de province, en sursis, 
-        DRH, star de téléréalité, dealer, serveur ou encore loser. 
-        Cette nuit ils vont sortir, ils vont clubber, ils vont 
-        travailler, ils vont se rencontrer, ils vont se désirer, 
-        gagner de l’argent, dealer des ecstas, s’embrasser, 
-        s’oublier, se perdre, rentrer chez eux, ou pas.  8. 
-        TOUTE UNE NUIT. est un Short Cuts dans le monde 
-        désenchanté des nuits parisiennes à l’aube de l’an 2000.
-        `, 
-        file: "pdf/8-toute_une_nuit_roman_ok.pdf"
-    }
+    const options = [{text:'Livres',link:''},
+    {text:'Auteurs',link:'authors'}];
 
     const user = {
         _id: "",
@@ -49,45 +21,12 @@ const InfoUser = ()=>{
         passwordConfirm: "",
         role: "Administrateur"
     }
-
-    const Body = (star:number)=>{
-        const all_star = [];
-        for(let i = 0; i < 5; i++){
-            if(i<star){
-                all_star.push(<FaStar fill="#DECC16"/>);
-            }
-            else{
-                all_star.push(<FaStar fill="#B6A58A"/>)
-            }
-        } 
-
-        return (<>
-            <h3>{book.title}</h3>
-            <p>{book.publishing_date}</p>
-            <StarStyle className='star-container'>
-                    {
-                        all_star.map((element,i)=>{
-                            return element;
-                        })
-                    }
-            </StarStyle>
-        </>)
-    };
     
     return (<div className='infouser-container'>
         <div className='infouser-container-data'>
-            <p className='text-color-lightgray'>Utilisateurs</p>
+            <SideTitle>Utilisateurs</SideTitle>
             <Onglet options={options}/>
-            {/*<div className='infouser-container-data-bookrecommended'>
-                <CardComponent img={book.cover} body={Body(book.star)}/>
-                <CardComponent img={book.cover} body={Body(book.star)}/>
-                <CardComponent img={book.cover} body={Body(book.star)}/>
-            </div>
-            <div className='infouser-favbook'>
-                <CardComponent img={book.cover} body={Body(book.star)}/>
-                <CardComponent img={book.cover} body={Body(book.star)}/>
-                <CardComponent img={book.cover} body={Body(book.star)}/>
-            </div>
+            {/*
             <div className='infouser-authorecommended'>
                 
             </div>

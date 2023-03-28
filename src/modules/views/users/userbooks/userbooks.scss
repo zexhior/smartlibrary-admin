@@ -1,0 +1,19 @@
+.userbooks{
+    height: 70%;
+    position: relative;
+    overflow: scroll;
+    & .bookrecommended{
+        overflow: scroll;
+        scrollbar-width: none;
+        display: flex;
+    }
+    & .favbook{
+        position: relative;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        overflow: scroll;
+        & .card{
+            width: 95%;
+        }
+    }
+}
