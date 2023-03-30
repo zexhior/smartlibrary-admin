@@ -3,6 +3,10 @@ import './infouser.scss';
 import User from '../../../../common/images/user.jpg';
 import Onglet from '../../../../widgets/onglet/onglet';
 import { SideTitle } from '../../../../styles/sidetitle';
+import React from 'react';
+import { TitleColored } from '../../../../styles/titlescolored';
+import { Title } from '../../../../styles/title';
+import { FaCalendarWeek, FaHome, FaMailBulk, FaPhone } from 'react-icons/fa';
 
 const InfoUser = ()=>{
     const options = [{text:'Livres',link:''},
@@ -23,48 +27,36 @@ const InfoUser = ()=>{
     }
     
     return (<div className='infouser-container'>
-        <div className='mini-infouser'>
+        <div className='couverture'>
+        </div>
+        <div className='infouser'>
             <UserImage className='infouser-img' src={user.photo} alt='user'/>
-            <div>
-                <p>{user.name} {user.first_name}</p>
-                <p>{user.address}</p>
-                <p>{user.birth_date}</p>
-                <p>{user.email}</p>
-                <p>{user.phone_number}</p>
+            <div className='infouser-detail'>
+                <Title className='last-name'>{user.name}</Title>
+                <SideTitle className='first-name'>{user.first_name}</SideTitle>
+                <div className='contact'>
+                    <div className='infouser-detail-container'>
+                        <FaHome className='icon'/>
+                        <p>{user.address}</p>
+                    </div>
+                    <div className='infouser-detail-container'>
+                        <FaCalendarWeek className='icon'/>
+                        <p>{user.birth_date}</p>
+                    </div>
+                    <div className='infouser-detail-container'>
+                        <FaMailBulk className='icon'/>
+                        <p>{user.email}</p>
+                    </div>
+                    <div className='infouser-detail-container'>
+                        <FaPhone className='icon'/>
+                        <p>{user.phone_number}</p>
+                    </div>
+                </div>
             </div>
         </div>
         <div className='infouser-container-data'>
-            <SideTitle>Utilisateurs</SideTitle>
+            <TitleColored>Utilisateurs</TitleColored>
             <Onglet options={options}/>
-        </div>
-        <div className='infouser-container-detail'>
-            <UserImage className='infouser-img' src={user.photo} alt='user'/>
-            <div className='detail-section'>
-                <div className='section'>
-                    <div className='section-label'>Nom</div>
-                    <div className='section-detail'>{user.name}</div>
-                </div>
-                <div className='section'>
-                    <div className='section-label'>Prenom</div>
-                    <div className='section-detail'>{user.first_name}</div>
-                </div>
-                <div className='section'>
-                    <div className='section-label'>Adresse</div>
-                    <div className='section-detail'>{user.address}</div>
-                </div>
-                <div className='section'>
-                    <div className='section-label'>Date de naissance</div>
-                    <div className='section-detail'>{user.birth_date}</div>
-                </div>
-                <div className='section'>
-                    <div className='section-label'>Telephone</div>
-                    <div className='section-detail'>{user.phone_number}</div>
-                </div>
-                <div className='section'>
-                    <div className='section-label'>Email</div>
-                    <div className='section-detail'>{user.email}</div>
-                </div>
-            </div>
         </div>
     </div>);
 }

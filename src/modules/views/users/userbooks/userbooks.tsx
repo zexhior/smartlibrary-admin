@@ -1,8 +1,10 @@
+import React from 'react';
 import Book from '../../../../common/images/books/couv_8.png';
 import CardComponent from '../../../../widgets/card/card';
 import StarsComponent from '../../../../widgets/stars/stars';
 import PaginationComponent from '../../../../widgets/pagination/pagination';
 import './userbooks.scss';
+import { TitleColored } from '../../../../styles/titlescolored';
 
 const UserBooks = ()=>{
 
@@ -46,7 +48,7 @@ const UserBooks = ()=>{
     ]
 
     return (<div className='userbooks'>
-        <p>Recommondation : </p>
+        <TitleColored className='title-section'>Recommondation : </TitleColored>
         <div className='bookrecommended'>
             {
                 BooksRecommended.map((element:any,i)=>{
@@ -54,7 +56,7 @@ const UserBooks = ()=>{
                 })
             }
         </div>
-        <p>Livres favoris : </p>
+        <TitleColored className='title-section'>Livres favoris : </TitleColored>
         <div className='favbook'>
             {
                 BooksRecommended.map((element:any,i)=>{

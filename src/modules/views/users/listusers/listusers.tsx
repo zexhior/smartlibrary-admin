@@ -1,9 +1,12 @@
 import TableComponent from '../../../../widgets/table/table';
-import User from '../../../../common/images/user.jpg';
+import UserImage from '../../../../common/images/user.jpg';
 import './listusers.scss';
+import React from 'react';
+import { TitleColored } from '../../../../styles/titlescolored';
+import { User } from '../../../models/users';
 
 const ListUsers = ()=>{
-    const users = [{
+    const users : Array<User> = [{
             _id: "",
             name: "Ravelomanantsoa",
             first_name: "Richard",
@@ -11,7 +14,7 @@ const ListUsers = ()=>{
             birth_date: "12/02/23",
             phone_number: "0341500516",
             email: "ravelorichard12@gmail.com",
-            photo: User,
+            photo: UserImage,
             password: "",
             passwordConfirm: "",
             role: "Administrateur"
@@ -24,7 +27,7 @@ const ListUsers = ()=>{
             birth_date: "12/02/23",
             phone_number: "0341500516",
             email: "ravelorichard12@gmail.com",
-            photo: User,
+            photo: UserImage,
             password: "",
             passwordConfirm: "",
             role: "Administrateur"
@@ -36,7 +39,7 @@ const ListUsers = ()=>{
             birth_date: "12/02/23",
             phone_number: "0341500516",
             email: "ravelorichard12@gmail.com",
-            photo: User,
+            photo: UserImage,
             password: "",
             passwordConfirm: "",
             role: "Administrateur"
@@ -48,7 +51,7 @@ const ListUsers = ()=>{
             birth_date: "12/02/23",
             phone_number: "0341500516",
             email: "ravelorichard12@gmail.com",
-            photo: User,
+            photo: UserImage,
             password: "",
             passwordConfirm: "",
             role: "Administrateur"
@@ -60,7 +63,7 @@ const ListUsers = ()=>{
             birth_date: "12/02/23",
             phone_number: "0341500516",
             email: "ravelorichard12@gmail.com",
-            photo: User,
+            photo: UserImage,
             password: "",
             passwordConfirm: "",
             role: "Administrateur"
@@ -72,7 +75,7 @@ const ListUsers = ()=>{
             birth_date: "12/02/23",
             phone_number: "0341500516",
             email: "ravelorichard12@gmail.com",
-            photo: User,
+            photo: UserImage,
             password: "",
             passwordConfirm: "",
             role: "Administrateur"
@@ -84,7 +87,7 @@ const ListUsers = ()=>{
             birth_date: "12/02/23",
             phone_number: "0341500516",
             email: "ravelorichard12@gmail.com",
-            photo: User,
+            photo: UserImage,
             password: "",
             passwordConfirm: "",
             role: "Administrateur"
@@ -96,7 +99,7 @@ const ListUsers = ()=>{
             birth_date: "12/02/23",
             phone_number: "0341500516",
             email: "ravelorichard12@gmail.com",
-            photo: User,
+            photo: UserImage,
             password: "",
             passwordConfirm: "",
             role: "Administrateur"
@@ -108,7 +111,7 @@ const ListUsers = ()=>{
             birth_date: "12/02/23",
             phone_number: "0341500516",
             email: "ravelorichard12@gmail.com",
-            photo: User,
+            photo: UserImage,
             password: "",
             passwordConfirm: "",
             role: "Administrateur"
@@ -120,7 +123,7 @@ const ListUsers = ()=>{
             birth_date: "12/02/23",
             phone_number: "0341500516",
             email: "ravelorichard12@gmail.com",
-            photo: User,
+            photo: UserImage,
             password: "",
             passwordConfirm: "",
             role: "Administrateur"
@@ -132,7 +135,7 @@ const ListUsers = ()=>{
             birth_date: "12/02/23",
             phone_number: "0341500516",
             email: "ravelorichard12@gmail.com",
-            photo: User,
+            photo: UserImage,
             password: "",
             passwordConfirm: "",
             role: "Administrateur"
@@ -144,19 +147,26 @@ const ListUsers = ()=>{
             birth_date: "12/02/23",
             phone_number: "0341500516",
             email: "ravelorichard12@gmail.com",
-            photo: User,
+            photo: UserImage,
             password: "",
             passwordConfirm: "",
             role: "Administrateur"
         },
     ]
 
-    const title = ["User", "Nom & Prenom", "E-mail","Adresse","Date de naissance","Options"]
+    const title = ["User", "Nom", "E-mail","Adresse","Date de naissance","Options"]
+    const title2 = ["User", "Nom","Options"];
+    const keys = ["name","email","address","birth_date"];
+    const keys2 = ["name"];
 
     return (<div className='users-container-content-info'>
                 <div className='info-window'>
-                    <p className='title-window text-color-lightgray'>Utilisateurs</p>
-                    <TableComponent titles={title} users={users}/>
+                    <TitleColored className='full-width'>Utilisateurs</TitleColored>
+                    <TableComponent titles={title} users={users} keys={keys}/>
+                </div>
+                <div className='mini-info-window'>
+                    <TitleColored className='full-width'>Utilisateurs</TitleColored>
+                    <TableComponent titles={title2} users={users} keys={keys2}/>
                 </div>
             </div>);
 }

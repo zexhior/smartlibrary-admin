@@ -1,5 +1,7 @@
+import React from 'react';
 import AuthorImg from '../../../../common/images/authors/administrator.png';
 import { SideTitle } from '../../../../styles/sidetitle';
+import { TitleColored } from '../../../../styles/titlescolored';
 import CardComponent from '../../../../widgets/card/card';
 import PaginationComponent from '../../../../widgets/pagination/pagination';
 import Stars from '../../../../widgets/stars/stars';
@@ -29,7 +31,7 @@ const UserAuthors = ()=>{
     ]
 
     return (<div className='userauthors'>
-        <p>Recommondation : </p>
+        <TitleColored className='title-section'>Recommondation : </TitleColored>
         <div className='authorrecommended'>
             {
                 AuthorsRecommended.map((element:any,i)=>{
@@ -37,7 +39,7 @@ const UserAuthors = ()=>{
                 })
             }
         </div>
-        <p>Auteurs favoris : </p>
+        <TitleColored className='title-section'>Auteurs favoris : </TitleColored>
         <div className='favauthor'>
             {
                 AuthorsRecommended.map((element:any,i)=>{
