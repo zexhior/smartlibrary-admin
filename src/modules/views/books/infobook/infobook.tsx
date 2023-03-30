@@ -35,6 +35,11 @@ const InfoBook = ()=>{
         file: "pdf/8-toute_une_nuit_roman_ok.pdf"
     }
 
+    const tab_titles = [
+        {text:'Synopsis',link:''},
+        {text:'Mise a jour',link:''}
+    ];
+
     return (<div className="infobook-container">
         <TitleColored>Detail du livre</TitleColored>
         <div className="book-header">
@@ -56,11 +61,12 @@ const InfoBook = ()=>{
         </div>
         <div className="book-description">
             <SideTitle>Synopsis : </SideTitle>
-            <p className="synopsis">
+            {/*<p className="synopsis">
                 {
                     book.synopsis
                 }
-            </p>
+            </p>*/}
+            <Onglet options={tab_titles}/>
         </div>
     </div>)
 }

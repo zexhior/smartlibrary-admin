@@ -10,6 +10,7 @@
         overflow: scroll;
         & .card{
             position: relative;
+            height: 320px;
             & .options-button{
                 margin: 10px 0 10px -10px;
                 display: flex;
@@ -27,18 +28,24 @@
 
 @media screen and (max-width:550px) {
     .listbooks-container{
-        grid-template-columns: 1fr;
+        & .listbooks-list{
+            grid-template-columns: 1fr;
+        }
     }
 }
 
 @media screen and (min-width:550px) and (max-width:740px) {
     .listbooks-container{
-        grid-template-columns: 1fr 1fr;
+        & .listbooks-list{
+            grid-template-columns: 1fr 1fr;
+        }
     }
 }
 
 @media screen and (min-width:740px) and (max-width:1100px) {
     .listbooks-container{
-        grid-template-columns: 1fr 1fr 1fr;
+        & .listbooks-list{
+            grid-template-columns: 1fr 1fr 1fr;
+        }
     }
 }
