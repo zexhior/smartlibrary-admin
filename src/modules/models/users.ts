@@ -1,4 +1,4 @@
-export interface User{
+export interface User extends Object{
     _id: string,
     name: string,
     first_name: string,

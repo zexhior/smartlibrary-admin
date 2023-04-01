@@ -1,4 +1,4 @@
-export interface Authors{
+export interface Authors extends Object{
     name: string,
     last_name: string,
     star: number,
