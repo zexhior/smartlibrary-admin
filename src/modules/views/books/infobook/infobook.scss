@@ -44,7 +44,10 @@
             margin: 0 20px 0 20px;
         }
         & .onglet-container{
-            margin: 0;
+            height: auto;
+            & label{
+                color: black;
+            }
         }
     }
 }

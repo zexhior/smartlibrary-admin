@@ -37,7 +37,7 @@ const InfoBook = ()=>{
 
     const tab_titles = [
         {text:'Synopsis',link:''},
-        {text:'Mise a jour',link:''}
+        {text:'Mise a jour',link:'/books/0/update'}
     ];
 
     return (<div className="infobook-container">
@@ -60,7 +60,6 @@ const InfoBook = ()=>{
             </div>
         </div>
         <div className="book-description">
-            <SideTitle>Synopsis : </SideTitle>
             {/*<p className="synopsis">
                 {
                     book.synopsis
