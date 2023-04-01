@@ -51,16 +51,16 @@ const UserBooks = ()=>{
         <TitleColored className='title-section'>Recommondation : </TitleColored>
         <div className='bookrecommended'>
             {
-                BooksRecommended.map((element:any,i)=>{
-                    return (<CardComponent img={element.cover} body={Body(element.star)}/>);
+                BooksRecommended.map((element:any, i:number)=>{
+                    return (<CardComponent key={i} img={element.cover} body={Body(element.star)}/>);
                 })
             }
         </div>
         <TitleColored className='title-section'>Livres favoris : </TitleColored>
         <div className='favbook'>
             {
-                BooksRecommended.map((element:any,i)=>{
-                    return (<CardComponent img={element.cover} body={Body(element.star)}/>);
+                BooksRecommended.map((element:any, i:number)=>{
+                    return (<CardComponent key={i} img={element.cover} body={Body(element.star)}/>);
                 })
             }
         </div>

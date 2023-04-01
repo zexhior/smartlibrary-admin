@@ -4,45 +4,12 @@
     scrollbar-width: none;
     background-color: transparent;
     background-color: white;
-    //background-color: white;
     & .title-section{
         margin-top: 30px;
     }
     & .favbook, .bookrecommended{
         height: 100%;
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-    }
-}
-
-@media screen and (max-width:550px) {
-    .userbooks{
-        & .favbook, .bookrecommended{
-            grid-template-columns: 1fr;
-        }
-    }
-}
-
-@media screen and (min-width:550px) and (max-width:740px) {
-    .userbooks{
-        & .favbook, .bookrecommended{
-            grid-template-columns: 1fr 1fr;
-        }
-    }
-}
-
-@media screen and (min-width:740px) and (max-width:1100px) {
-    .userbooks{
-        & .favbook, .bookrecommended{
-            grid-template-columns: 1fr 1fr 1fr;
-        }
-    }
-}
-
-@media screen and (min-width:1100px){
-    .userbooks{
-        & .favbook, .bookrecommended{
-            grid-template-columns: 1fr 1fr 1fr 1fr;
-        }
+        display: flex;
+        flex-wrap: wrap;
     }
 }

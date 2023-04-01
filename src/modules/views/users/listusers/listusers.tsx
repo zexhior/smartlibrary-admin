@@ -4,6 +4,9 @@ import './listusers.scss';
 import React from 'react';
 import { TitleColored } from '../../../../styles/titlescolored';
 import { User } from '../../../models/users';
+import { Link } from 'react-router-dom';
+import { FaEye, FaTrashAlt } from 'react-icons/fa';
+import { Button } from '../../../../styles/button';
 
 const ListUsers = ()=>{
     const users : Array<User> = [{
@@ -156,17 +159,25 @@ const ListUsers = ()=>{
 
     const title = ["User", "Nom", "E-mail","Adresse","Date de naissance","Options"]
     const title2 = ["User", "Nom","Options"];
-    const keys = ["name","email","address","birth_date"];
+    const keys = ["photo","name","email","address","birth_date"];
     const keys2 = ["name"];
+    const options = [
+        <Link to='/users/1' style={{textDecoration : "none"}}><Button className='button animation'>
+            <FaEye></FaEye>
+        </Button></Link>,
+        <Button className='button animation'>
+            <FaTrashAlt></FaTrashAlt>
+        </Button>,
+    ]
 
     return (<div className='users-container-content-info'>
                 <div className='info-window'>
                     <TitleColored className='full-width'>Utilisateurs</TitleColored>
-                    <TableComponent titles={title} users={users} keys={keys}/>
+                    <TableComponent titles={title} users={users} keys={keys} options={options}/>
                 </div>
                 <div className='mini-info-window'>
                     <TitleColored className='full-width'>Utilisateurs</TitleColored>
-                    <TableComponent titles={title2} users={users} keys={keys2}/>
+                    <TableComponent titles={title2} users={users} keys={keys2} options={options}/>
                 </div>
             </div>);
 }

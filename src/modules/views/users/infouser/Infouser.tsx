@@ -3,7 +3,6 @@ import './infouser.scss';
 import User from '../../../../common/images/user.jpg';
 import Onglet from '../../../../widgets/onglet/onglet';
 import { SideTitle } from '../../../../styles/sidetitle';
-import React from 'react';
 import { TitleColored } from '../../../../styles/titlescolored';
 import { Title } from '../../../../styles/title';
 import { FaCalendarWeek, FaHome, FaMailBulk, FaPhone } from 'react-icons/fa';
