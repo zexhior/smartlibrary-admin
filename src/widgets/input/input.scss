@@ -1,3 +1,15 @@
 .input{
     font-size: 16px;
+    & input{
+        margin: 10px 0 10px 0;
+    }
+    & input:focus, textarea:focus{
+        background-color: rgba(250, 250, 171, 0.966);
+        outline: 2px red solid;
+    }
+    & textarea{
+        background-color: rgb(230, 230, 230);
+        border: 0;
+        outline: 0;
+    }
 }

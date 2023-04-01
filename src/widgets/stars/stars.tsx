@@ -20,7 +20,9 @@ const Stars : React.FC<StarsProps>= ({star})=>{
     return (<div className="stars">
         {
             all_star.map((element,i)=>{
-                return element;
+                return (<span key ={i}>
+                    {element}
+                </span>)
             })
         }
     </div>)

@@ -1,6 +1,5 @@
 import { ReactNode } from 'react';
 import { FaSignOutAlt } from 'react-icons/fa';
-import { SideTitle } from '../../styles/sidetitle';
 import './sidebar.scss';
 import User from '../../common/images/user.jpg';
 import SideBarContent from './sidebarcontent/sidebarcontent';
@@ -29,7 +28,9 @@ const SideBar : React.FC<SideBarProps> = ({groupelements})=>{
         </div>
         {
             groupelements.map((group,i)=>{
-                return group;
+                return (<span key={i}>
+                    {group}
+                </span>);
             })
         }
         <div className='sidebar-bottom animation' onClick={HandlerLogOut}>

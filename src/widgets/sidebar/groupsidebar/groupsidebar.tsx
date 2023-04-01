@@ -11,7 +11,9 @@ const GroupSideBar : React.FC<SideBarParameter> = ({elements})=>{
         {/*<SideTitle className='groupsidebar-container-title text-color-white'>Element</SideTitle>*/}
         {
             elements.map((element,i)=>{
-                return element;
+                return (<span key={i}>
+                    {element}
+                </span>);
             })
         }
     </div>);
