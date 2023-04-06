@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { User } from '../models/users';
 
 const useLogin = (email:string,password:string)=>{
     function login(){

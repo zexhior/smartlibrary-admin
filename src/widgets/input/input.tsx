@@ -7,11 +7,11 @@ interface MyStateInput{
     label: string,
     type: string,
     placeholder: string,
-    required: true,
+    required: boolean,
     state: Object,
     name: string,
-    setState: React.Dispatch<React.SetStateAction<Object>>
-    data: Array<string> | null
+    setState: React.Dispatch<React.SetStateAction<any>>
+    data: Object | null
 }
 
 const InputComponent : React.FC<MyStateInput> = ({label="", type="text", placeholder="", required=true, state, setState, name, data})=>{

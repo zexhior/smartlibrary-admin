@@ -3,11 +3,18 @@ import SideBar from '../../../widgets/sidebar/sidebar';
 import GroupSideBar from '../../../widgets/sidebar/groupsidebar/groupsidebar';
 import './home.scss';
 import SideBarContent from '../../../widgets/sidebar/sidebarcontent/sidebarcontent';
-import { Button } from '../../../styles/button';
-import Users from '../users/users';
 import { Link, Outlet } from 'react-router-dom';
+import Modal from '../../../widgets/modal/modal';
+import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
 
 const Home = ()=>{
+    const modal = useSelector((state:any)=>state.modal.activation);
+
+    useEffect(()=>{
+        
+    },[])
+
     const elements = [
         <Link to='/users' style={{textDecoration:'none'}}><SideBarContent icon={<FaUser width={""} fill='#FFFFFF'/>} element="Utilisateurs"/></Link>,
         <SideBarContent icon={<FaUser fill='#FFFFFF'/>} element="Administrateurs"/>,
@@ -19,14 +26,17 @@ const Home = ()=>{
         <GroupSideBar elements={elements}/>
     ]
 
-    return (<div className='container-home'>
-        <div>
-            <SideBar groupelements={group}/>
-        </div>  
-        <div className='home-content'>
-            <Outlet/>
+    return (<div className='home'>
+        <div className='container-home'>
+            {modal?(<Modal/>):(<></>)}
+            <div>
+                <SideBar groupelements={group}/>
+            </div>  
+            <div className='home-content'>
+                <Outlet/>
+            </div>
         </div>
-    </div>)
+    </div>);
 }
 
 export default Home;

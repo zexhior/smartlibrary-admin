@@ -1,4 +1,3 @@
-import React from "react";
 import { TitleColored } from "../../../../styles/titlescolored";
 import Onglet from "../../../../widgets/onglet/onglet";
 import Book from '../../../../common/images/books/couv_8.png';
@@ -6,6 +5,7 @@ import './infobook.scss';
 import Stars from "../../../../widgets/stars/stars";
 import { Title } from "../../../../styles/title";
 import { SideTitle } from "../../../../styles/sidetitle";
+import { Authors } from "../../../models/authors";
 
 const InfoBook = ()=>{
     const book = {
@@ -14,11 +14,21 @@ const InfoBook = ()=>{
         star: 3, 
         publishing_date: "2022-09-18", 
         category: "Comedie",
-        author: {
-            name : "Gilles", 
-            last_Name : "Bindi", 
-            star : 4, 
-        },
+        authors: [{
+                name : "Gilles", 
+                last_Name : "Bindi", 
+                star : 4, 
+                photo : "",
+                description : "",
+            },
+            {
+                name : "Gilles", 
+                last_Name : "Bindi", 
+                star : 4, 
+                photo : "",
+                description : "",
+            }
+        ],
         cover: Book,
         synopsis: `8 personnages. 8 trajectoires qui se croisent. 
         Toutes leurs vies en une nuit.  Reda, Alexis, Marco, Greg 
@@ -52,7 +62,11 @@ const InfoBook = ()=>{
                 </div>
                 <div className="book-info">
                     <Title>{book.title}</Title>
-                    <SideTitle>{book.author.name} {book.author.last_Name}</SideTitle>
+                    {
+                        book.authors.map((author:Authors,i:number)=>{
+                            return(<SideTitle key={i}>{author.name} {author.last_Name} {i!==book.authors.length-1?"/":""}</SideTitle>)
+                        })
+                    }
                     <p>{book.publishing_date}</p>
                     <p>{book.category}</p>
                     <Stars star={book.star}/>

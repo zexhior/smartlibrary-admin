@@ -4,6 +4,29 @@
     height:90%;
     background-color: white;
     overflow: scroll;
+    & .info-window{
+        display: flex;
+        & .option-element{
+            & .option-title{
+                background-color: #00001A;
+                color: rgb(226, 226, 226);
+                font-weight: 500;
+                padding: 10px;
+                height: 42px;
+                margin-top: 2px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            & .option{
+                display: flex;
+                padding: 10px;
+                & .button{
+                    width: 50px;
+                }
+            }
+        }
+    }
     & .mini-info-window{
         display: none;
     }
@@ -15,7 +38,27 @@
             display: none;
         }
         & .mini-info-window{
-            display: block;
+            display: flex;
+            & .option-element{
+                & .option-title{
+                    background-color: #00001A;
+                    color: rgb(226, 226, 226);
+                    font-weight: 500;
+                    padding: 10px;
+                    height: 42px;
+                    margin-top: 2px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+                & .option{
+                    display: flex;
+                    padding: 10px;
+                    & .button{
+                        width: 50px;
+                    }
+                }
+            }
         }
     }
 }

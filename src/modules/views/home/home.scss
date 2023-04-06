@@ -1,59 +1,63 @@
-.container-home{
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    display: grid;
-    grid-template-columns: 20% 80%;
-    background-color:rgb(236, 236, 236);
-    transition: all 300ms ease-in-out;
-    & .home-content{
-        position: relative;
+.home{
+    position: relative;
+    & .container-home{
         width: 100%;
         height: 100%;
+        position: fixed;
+        display: grid;
+        grid-template-columns: 20% 80%;
+        background-color:rgb(236, 236, 236);
+        transition: all 300ms ease-in-out;
+        & .home-content{
+            position: relative;
+            width: 100%;
+        }
     }
 }
 
 @media screen and (max-width:1250px) {
-    .container-home{
-        grid-template-columns: 60px 1fr;
-        .sidebar-container{
-            width: 50px;
-            padding: 5px;
-            justify-content: center;
-            transition: all 300ms ease-in-out;
-            & .sidebar-profil{
-                margin: 5px 0 5px 0;
-                padding: 10px 0 10px 0;
-                display: flex;
+    .home{
+        & .container-home{
+            grid-template-columns: 60px 1fr;
+            .sidebar-container{
+                width: 50px;
+                padding: 5px;
                 justify-content: center;
-                &-img{
-                    margin: 0 auto;
-                }
-                &-name{
-                    display: none;
-                    &-last{
-                        margin: 0;
-                    }
-                    &-first{
-                        margin: 0;
-                    }
-                }
-            }
-            & .groupsidebar-container, .sidebar-bottom{
-                margin: 10px 0 0 0 ;
-                padding: 0;
-                & .sidebarcontent-container{
+                transition: all 300ms ease-in-out;
+                & .sidebar-profil{
+                    margin: 5px 0 5px 0;
+                    padding: 10px 0 10px 0;
                     display: flex;
                     justify-content: center;
-                    padding: 10px 0 10px 0;
-                    & p{
+                    &-img{
+                        margin: 0 auto;
+                    }
+                    &-name{
                         display: none;
+                        &-last{
+                            margin: 0;
+                        }
+                        &-first{
+                            margin: 0;
+                        }
                     }
                 }
-            }
-            & .sidebar-bottom{
-                margin-bottom: 10px;
-                width: 45px;
+                & .groupsidebar-container, .sidebar-bottom{
+                    margin: 10px 0 0 0 ;
+                    padding: 0;
+                    & .sidebarcontent-container{
+                        display: flex;
+                        justify-content: center;
+                        padding: 10px 0 10px 0;
+                        & p{
+                            display: none;
+                        }
+                    }
+                }
+                & .sidebar-bottom{
+                    margin-bottom: 10px;
+                    width: 45px;
+                }
             }
         }
     }

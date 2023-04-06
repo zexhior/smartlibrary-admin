@@ -1,4 +1,5 @@
-import { Link,Outlet } from 'react-router-dom';
+import { useEffect, useRef, useState } from 'react';
+import { Link,Outlet, useNavigate } from 'react-router-dom';
 import './onglet.scss';
 
 interface OngletProps{
@@ -6,16 +7,43 @@ interface OngletProps{
 }
 
 const Onglet : React.FC<OngletProps> = ({options})=>{
+    const ref = useRef<HTMLDivElement>(null);
+    const navigate = useNavigate();
+
+    const HandlerClick = (index:number)=>{
+        if(ref.current){
+            const elements = ref.current.querySelectorAll<HTMLElement>('.onglet');
+            elements.forEach((element,i)=>{
+                if(index === i){
+                    element.style.backgroundColor = 'white';
+                    element.style.color = 'black';
+                    element.style.transform = 'scale(1.1)';
+                }
+                else{
+                    element.style.backgroundColor = 'rgba(5, 3, 133, 0.795)';
+                    element.style.color = 'white';
+                    element.style.transform = 'scale(1)';
+                    element.style.marginLeft = '10px';
+                }
+            })
+        }
+        navigate(options[index].link);
+    }
+
+    useEffect(()=>{
+        HandlerClick(0);
+    },[])
+
     return (<div className='onglet-container'>
-        <div className='onglet-nav'>
+        <div ref={ref} className='onglet-nav'>
             {
                 options.map((option,i)=>{
                     return (
-                        <Link key={i} to={option.link} style={{textDecoration:"none"}}><div className='onglet'>
-                        {
-                            option.text
-                        }
-                        </div></Link>
+                        <div className='onglet' onClick={(e)=>HandlerClick(i)}>
+                            {
+                                option.text
+                            }
+                        </div>
                     );
                 })
             }

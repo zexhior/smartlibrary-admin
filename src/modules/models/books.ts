@@ -1,3 +1,6 @@
+import { Category } from './category';
+import { Authors } from './authors';
+
 export interface Book extends Object{
     _id: string,
     title: string,
@@ -7,5 +10,6 @@ export interface Book extends Object{
     cover: string,
     synopsis: string,
     file: string,
-    category: string,
+    category: Array<Category>,
+    authors: Array<Authors>,
 }

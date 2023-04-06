@@ -6,7 +6,9 @@
     & .listbooks-list{
         height: 70%;
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
+        //grid-template-columns: 1fr 1fr 1fr 1fr;
+        display: flex;
+        flex-wrap: wrap;
         overflow: scroll;
         & .card{
             position: relative;
@@ -22,30 +24,6 @@
                     width: 45%;
                 }
             }
-        }
-    }
-}
-
-@media screen and (max-width:550px) {
-    .listbooks-container{
-        & .listbooks-list{
-            grid-template-columns: 1fr;
-        }
-    }
-}
-
-@media screen and (min-width:550px) and (max-width:740px) {
-    .listbooks-container{
-        & .listbooks-list{
-            grid-template-columns: 1fr 1fr;
-        }
-    }
-}
-
-@media screen and (min-width:740px) and (max-width:1100px) {
-    .listbooks-container{
-        & .listbooks-list{
-            grid-template-columns: 1fr 1fr 1fr;
         }
     }
 }

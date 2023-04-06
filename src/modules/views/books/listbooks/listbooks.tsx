@@ -7,9 +7,14 @@ import './listbooks.scss';
 import { TitleColored } from '../../../../styles/titlescolored';
 import { Button } from '../../../../styles/button';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { changeContent, changeModal } from '../../../../redux/redux';
+import DeleteBook from '../../modal/deletebook/deletebook';
+import Message from '../../modal/message/message';
 
 const ListBooks = ()=>{
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const book = {
         title: "Toute une nuit", 
@@ -33,22 +38,6 @@ const ListBooks = ()=>{
         file: "pdf/8-toute_une_nuit_roman_ok.pdf"
     }
 
-    const HandlerViewBook = (id: number)=>{
-        navigate(`/books/${id}`);
-    }
-
-    const Body = (star:number,id:number)=>{
-        return (<>
-            <h3>{book.title}</h3>
-            <p>{book.publishing_date}</p>
-            <StarsComponent star={book.star}/>
-            <div className='options-button'>
-                <Button className='button animation' onClick={(e)=>HandlerViewBook(id)}>Voir</Button>
-                <Button className='button animation'>Supprimer</Button>
-            </div>
-        </>)
-    };
-
     const BooksRecommended = [
         book,
         book,
@@ -58,13 +47,36 @@ const ListBooks = ()=>{
         book,
     ]
 
+    const Body = (star:number,id:number)=>{
+        const HandlerDeleteBook = (id:number)=>{
+            dispatch(changeContent(<Message message='Voulez-vous vraiment supprimer ce livre?' 
+            allowedfunction={()=>{}}/>));
+            dispatch(changeModal(true))
+        }
+
+        const HandlerViewBook = (id: number)=>{
+            navigate(`/books/${id}`);
+        }
+
+        return (<>
+            <h3>{book.title}</h3>
+            <p>{book.publishing_date}</p>
+            <StarsComponent star={book.star}/>
+            <div className='options-button'>
+                <Button className='button animation' onClick={(e)=>HandlerViewBook(id)}>Voir</Button>
+                <Button className='button animation' onClick={(e)=>HandlerDeleteBook(id)}>Supprimer</Button>
+            </div>
+        </>)
+    };
+
+
     return (<div className="listbooks-container">
         <TitleColored>Liste Livres</TitleColored>
         <div className='listbooks-list'>
             {
                 BooksRecommended.map((element:any,i)=>{
                     return (<>
-                        <CardComponent img={element.cover} body={Body(element.star,i)}/>
+                        <CardComponent key={i} img={element.cover} body={Body(element.star,i)}/>
                     </>);
                 })
             }
