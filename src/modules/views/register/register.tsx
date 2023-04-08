@@ -7,8 +7,10 @@ import Logo from '../../../common/images/logo/colored_logo.png';
 import './register.scss';
 import { useEffect, useRef, useState } from "react";
 import { User } from "../../models/users";
-import useSignUp from "../../controllers/SignUp";
+import SignUp from "../../controllers/SignUp";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { getCurrentUser } from "../../../redux/myaccountredux";
 
 interface MyStyle{
     style: String,
@@ -19,6 +21,7 @@ const Register: React.FC<MyStyle> = ({style, setStyle})=>{
     const container = useRef<HTMLDivElement>(null)
     const [user,setUser] = useState<User | object | string>({});
     const navigation = useNavigate();
+    const dispatch = useDispatch();
 
     useEffect(()=>{
         if(container.current){
@@ -32,9 +35,10 @@ const Register: React.FC<MyStyle> = ({style, setStyle})=>{
 
     const SendDataSignUp = async (e:any)=>{
         e.preventDefault();
-        const response = await useSignUp(user as User);
+        const response = await SignUp(user as User);
         if(response.user._id){
-            navigation('/')
+            dispatch(getCurrentUser(response.user));
+            navigation('/');
         }else{
             console.log(response);
         }

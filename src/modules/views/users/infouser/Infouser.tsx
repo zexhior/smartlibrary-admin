@@ -1,35 +1,23 @@
 import { UserImage } from '../../../../styles/userimages';
 import './infouser.scss';
-import User from '../../../../common/images/user.jpg';
+import User from '../../../../common/images/profil.jpg';
 import Onglet from '../../../../widgets/onglet/onglet';
 import { SideTitle } from '../../../../styles/sidetitle';
 import { TitleColored } from '../../../../styles/titlescolored';
 import { Title } from '../../../../styles/title';
 import { FaCalendarWeek, FaHome, FaMailBulk, FaPhone } from 'react-icons/fa';
+import { useSelector } from 'react-redux';
 
 const InfoUser = ()=>{
     const options = [{text:'Livres',link:''},
     {text:'Auteurs',link:'authors'}];
-
-    const user = {
-        _id: "",
-        name: "Ravelomanantsoa",
-        first_name: "Richard",
-        address: "Lot II A 45 Talata",
-        birth_date: "12/02/23",
-        phone_number: "0341500516",
-        email: "ravelorichard12@gmail.com",
-        photo: User,
-        password: "",
-        passwordConfirm: "",
-        role: "Administrateur"
-    }
+    const user = useSelector((state:any)=>state.user.currentUser)
     
     return (<div className='infouser-container'>
         <div className='couverture'>
         </div>
         <div className='infouser'>
-            <UserImage className='infouser-img' src={user.photo} alt='user'/>
+            <UserImage className='infouser-img' src={user.photo==='default.jpg'?User:user.photo} alt='user'/>
             <div className='infouser-detail'>
                 <Title className='last-name'>{user.name}</Title>
                 <SideTitle className='first-name'>{user.first_name}</SideTitle>

@@ -6,14 +6,11 @@ import SideBarContent from '../../../widgets/sidebar/sidebarcontent/sidebarconte
 import { Link, Outlet } from 'react-router-dom';
 import Modal from '../../../widgets/modal/modal';
 import { useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import useGetUser from '../../controllers/GetUser';
 
 const Home = ()=>{
     const modal = useSelector((state:any)=>state.modal.activation);
-
-    useEffect(()=>{
-        
-    },[])
+    const user = useGetUser(localStorage.getItem('id'));
 
     const elements = [
         <Link to='/users' style={{textDecoration:'none'}}><SideBarContent icon={<FaUser width={""} fill='#FFFFFF'/>} element="Utilisateurs"/></Link>,

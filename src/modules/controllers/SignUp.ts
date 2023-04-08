@@ -1,18 +1,22 @@
 import { User } from './../models/users';
-import axios from 'axios';
+import { Api } from '../../utils/api';
 
-const useSignUp = (user: User)=>{
-    
+const SignUp = (user: User)=>{
+    //const dispatch = useDispatch();
+
     function signup(){
-        return axios.post("http://127.0.0.1:3400/api/v1/users/signup",user).then(response=>{
+        const api = new Api();
+        return api.post("users/signup",user).then(response=>{
             localStorage.setItem("bearer",response.data.token);
             localStorage.setItem("id",response.data.data.user._id);
+            //dispatch(getCurrentUser(response.data.data));
             return response.data.data;
         }).catch(error=>{
+            console.log(error);
             return error.message;
         });
     }
     return signup();
 }
 
-export default useSignUp;
+export default SignUp;

@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { Authors } from "../modules/models/authors";
+import { Book } from "../modules/models/books";
 
 export const bookSlice = createSlice({
     name: 'book',
@@ -28,10 +29,15 @@ export const bookSlice = createSlice({
             category: [],
             authors: new Array<Authors>(),
         },
+        list : new Array<Book>(),
+        page : 1,
     },
     reducers: {
         setUpdateBook: (state,action)=>{
             state.updatebook = action.payload;
+        },
+        setPage : (state,action) => {
+            state.page = action.payload;
         },
         addAuthor: (state, action)=>{
             state.updatebook.authors.push(action.payload);

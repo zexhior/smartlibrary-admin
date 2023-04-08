@@ -10,6 +10,8 @@ import Register from '../register/register';
 import { useEffect, useRef, useState } from 'react';
 import useLogin from '../../controllers/Login';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { getCurrentUser } from '../../../redux/myaccountredux';
 
 interface DataLogin{
     email: string,
@@ -21,6 +23,7 @@ const Login = ()=>{
     const [data,setData] = useState<DataLogin | object>({email:"",password:""});
     const container = useRef<HTMLDivElement>(null);
     const navigation = useNavigate();
+    const dispatch = useDispatch();
 
     useEffect(()=>{
         if(container.current){
@@ -30,7 +33,6 @@ const Login = ()=>{
 
     const MovePage = (e:any)=>{
         e.preventDefault();
-        console.log("Hello");
         if(container.current){
             container.current.style.animation = "changepage 600ms ease-in-out forwards";
             setStyle("changepage 600ms ease-in-out forwards");
@@ -42,6 +44,7 @@ const Login = ()=>{
         const value = data as DataLogin;
         const response = await useLogin(value.email, value.password);
         if(response.user._id){
+            dispatch(getCurrentUser(response.user));
             navigation('/');
         }else{
             console.log(response);
@@ -64,7 +67,7 @@ const Login = ()=>{
                         <InputComponent label='E-mail' type='email' placeholder='mail@mail' required={true} name='email' state={data} setState={setData} data={null}/>
                         <InputComponent label='Mot de passe' type='password' placeholder='mot de passe' required={true} name='password' state={data} setState={setData} data={null}/>
                         <div className='container-body-button'>
-                            <Button type='submit' className='button-login button' >Connexion</Button>
+                            <Button type='submit' className='button-login button' onClick={e=>SendDataLogin(e)}>Connexion</Button>
                             <Button className='button-login button' onClick={MovePage}>Creer</Button>
                         </div>
                     </form>

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Table } from '../../styles/table';
+import User from '../../common/images/profil.jpg';
 import './table.scss';
 
 const TRLightGray = styled.tr`
@@ -37,7 +38,7 @@ const TableComponent = ({titles=[""], users = new Array<Object>(), keys = ['']})
                                         return Object.entries(element).map(([key, value])=>{
                                             if(key === cle){
                                                 if(cle === 'img' || cle === 'image' || cle === 'photo' || cle === 'cover'){
-                                                    return (<td key={i}><img src={value} alt='user' width="50px" height="50px"/></td>);
+                                                    return (<td key={i}><img src={value==='default.jpg'?User:value} alt='user' width="50px" height="50px"/></td>);
                                                 }else{
                                                     return(<td key={i}>{value}</td>);
                                                 }
@@ -56,7 +57,7 @@ const TableComponent = ({titles=[""], users = new Array<Object>(), keys = ['']})
                                         return Object.entries(element).map(([key, value])=>{
                                             if(key === cle){
                                                 if(cle === 'img' || cle === 'image' || cle === 'photo' || cle === 'cover'){
-                                                    return (<td key={i}><img src={value} alt='user' width="50px" height="50px"/></td>);
+                                                    return (<td key={i}><img src={value==='default.jpg'?User:value} alt='user' width="50px" height="50px"/></td>);
                                                 }else{
                                                     return(<td key={i}>{value}</td>);
                                                 }

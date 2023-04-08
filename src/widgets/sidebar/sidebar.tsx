@@ -1,10 +1,11 @@
 import { ReactNode } from 'react';
 import { FaSignOutAlt } from 'react-icons/fa';
 import './sidebar.scss';
-import User from '../../common/images/user.jpg';
+import User from '../../common/images/profil.jpg';
 import SideBarContent from './sidebarcontent/sidebarcontent';
 import { LogOut } from '../../modules/controllers/Logout';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 interface SideBarProps{
     groupelements: ReactNode[]
@@ -12,6 +13,7 @@ interface SideBarProps{
 
 const SideBar : React.FC<SideBarProps> = ({groupelements})=>{
     const navigate = useNavigate();
+    const user = useSelector((state:any)=>state.currentUser);
     
     const HandlerLogOut = ()=>{
         LogOut();
@@ -20,10 +22,10 @@ const SideBar : React.FC<SideBarProps> = ({groupelements})=>{
 
     return (<div className='sidebar-container'>
         <div className='sidebar-profil animation'>
-            <img  className='sidebar-profil-img' src={User} alt='profil-user'/>
+            <img  className='sidebar-profil-img' src={user.photo!=='default.jpg'?user.photo:User} alt='profil-user'/>
             <div className='sidebar-profil-name'>
-                <p className='sidebar-profil-name-last text-color-white'>RAVELOMANANTSOA</p>
-                <p className='sidebar-profil-name-first text-color-white'>Brice Herizo</p>
+                <p className='sidebar-profil-name-last text-color-white'>{user.name}</p>
+                <p className='sidebar-profil-name-first text-color-white'>{user.first_name}</p>
             </div>
         </div>
         {
@@ -36,7 +38,7 @@ const SideBar : React.FC<SideBarProps> = ({groupelements})=>{
         <div className='sidebar-bottom animation' onClick={HandlerLogOut}>
             <SideBarContent icon={<FaSignOutAlt fill='#FFFFFF'/>} element='Deconnexion'/>
         </div>
-    </div>)
+    </div>);
 }
 
 export default SideBar;
