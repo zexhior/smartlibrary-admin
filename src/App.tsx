@@ -4,6 +4,8 @@ import Home from './modules/views/home/home';
 import Login from './modules/views/login/login';
 import Users from './modules/views/users/users';
 import Books from './modules/views/books/books';
+import Authors from './modules/views/authors/authors';
+import ListAuthors from './modules/views/authors/listauthors/listauthors';
 import AuthGuard from './utils/authguard';
 import ListUsers from './modules/views/users/listusers/listusers';
 import InfoUser from './modules/views/users/infouser/Infouser';
@@ -17,6 +19,12 @@ import UpdateBook from './modules/views/books/updatebook/updatebook';
 import { Provider } from 'react-redux';
 import { store } from './redux/store';
 import CreateBook from './modules/views/books/createbook/createbook';
+import InfoAuthor from './modules/views/authors/infoauthor/infoauthor';
+import Authorbooks from './modules/views/authors/authorbooks/authorbooks';
+import UpdateAuthor from './modules/views/authors/updateauthor/updateauthor';
+import CreateAuthor from './modules/views/authors/createauthor/createauthor';
+import Category from './modules/views/category/category';
+import ListCategory from './modules/views/category/listcategory/listcategory';
 
 const App : React.FC= () => {
   
@@ -41,6 +49,17 @@ const App : React.FC= () => {
                 <Route path='update' element={<UpdateBook action="update"/>}/>
               </Route>
               <Route path='create' element={<CreateBook/>}/>
+            </Route>
+            <Route path='/authors' element={<Authors/>}>
+              <Route index element={<ListAuthors/>}/>
+              <Route path=':id' element={<InfoAuthor/>}>
+                <Route index element={<Authorbooks/>}/>
+                <Route path='update' element={<UpdateAuthor/>}/>
+              </Route>
+              <Route path='create' element={<CreateAuthor/>}/>
+            </Route>
+            <Route path='/category' element={<Category/>}>
+              <Route index element={<ListCategory/>}/>
             </Route>
           </Route>
           <Route path='*' element={<AuthGuard children={<Home/>}/>}/>

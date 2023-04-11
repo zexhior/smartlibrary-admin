@@ -10,6 +10,4 @@ export interface Book extends Object{
     cover: string,
     synopsis: string,
     file: string,
-    category: Array<Category>,
-    authors: Array<Authors>,
 }

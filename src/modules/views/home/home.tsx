@@ -10,13 +10,15 @@ import useGetUser from '../../controllers/GetUser';
 
 const Home = ()=>{
     const modal = useSelector((state:any)=>state.modal.activation);
+    
     const user = useGetUser(localStorage.getItem('id'));
 
     const elements = [
-        <Link to='/users' style={{textDecoration:'none'}}><SideBarContent icon={<FaUser width={""} fill='#FFFFFF'/>} element="Utilisateurs"/></Link>,
-        <SideBarContent icon={<FaUser fill='#FFFFFF'/>} element="Administrateurs"/>,
-        <Link to='/books' style={{textDecoration:'none'}}><SideBarContent icon={<FaBookOpen fill='#FFFFFF'/>} element="Livres"/></Link>,
-        <SideBarContent icon={<FaPen fill='#FFFFFF'/>} element="Auteurs"/>,
+            <Link to='/users' style={{textDecoration:'none'}}><SideBarContent icon={<FaUser width={""} fill='#FFFFFF'/>} element="Utilisateurs"/></Link>,
+            <SideBarContent icon={<FaUser fill='#FFFFFF'/>} element="Administrateurs"/>,
+            <Link to='/books' style={{textDecoration:'none'}}><SideBarContent icon={<FaBookOpen fill='#FFFFFF'/>} element="Livres"/></Link>,
+            <Link to='/authors' style={{ textDecoration: 'none' }}><SideBarContent icon={<FaPen fill='#FFFFFF' />} element="Auteurs" /></Link>,
+            <Link to='/category' style={{ textDecoration: 'none' }}><SideBarContent icon={<FaPen fill='#FFFFFF' />} element="Categories" /></Link>,
         ];
 
     const group = [

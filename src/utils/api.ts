@@ -9,21 +9,21 @@ let config = {
 }
 
 export class Api{
-    root = "http://127.0.0.1:3400/api/v1/";
+    static root = "http://127.0.0.1:3400/api/v1/";
 
-    get(url:string){
-        return axios.get(this.root+url, config);
+    static get(url:string){
+        return axios.get(Api.root+url, config);
     }
 
-    put(url:string,data: any){
-        return axios.put(this.root+url,data, config);
+    static put(url:string,data: any){
+        return axios.put(Api.root+url, data, config);
     }
 
-    post(url:string, data:any){
-        return axios.post(this.root+url, data, config);
+    static post(url:string, data:any){
+        return axios.post(Api.root+url, data, config);
     }
 
-    delete(url:string){
-        return axios.delete(this.root+url, config);
+    static delete(url:string){
+        return axios.delete(Api.root+url, config);
     }
 }

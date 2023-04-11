@@ -1,22 +1,16 @@
-import React from 'react';
-import Book from '../../../../common/images/books/couv_8.png';
-import CardComponent from '../../../../widgets/card/card';
-import StarsComponent from '../../../../widgets/stars/stars';
+import { useState } from 'react';
 import PaginationComponent from '../../../../widgets/pagination/pagination';
 import './listbooks.scss';
-import { TitleColored } from '../../../../styles/titlescolored';
-import { Button } from '../../../../styles/button';
-import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { changeContent, changeModal } from '../../../../redux/redux';
-import DeleteBook from '../../modal/deletebook/deletebook';
-import Message from '../../modal/message/message';
+import EmptyList from '../../../../widgets/emptylist/emptylist';
+import GeneratorListBook from '../generatorlistbook/generatorlistbook';
+import GetAllElement from '../../../controllers/GetAllElement';
+import { Book } from '../../../models/books';
 
 const ListBooks = ()=>{
-    const navigate = useNavigate();
-    const dispatch = useDispatch();
-
-    const book = {
+    const [page,setPage] = useState<number>(1);
+    const {elements} = GetAllElement<Book>('books',page);
+    /*const book = {
+        _id: '0',
         title: "Toute une nuit", 
         isbn: "4", 
         star: 3, 
@@ -38,51 +32,22 @@ const ListBooks = ()=>{
         file: "pdf/8-toute_une_nuit_roman_ok.pdf"
     }
 
-    const BooksRecommended = [
+    const books = [
         book,
         book,
         book,
         book,
         book,
         book,
-    ]
+    ]*/
 
-    const Body = (star:number,id:number)=>{
-        const HandlerDeleteBook = (id:number)=>{
-            dispatch(changeContent(<Message message='Voulez-vous vraiment supprimer ce livre?' 
-            allowedfunction={()=>{}}/>));
-            dispatch(changeModal(true))
-        }
-
-        const HandlerViewBook = (id: number)=>{
-            navigate(`/books/${id}`);
-        }
-
+    if(elements && elements.length > 0)
         return (<>
-            <h3>{book.title}</h3>
-            <p>{book.publishing_date}</p>
-            <StarsComponent star={book.star}/>
-            <div className='options-button'>
-                <Button className='button animation' onClick={(e)=>HandlerViewBook(id)}>Voir</Button>
-                <Button className='button animation' onClick={(e)=>HandlerDeleteBook(id)}>Supprimer</Button>
-            </div>
+            <GeneratorListBook books={elements}/>
+            <PaginationComponent page={page} setPage={setPage}/>
         </>)
-    };
-
-
-    return (<div className="listbooks-container">
-        <TitleColored>Liste Livres</TitleColored>
-        <div className='listbooks-list'>
-            {
-                BooksRecommended.map((element:any,i)=>{
-                    return (<>
-                        <CardComponent key={i} img={element.cover} body={Body(element.star,i)}/>
-                    </>);
-                })
-            }
-        </div>
-        <PaginationComponent/>
-    </div>)
+    else
+        return (<EmptyList/>)
 }
 
 export default ListBooks;

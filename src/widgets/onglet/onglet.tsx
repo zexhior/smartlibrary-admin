@@ -39,7 +39,7 @@ const Onglet : React.FC<OngletProps> = ({options})=>{
             {
                 options.map((option,i)=>{
                     return (
-                        <div className='onglet' onClick={(e)=>HandlerClick(i)}>
+                        <div key={i} className='onglet' onClick={(e)=>HandlerClick(i)}>
                             {
                                 option.text
                             }

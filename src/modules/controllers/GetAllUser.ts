@@ -9,8 +9,7 @@ const GetAllUser = ()=>{
 
     useEffect(()=>{
         function getAllUser(){
-            const api = new Api();
-            api.get(`users/`).then((data)=>{
+            Api.get(`users/`).then((data)=>{
                 console.log(data.data.data);
                 setUsers(data.data.data);              
             }).catch((error)=>{

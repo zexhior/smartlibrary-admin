@@ -10,8 +10,7 @@ const useGetUser = (_id:string | null)=>{
 
     useEffect(()=>{
         async function getUser(){
-            const api = new Api();
-            api.get(`users/${_id}`).then((data)=>{
+            Api.get(`users/${_id}`).then((data)=>{
                 setUser(data.data.data);
                 dispatch(getCurrentUser(data.data.data));
             }).catch((error)=>{
@@ -19,7 +18,7 @@ const useGetUser = (_id:string | null)=>{
             });
         }
         getUser();
-    },[_id])
+    },[])
 
     return user;
 }

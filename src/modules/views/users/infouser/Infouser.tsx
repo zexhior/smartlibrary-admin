@@ -1,51 +1,61 @@
 import { UserImage } from '../../../../styles/userimages';
 import './infouser.scss';
-import User from '../../../../common/images/profil.jpg';
+import UserDefault from '../../../../common/images/profil.jpg';
 import Onglet from '../../../../widgets/onglet/onglet';
 import { SideTitle } from '../../../../styles/sidetitle';
 import { TitleColored } from '../../../../styles/titlescolored';
 import { Title } from '../../../../styles/title';
 import { FaCalendarWeek, FaHome, FaMailBulk, FaPhone } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import GetOneElement from '../../../controllers/GetOneElement';
+import { User } from '../../../models/users';
 
 const InfoUser = ()=>{
+    const {id} = useParams();
     const options = [{text:'Livres',link:''},
     {text:'Auteurs',link:'authors'}];
-    const user = useSelector((state:any)=>state.user.currentUser)
-    
-    return (<div className='infouser-container'>
-        <div className='couverture'>
-        </div>
-        <div className='infouser'>
-            <UserImage className='infouser-img' src={user.photo==='default.jpg'?User:user.photo} alt='user'/>
-            <div className='infouser-detail'>
-                <Title className='last-name'>{user.name}</Title>
-                <SideTitle className='first-name'>{user.first_name}</SideTitle>
-                <div className='contact'>
-                    <div className='infouser-detail-container'>
-                        <FaHome className='icon'/>
-                        <p>{user.address}</p>
+    const {element} = GetOneElement<User>('users/',id);
+
+    if(element){
+        return (<div className='infouser-container'>
+                    <div className='couverture'>
                     </div>
-                    <div className='infouser-detail-container'>
-                        <FaCalendarWeek className='icon'/>
-                        <p>{user.birth_date}</p>
+                    <div className='infouser'>
+                        <UserImage className='infouser-img' src={element?.photo==='default.jpg'?UserDefault:element?.photo} alt='user'/>
+                        <div className='infouser-detail'>
+                            <Title className='last-name'>{element?.name}</Title>
+                            <SideTitle className='first-name'>{element?.first_name}</SideTitle>
+                            <div className='contact'>
+                                <div className='infouser-detail-container'>
+                                    <FaHome className='icon'/>
+                                    <p>{element?.address}</p>
+                                </div>
+                                <div className='infouser-detail-container'>
+                                    <FaCalendarWeek className='icon'/>
+                                    <p>{element?.birth_date}</p>
+                                </div>
+                                <div className='infouser-detail-container'>
+                                    <FaMailBulk className='icon'/>
+                                    <p>{element?.email}</p>
+                                </div>
+                                <div className='infouser-detail-container'>
+                                    <FaPhone className='icon'/>
+                                    <p>{element?.phone_number}</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div className='infouser-detail-container'>
-                        <FaMailBulk className='icon'/>
-                        <p>{user.email}</p>
+                    <div className='infouser-container-data'>
+                        <TitleColored>Utilisateurs</TitleColored>
+                        <Onglet options={options}/>
                     </div>
-                    <div className='infouser-detail-container'>
-                        <FaPhone className='icon'/>
-                        <p>{user.phone_number}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div className='infouser-container-data'>
-            <TitleColored>Utilisateurs</TitleColored>
-            <Onglet options={options}/>
-        </div>
-    </div>);
+                </div>);
+    }else{
+        return(<div>
+            zavatra
+        </div>)
+    }
 }
 
 export default InfoUser;

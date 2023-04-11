@@ -5,8 +5,7 @@ const SignUp = (user: User)=>{
     //const dispatch = useDispatch();
 
     function signup(){
-        const api = new Api();
-        return api.post("users/signup",user).then(response=>{
+        return Api.post("users/signup",user).then(response=>{
             localStorage.setItem("bearer",response.data.token);
             localStorage.setItem("id",response.data.data.user._id);
             //dispatch(getCurrentUser(response.data.data));

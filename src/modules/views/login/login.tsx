@@ -64,8 +64,8 @@ const Login = ()=>{
                     <Title className='text-color-main'>Salutation!</Title>
                     <SideTitle className='text-color-lightgray'>Veuillez-vous connecter</SideTitle>
                     <form onSubmit={SendDataLogin}>
-                        <InputComponent label='E-mail' type='email' placeholder='mail@mail' required={true} name='email' state={data} setState={setData} data={null}/>
-                        <InputComponent label='Mot de passe' type='password' placeholder='mot de passe' required={true} name='password' state={data} setState={setData} data={null}/>
+                        <InputComponent label='E-mail' type='email' placeholder='mail@mail' required={true} name='email' state={data} setState={setData}/>
+                        <InputComponent label='Mot de passe' type='password' placeholder='mot de passe' required={true} name='password' state={data} setState={setData}/>
                         <div className='container-body-button'>
                             <Button type='submit' className='button-login button' onClick={e=>SendDataLogin(e)}>Connexion</Button>
                             <Button className='button-login button' onClick={MovePage}>Creer</Button>

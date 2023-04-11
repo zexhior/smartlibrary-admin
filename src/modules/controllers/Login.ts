@@ -3,8 +3,7 @@ import { Api } from './../../utils/api';
 const useLogin = (email:string,password:string)=>{
 
     function login(){
-        const api = new Api();
-        return api.post("users/login",{email, password}).then(response=>{
+        return Api.post("users/login",{email, password}).then(response=>{
             localStorage.setItem("bearer",response.data.token);
             localStorage.setItem("id",response.data.data.user._id);
             return response.data.data;

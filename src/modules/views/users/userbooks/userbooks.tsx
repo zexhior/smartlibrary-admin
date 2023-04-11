@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Book from '../../../../common/images/books/couv_8.png';
 import CardComponent from '../../../../widgets/card/card';
 import StarsComponent from '../../../../widgets/stars/stars';
@@ -7,6 +7,7 @@ import './userbooks.scss';
 import { TitleColored } from '../../../../styles/titlescolored';
 
 const UserBooks = ()=>{
+    const [page,setPage] = useState<number>(1);
 
     const book = {
         title: "Toute une nuit", 
@@ -64,7 +65,7 @@ const UserBooks = ()=>{
                 })
             }
         </div>
-        <PaginationComponent/>
+        <PaginationComponent page={page} setPage={setPage}/>
     </div>)
 }
 

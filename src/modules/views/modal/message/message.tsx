@@ -19,7 +19,7 @@ const Message : React.FC<MessageProps> = ({message, allowedfunction})=>{
     return (<div className='message-container'>
         <p>{message}</p>
         <div className='options'>
-            <Button className='animation button' onClick={(e)=>allowedfunction}>Oui</Button>
+            <Button className='animation button' onClick={(e)=>allowedfunction(e)}>Oui</Button>
             <Button className='animation button' onClick={(e)=>HandlerCancelAction(e)}>Non</Button>
         </div>
     </div>) 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import AuthorImg from '../../../../common/images/authors/administrator.png';
 import { SideTitle } from '../../../../styles/sidetitle';
 import { TitleColored } from '../../../../styles/titlescolored';
@@ -8,6 +8,7 @@ import Stars from '../../../../widgets/stars/stars';
 import './userauthors.scss';
 
 const UserAuthors = ()=>{
+    const [page,setPage] = useState<number>(1);
 
     const author = {
         name : "Gilles", 
@@ -47,7 +48,7 @@ const UserAuthors = ()=>{
                 })
             }
         </div>
-        <PaginationComponent/>
+        <PaginationComponent page={page} setPage={setPage}/>
     </div>)
 }
 

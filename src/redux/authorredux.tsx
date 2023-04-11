@@ -6,21 +6,23 @@ export const authorSlice = createSlice({
         createauthor: {
             name: "",
             last_Name: "",
-            star: "",
+            star: 0,
             description: "",
             photo: ""
         },
         updateauthor: {
             name: "",
             last_Name: "",
-            star: "",
+            star: 0,
             description: "",
             photo: ""
         },
     },
     reducers: {
-        setUpdateBook: (state,action)=>{
+        setUpdateAuthor: (state,action)=>{
             state.updateauthor = action.payload;
         }
     }
 })
+
+export const {setUpdateAuthor} = authorSlice.actions;

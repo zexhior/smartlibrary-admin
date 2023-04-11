@@ -63,8 +63,8 @@ const InfoBook = ()=>{
                 <div className="book-info">
                     <Title>{book.title}</Title>
                     {
-                        book.authors.map((author:Authors,i:number)=>{
-                            return(<SideTitle key={i}>{author.name} {author.last_Name} {i!==book.authors.length-1?"/":""}</SideTitle>)
+                        book.authors.map((author:any,i:number)=>{
+                            return(<SideTitle key={i}>{author.first_name} {author.last_Name} {i!==book.authors.length-1?"/":""}</SideTitle>)
                         })
                     }
                     <p>{book.publishing_date}</p>
@@ -74,11 +74,6 @@ const InfoBook = ()=>{
             </div>
         </div>
         <div className="book-description">
-            {/*<p className="synopsis">
-                {
-                    book.synopsis
-                }
-            </p>*/}
             <Onglet options={tab_titles}/>
         </div>
     </div>)

@@ -4,4 +4,7 @@
     height: 90%;
     background-color: white;
     overflow: scroll;
+    & .title{
+        margin-top: 0;
+    }
 }
