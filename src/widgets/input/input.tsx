@@ -18,9 +18,8 @@ const InputComponent : React.FC<MyStateInput> = ({label="", type="text", placeho
     const HandlerChange = (name:string,value:string) =>{
         let new_value = value;
         if(name !== ''){
-            if(name === "birthdate"){
+            if(name === "birthdate" || name === 'publishing_date'){
                 new_value = value.split('T')[0];
-                console.log(value);
             }
             setState({...state,[name]:new_value});
         }

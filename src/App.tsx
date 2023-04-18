@@ -28,7 +28,6 @@ import ListCategory from './modules/views/category/listcategory/listcategory';
 
 const App : React.FC= () => {
   
-
   return (<div>
     <BrowserRouter>
       <Provider store={store}>

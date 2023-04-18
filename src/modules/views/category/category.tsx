@@ -1,8 +1,9 @@
 import { useDispatch } from 'react-redux';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 import Navigation from '../../../common/navigation/navigation';
-import { closeModal } from '../../../redux/redux';
+import { changeContent, changeModal, closeModal } from '../../../redux/redux';
 import FloatButton from '../../../widgets/floatbutton/floatbutton';
+import AddCategoryModal from '../modal/addcategorymodal/addcategorymodal';
 import './category.scss';
 
 const Category = ()=>{
@@ -10,7 +11,8 @@ const Category = ()=>{
 
     const HandlerCloseModal = (e:any)=>{
         e.preventDefault();
-        dispatch(closeModal(false));
+        dispatch(changeContent(<AddCategoryModal action="create"/>));
+        dispatch(changeModal(true));
     }
 
     return (<div className='category-container'>

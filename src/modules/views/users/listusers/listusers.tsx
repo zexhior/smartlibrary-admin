@@ -10,12 +10,13 @@ import { useDispatch } from 'react-redux';
 import { changeContent, changeModal } from '../../../../redux/redux';
 import Message from '../../modal/message/message';
 import GetAllUser from '../../../controllers/GetAllUser';
-import { setUser } from '../../../../redux/userredux';
+import { setListUser, setUser } from '../../../../redux/userredux';
+import useGetAllElement from '../../../controllers/GetAllElement';
 
 const ListUsers = ()=>{
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const {users} = GetAllUser();
+    const {elements} = useGetAllElement<User>('users',0,setListUser);
 
     const title = ["User", "Nom", "E-mail","Adresse","Date de naissance"]
     const title2 = ["User", "Nom"];
@@ -31,20 +32,20 @@ const ListUsers = ()=>{
 
     const HandlerViewUser = (e:any,i:number)=>{
         e.preventDefault();
-        if(users){
-            dispatch(setUser(users[i]));
-            navigate(`/users/${users[i]._id}`);
+        if(elements){
+            dispatch(setUser(elements[i]));
+            navigate(`/users/${elements[i]._id}`);
         }
     }
 
     return (<div className='users-container-content-info'>
                 <TitleColored className='full-width'>Utilisateurs</TitleColored>
                 <div className='info-window'>
-                    <TableComponent titles={title} users={users} keys={keys}/>
+                    <TableComponent titles={title} users={elements} keys={keys}/>
                     <div className='option-element'>
                         <div className='option-title'>Option</div>
                         {
-                            users?.map((user:User,i:number)=>{
+                            elements?.map((user:User,i:number)=>{
                                 if(i%2===0)
                                     return (<div className='option' key={i} style={{backgroundColor: 'rgb(226, 226, 226)'}}>
                                                 <Button className='button animation' onClick={(e)=>HandlerViewUser(e,i)}>
@@ -68,11 +69,11 @@ const ListUsers = ()=>{
                     </div>
                 </div>
                 <div className='mini-info-window'>
-                    <TableComponent titles={title2} users={users} keys={keys2}/>
+                    <TableComponent titles={title2} users={elements} keys={keys2}/>
                     <div className='option-element'>
                         <div className='option-title'>Option</div>
                         {
-                            users?.map((user:User,i:number)=>{
+                            elements?.map((user:User,i:number)=>{
                                 if(i%2===0)
                                     return (<div className='option' style={{backgroundColor: 'rgb(226, 226, 226)'}}>
                                                 <Link to='/users/1' style={{textDecoration : "none"}}><Button className='button animation'>

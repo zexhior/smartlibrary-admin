@@ -1,28 +1,36 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { Authors } from "../modules/models/authors";
 
 export const authorSlice = createSlice({
     name: 'author',
     initialState: {
         createauthor: {
-            name: "",
-            last_Name: "",
+            _id: "",
+            first_name: "",
+            last_name: "",
             star: 0,
             description: "",
-            photo: ""
+            photo: "",
         },
         updateauthor: {
-            name: "",
-            last_Name: "",
+            _id: "",
+            first_name: "",
+            last_name: "",
             star: 0,
             description: "",
             photo: ""
         },
+        authors: new Array<Authors>,
+        page: 1
     },
     reducers: {
         setUpdateAuthor: (state,action)=>{
             state.updateauthor = action.payload;
+        },
+        setListAuthors: (state,action)=>{
+            state.authors = action.payload;
         }
     }
 })
 
-export const {setUpdateAuthor} = authorSlice.actions;
+export const {setUpdateAuthor,setListAuthors} = authorSlice.actions;

@@ -10,12 +10,13 @@ import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import GetOneElement from '../../../controllers/GetOneElement';
 import { User } from '../../../models/users';
+import { setUpdateUser } from '../../../../redux/userredux';
 
 const InfoUser = ()=>{
     const {id} = useParams();
     const options = [{text:'Livres',link:''},
     {text:'Auteurs',link:'authors'}];
-    const {element} = GetOneElement<User>('users/',id);
+    const {element} = GetOneElement<User>('users/',id,setUpdateUser);
 
     if(element){
         return (<div className='infouser-container'>

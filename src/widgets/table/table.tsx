@@ -20,7 +20,6 @@ const TDTitle = styled.td`
 
 
 const TableComponent = ({titles=[""], users = new Array<Object>(), keys = ['']})=>{
-
     return (<Table className='table-window'>
                 <TRColored>
                     {

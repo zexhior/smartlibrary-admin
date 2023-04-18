@@ -1,34 +1,31 @@
-import {FormEvent, useEffect, useState } from 'react';
-import { ImCross } from 'react-icons/im';
+import {FormEvent, SetStateAction, useState } from 'react';
 import { Button } from '../../../../styles/button';
-import { Label } from '../../../../styles/label';
 import InputComponent from '../../../../widgets/input/input';
-import SearchBar from '../../../../widgets/searchbar/searchbar';
-import TableComponent from '../../../../widgets/table/table';
 import {Book} from '../../../models/books';
 import './updatebook.scss';
-import { useDispatch } from 'react-redux';
-import AddAuthorModal from '../../modal/addauthormodal/addauthormodal';
-import { changeContent, changeModal } from '../../../../redux/redux';
-import { setUpdateBook } from '../../../../redux/bookredux';
-import styled from 'styled-components';
-import { Authors } from '../../../models/authors';
+import { useSelector } from 'react-redux';
 import { TitleColored } from '../../../../styles/titlescolored';
+import CreateOneElement from '../../../controllers/CreateOneElement';
+import UpdateElement from '../../../controllers/UpdateElement';
+import CategoryOfBook from './categoryofbook/categoryofbook';
+import { useNavigate } from 'react-router-dom';
 import { Category } from '../../../models/category';
-
-const TRLightGray = styled.tr`
-    background-color: rgb(247, 247, 247);
-`
-const TRGray = styled.tr`
-    background-color: rgb(226, 226, 226);
-`
+import { Classification } from '../../../models/classification';
+import CreateManyClassifications from '../../../controllers/CreateManyClassification';
+import GetAllElement from '../../../controllers/GetAllElement';
+import { setListCategory } from '../../../../redux/categoryredux';
+import GetCategoriesByClassification from '../../../controllers/GetCategoriesByClassification';
+import AuthorOfBook from './authorofbook/authorofbook';
+import GetAuthorsByWork from '../../../controllers/GetAuthorsByWork';
+import { Authors } from '../../../models/authors';
 
 interface UpdateBookProps{
     action: string
 }
 
 const UpdateBook : React.FC<UpdateBookProps>= ({action})=>{
-    const [book,setBook] = useState<Book>({
+    const update = useSelector((state:any)=>state.book.updatebook);
+    const [book,setBook] = useState<Book>(action==='create'?{
         _id: '',
         title: '',
         isbn: '',
@@ -37,58 +34,44 @@ const UpdateBook : React.FC<UpdateBookProps>= ({action})=>{
         cover: '',
         synopsis: '',
         file: '',
-    });
-    const [categories,setCategories] = useState<string[]>(['aventure']);
-    const [search, setSearch] = useState<string>(" ");
-    const [results, setResults] = useState<Authors[]>([]);
-    const dispatch = useDispatch();
+    }:update);
+    const [file,setFile] = useState<File>();
+    const [cover,setCover] = useState<File>();
+    const {categories,setCategories,lastCategories} = GetCategoriesByClassification(book?._id);
+    const {authors,setAuthors,lastAuthors} = GetAuthorsByWork(book?._id);
+    const navigate = useNavigate();
 
-    useEffect(()=>{
-
-    },[search]);
-
-    const category = ['aventure','psychologie','comedie','policier'];
-
-    const title = ['Nom','Prenoms'];
-    const proprieties = ['name','last_Name'];
-
-    const HandlerAddAuthorInBook = (value:boolean, i:number)=>{
-        /*if(book){
-            if(value){
-                let data = new Array<Authors>();
-                book.authors.forEach(author=>{data.push(author)});
-                data.push(results[i]);
-                setBook({...book,authors: data});
-            }else{
-                setBook({...book,authors: book.authors.filter(author=>author.first_name!==results[i].first_name)})
-            }
-        }*/
-    }
-
-    const HandlerAddCategory = (value:string)=>{
-        if(!categories.includes(value)){
-            setCategories(prevlist=>[...prevlist,value]);
+    const HandlerSubmit = async (e:FormEvent<HTMLFormElement>)=>{
+        e.preventDefault();
+        const formdata = new FormData();
+        formdata.append('book',file as Blob);
+        formdata.append('image',cover as Blob);
+        formdata.append('title',book.title);
+        formdata.append('isbn',book.isbn);
+        formdata.append('publishing_date',book.publishing_date.split('T')[0]);
+        formdata.append('star',book.star.toString());
+        formdata.append('synopsis',book.synopsis);
+        if(action === 'create'){
+            const new_book = await CreateOneElement('books',formdata);
+            categories.forEach((data:Category)=>{
+                CreateOneElement('classifications',{book: new_book._id, category: data._id});
+            });
+            authors.forEach((data:Authors)=>{
+                CreateOneElement('works',{book: new_book._id, author: data._id})
+            })
+        }else{
+            UpdateElement('books/',book._id,formdata);
+            console.log(lastCategories);
+            categories.forEach((data:Category,i:number)=>{
+                if(i >= lastCategories)
+                    CreateOneElement('classifications',{book: book._id, category: data._id});
+            });
+            authors.forEach((data:Authors, i:number)=>{
+                if(i >= lastAuthors)
+                    CreateOneElement('works',{book: book._id, author: data._id})
+            })
         }
-    }
-
-    const HandlerDeleteCategory = (index:number)=>{
-        setCategories(prevlist=>prevlist.filter((_,i)=>i!==index));
-    }
-
-    const HandlerAddAuthor = (e:any)=>{
-        e.preventDefault();
-        dispatch(changeContent(<AddAuthorModal action="create"/>));
-        dispatch(changeModal(true));
-    }
-
-    const HandlerSearchAuthor = (e:any)=>{
-        e.preventDefault();
-        dispatch(setUpdateBook(book));
-        //setResults(_prevlist=>authors.filter(data=>data.name===search))
-    }
-
-    const HandlerSubmit = (e:FormEvent<HTMLFormElement>)=>{
-        e.preventDefault();
+        navigate('/books/');
     }
 
     return (<div className='updatebook'>
@@ -97,71 +80,10 @@ const UpdateBook : React.FC<UpdateBookProps>= ({action})=>{
             <InputComponent label={'Titre : '} type={'text'} placeholder={'Titre'} required={true} state={book} name={'title'} setState={setBook}/>
             <InputComponent label={'ISBN : '} type={'text'} placeholder={'ISBN'} required={true} state={book} name={'isbn'} setState={setBook}/>
             <InputComponent label={'Date de publication : '} type={'date'} placeholder={''} required={true} state={book} name={'publishing_date'} setState={setBook}/>
-            <Label>Categorie : </Label><br/>
-            <select onChange={(e)=>HandlerAddCategory(e.target.value)}>
-                {
-                    category?.map((element:string,i:number)=>{
-                        return (<option key={i}>
-                            {element}   
-                        </option>)
-                    })
-                }
-            </select>
-            <div className='category-list'>
-                {
-                    categories.map((categorie:string, i:number)=>{
-                        return (<div className='categorie' key={i}>
-                            <button onClick={(_e)=>HandlerDeleteCategory(i)}><ImCross/></button>
-                            <p style={{margin:'0 0 0 5px'}}>{categorie}</p>
-                        </div>)
-                    })
-                }
-            </div>
-            <Label>Auteurs : </Label>
-            <div className='section-author'>
-                <div className='section-author-option'>
-                    <SearchBar text={search} setText={setSearch}/>
-                    <Button className='search-button' onClick={(e)=>HandlerSearchAuthor(e)}>Rechercher</Button>
-                    <Button type='button' className='button animation add-author' onClick={(e)=>HandlerAddAuthor(e)}>+</Button>
-                </div>
-                {
-                    results.length===0?(<></>):
-                    (
-                        <div className='section-author-list'>
-                            <TableComponent titles={title} keys={proprieties} users={results}/>
-                            <table>
-                                <tr className='title-option'>
-                                    <td>Options</td>
-                                </tr>
-                                {
-                                    results.map((_author:any,i:number)=>{
-                                        if(i%2===0)
-                                            return (
-                                                <TRGray>
-                                                    <td><input type='checkbox' onChange={(e)=>HandlerAddAuthorInBook(e.target.checked,i)}/></td>
-                                                </TRGray>
-                                            );
-                                        else
-                                            return (
-                                                <TRLightGray>
-                                                    <td><input type='checkbox' onChange={(e)=>HandlerAddAuthorInBook(e.target.checked,i)}/></td>
-                                                </TRLightGray>
-                                            );
-                                    })
-                                }
-                            </table>
-                        </div>
-                    )
-                }
-                {/*
-                    book.authors.length!==0?(<div className='section-author-list'>
-                        <TableComponent titles={title} keys={proprieties} users={book.authors}/>
-                    </div>):
-                    (<></>)
-                */}
-            </div>
-            <InputComponent label={'Couverture : '} type={'file'} placeholder={''} required={true} state={book} name={'cover'} setState={setBook}/>
-            <InputComponent label={'Fichier : '} type={'file'} placeholder={''} required={true} state={book} name={'file'} setState={setBook}/>
+            <AuthorOfBook authors={authors} setAuthors={setAuthors}/>
+            <CategoryOfBook id={book?._id} categories={categories} setCategories={setCategories}/>
+            <InputComponent label={'Couverture : '} type={'file'} placeholder={''} required={false} state={cover} name={'cover'} setState={setCover}/>
+            <InputComponent label={'Fichier : '} type={'file'} placeholder={''} required={false} state={file} name={'file'} setState={setFile}/>
             <InputComponent label={'Synopsis : '} type={'textarea'} placeholder={'Texte'} required={true} state={book} name={'synopsis'} setState={setBook}/>
             <Button type='submit' className='button animation'>{action==='create'?'Creer':'Modifier'}</Button>
         </form>

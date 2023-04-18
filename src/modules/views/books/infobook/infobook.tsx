@@ -1,82 +1,67 @@
 import { TitleColored } from "../../../../styles/titlescolored";
 import Onglet from "../../../../widgets/onglet/onglet";
-import Book from '../../../../common/images/books/couv_8.png';
 import './infobook.scss';
 import Stars from "../../../../widgets/stars/stars";
 import { Title } from "../../../../styles/title";
+import { useParams } from "react-router-dom";
+import GetOneElement from "../../../controllers/GetOneElement";
+import { Book } from "../../../models/books";
+import { setUpdateBook } from "../../../../redux/bookredux";
+import GetCategoriesByClassification from "../../../controllers/GetCategoriesByClassification";
+import { Category } from "../../../models/category";
+import GetAuthorsByWork from "../../../controllers/GetAuthorsByWork";
 import { SideTitle } from "../../../../styles/sidetitle";
-import { Authors } from "../../../models/authors";
 
 const InfoBook = ()=>{
-    const book = {
-        title: "Toute une nuit", 
-        isbn: "4", 
-        star: 3, 
-        publishing_date: "2022-09-18", 
-        category: "Comedie",
-        authors: [{
-                name : "Gilles", 
-                last_Name : "Bindi", 
-                star : 4, 
-                photo : "",
-                description : "",
-            },
-            {
-                name : "Gilles", 
-                last_Name : "Bindi", 
-                star : 4, 
-                photo : "",
-                description : "",
-            }
-        ],
-        cover: Book,
-        synopsis: `8 personnages. 8 trajectoires qui se croisent. 
-        Toutes leurs vies en une nuit.  Reda, Alexis, Marco, Greg 
-        / Melissa, Joao, Marina, X, François, … Ils sont pute, 
-        étudiant débarqué de province, en sursis, 
-        DRH, star de téléréalité, dealer, serveur ou encore loser. 
-        Cette nuit ils vont sortir, ils vont clubber, ils vont 
-        travailler, ils vont se rencontrer, ils vont se désirer, 
-        gagner de l’argent, dealer des ecstas, s’embrasser, 
-        s’oublier, se perdre, rentrer chez eux, ou pas.  8. 
-        TOUTE UNE NUIT. est un Short Cuts dans le monde 
-        désenchanté des nuits parisiennes à l’aube de l’an 2000.
-        `, 
-        file: "pdf/8-toute_une_nuit_roman_ok.pdf"
-    }
+    const {id} = useParams();
+    const book = GetOneElement<Book>('books/',id,setUpdateBook).element;
+    const {authors,setAuthors} = GetAuthorsByWork(id as string);
+    const {categories,setCategories} = GetCategoriesByClassification(id as string);
 
     const tab_titles = [
-        {text:'Synopsis',link:''},
-        {text:'Mise a jour',link:'/books/0/update'}
+        {text:'Synopsis',link:`/books/${id}`},
+        {text:'Mise a jour',link:`/books/${id}/update`}
     ];
 
-    return (<div className="infobook-container">
-        <TitleColored>Detail du livre</TitleColored>
-        <div className="book-header">
-            <div className="book-background">
+    if(book && categories ){
+        return (<div className="infobook-container">
+            <TitleColored>Detail du livre</TitleColored>
+            <div className="book-header">
+                <div className="book-background">
 
-            </div>
-            <div className="book-header-content">
-                <div className='book-cover'>
-                    <img src={book.cover} alt='book'/>
                 </div>
-                <div className="book-info">
-                    <Title>{book.title}</Title>
-                    {
-                        book.authors.map((author:any,i:number)=>{
-                            return(<SideTitle key={i}>{author.first_name} {author.last_Name} {i!==book.authors.length-1?"/":""}</SideTitle>)
-                        })
-                    }
-                    <p>{book.publishing_date}</p>
-                    <p>{book.category}</p>
-                    <Stars star={book.star}/>
+                <div className="book-header-content">
+                    <div className='book-cover'>
+                        <img src={book.cover} alt='book'/>
+                    </div>
+                    <div className="book-info">
+                        <Title>{book.title}</Title>
+                        <SideTitle>
+                        {
+                            authors?.map((author:any,i:number)=>{
+                                return(<>{author.first_name} {author.last_name} {i!==authors?.length-1?"/":""}</>)
+                            })
+                        }
+                        </SideTitle>
+                        <SideTitle>
+                        {
+                            categories.map((category:Category,i:number)=>{
+                                return(<>{category.wording} {i!==categories.length-1?"/ ":""}</>)          
+                            })
+                        }
+                        </SideTitle>
+                        <p>{book.publishing_date}</p>
+                        <Stars star={book?.star}/>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div className="book-description">
-            <Onglet options={tab_titles}/>
-        </div>
-    </div>)
+            <div className="book-description">
+                <Onglet options={tab_titles}/>
+            </div>
+        </div>)
+    }else{
+        return (<></>);
+    }
 }
 
 export default InfoBook;

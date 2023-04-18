@@ -13,7 +13,6 @@ const Books = ()=>{
         e.preventDefault();
         dispatch(closeModal(false));
         navigate('/books/create');
-        console.log('test');
     }
 
     return (<div className='books-container'>

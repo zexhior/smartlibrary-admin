@@ -1,5 +1,6 @@
 import { useEffect, useLayoutEffect, useState } from 'react';
 import { useParams, useSearchParams } from 'react-router-dom';
+import { setUpdateAuthor } from '../../../../redux/authorredux';
 import { Title } from '../../../../styles/title';
 import { Api } from '../../../../utils/api';
 import Onglet from '../../../../widgets/onglet/onglet';
@@ -10,7 +11,7 @@ import './infoauthor.scss';
 
 const InfoAuthor = ()=>{
     const {id} = useParams();
-    const {element} = GetOneElement<Authors>('authors/',id);
+    const {element} = GetOneElement<Authors>('authors/',id,setUpdateAuthor);
 
     if(element){
       return (<div className='infoauthor-container'>

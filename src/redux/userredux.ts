@@ -17,7 +17,7 @@ export const userSlice = createSlice({
             role: "",
             photo: "",
         },
-        createUser: {
+        updateUser: {
             _id: "",
             name: "",
             first_name: "",
@@ -30,11 +30,14 @@ export const userSlice = createSlice({
             role: "",
             photo: "",
         },
-        list: new Array<User>(),
+        users: new Array<User>(),
         page: 1},
     reducers: {
-        getAllUsers : (state, action)=>{
-            state.list = action.payload;
+        setListUser : (state, action)=>{
+            state.users = action.payload;
+        },
+        setUpdateUser : (state, action) => {
+            state.updateUser = action.payload;
         },
         setUser : (state,action) => {
             state.currentUser = action.payload
@@ -45,4 +48,4 @@ export const userSlice = createSlice({
     }
 })
 
-export const {getAllUsers, setUser} = userSlice.actions;
+export const {setListUser, setUser, setUpdateUser} = userSlice.actions;

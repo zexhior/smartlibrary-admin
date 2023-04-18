@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { setUpdateAuthor } from '../../../../redux/authorredux';
+import { setListAuthors, setUpdateAuthor } from '../../../../redux/authorredux';
 import { changeContent, changeModal } from '../../../../redux/redux';
 import { Button } from '../../../../styles/button';
 import {TitleColored} from '../../../../styles/titlescolored';
@@ -10,14 +10,14 @@ import EmptyList from '../../../../widgets/emptylist/emptylist';
 import PaginationComponent from '../../../../widgets/pagination/pagination';
 import StarComponent from '../../../../widgets/stars/stars';
 import DeleteElement from '../../../controllers/DeleteElement';
-import GetAllElement from '../../../controllers/GetAllElement';
+import useGetAllElement from '../../../controllers/GetAllElement';
 import { Authors } from '../../../models/authors';
 import Message from '../../modal/message/message';
 import './listauthors.scss';
 
 const ListAuthors = ()=>{
     const [page,setPage] = useState<number>(1);
-    const {elements,setElements} = GetAllElement<Authors>('authors/',page);
+    const {elements} = useGetAllElement<Authors>('authors',page,setListAuthors);
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -35,7 +35,7 @@ const ListAuthors = ()=>{
                 allowedfunction={(e:any)=>{
                     e.preventDefault();
                     DeleteElement('authors/',id);
-                    setElements((state:any)=>state.filter((data:Authors)=>data._id!==id))
+                    //setElements((state:any)=>state.filter((data:Authors)=>data._id!==id))
                     dispatch(changeModal(false));
                 }}/>
             ));

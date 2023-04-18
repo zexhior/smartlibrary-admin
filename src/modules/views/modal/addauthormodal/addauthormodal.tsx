@@ -57,14 +57,14 @@ const AddAuthorModal : React.FC<AddAuthorModalProps>= ({action})=>{
     }
 
     return (<div className='addauthormodal'>
-        <form >
+        <form onSubmit={(action==='create')?HandlerCreate:HandlerUpdate}>
             <InputComponent label={'Nom : '} type={'text'} placeholder={'Nom'} required={true} state={author} name={'last_name'} setState={setAuthor} />
             <InputComponent label={'Prénoms : '} type={'text'} placeholder={'Prénoms'} required={true} state={author} name={'first_name'} setState={setAuthor}/>
             <InputComponent label={'Description : '} type={'textarea'} placeholder={'Description'} required={true} state={author} name={'description'} setState={setAuthor}/>
             <InputComponent label={'Photo : '} type={'file'} placeholder={''} required={false} state={authorImage} name={'photo'} setState={setAuthorImage}/>
             {
-                action==='create'?<Button  onClick={(e)=>HandlerCreate(e)} className="button animation">Creer</Button>:
-                <Button  onClick={(e)=>HandlerUpdate(e)} className="button animation">Mettre a jour</Button>
+                action==='create'?<Button  type='submit' className="button animation">Creer</Button>:
+                <Button type='submit' className="button animation">Mettre a jour</Button>
             }
             
         </form>

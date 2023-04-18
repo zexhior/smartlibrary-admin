@@ -1,13 +1,12 @@
 .listbooks-container{
     position: relative;
     width: 100%;
-    height: 100%;
-    background-color: white;
     margin-top: 10px;
     & .listbooks-list{
         display: flex;
         flex-wrap: wrap;
         overflow: scroll;
+        background-color: white;
         & .card{
             position: relative;
             height: 320px;

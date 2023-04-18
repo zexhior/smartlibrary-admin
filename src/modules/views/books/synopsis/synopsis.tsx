@@ -1,8 +1,11 @@
+import { useSelector } from 'react-redux';
 import { SideTitle } from '../../../../styles/sidetitle';
 import './synopsis.scss';
 
 const Synopsis = ()=>{
-    const book = {
+    const book = useSelector((state:any)=>state.book.updatebook);
+
+    /*const book = {
         title: "Toute une nuit", 
         isbn: "4", 
         star: 3, 
@@ -26,7 +29,7 @@ const Synopsis = ()=>{
         désenchanté des nuits parisiennes à l’aube de l’an 2000.
         `, 
         file: "pdf/8-toute_une_nuit_roman_ok.pdf"
-    }
+    }*/
 
     return (<div className='synopsis'>
         <SideTitle>Resume du livre : </SideTitle>

@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import PaginationComponent from '../../../../widgets/pagination/pagination';
 import './listbooks.scss';
-import EmptyList from '../../../../widgets/emptylist/emptylist';
 import GeneratorListBook from '../generatorlistbook/generatorlistbook';
 import GetAllElement from '../../../controllers/GetAllElement';
 import { Book } from '../../../models/books';
+import { setListBook } from '../../../../redux/bookredux';
 
 const ListBooks = ()=>{
     const [page,setPage] = useState<number>(1);
-    const {elements} = GetAllElement<Book>('books',page);
+    const {elements} = GetAllElement<Book>('books',page,setListBook);
     /*const book = {
         _id: '0',
         title: "Toute une nuit", 
@@ -41,13 +41,21 @@ const ListBooks = ()=>{
         book,
     ]*/
 
-    if(elements && elements.length > 0)
-        return (<>
-            <GeneratorListBook books={elements}/>
-            <PaginationComponent page={page} setPage={setPage}/>
-        </>)
-    else
-        return (<EmptyList/>)
+    if(elements){
+        if(elements.length > 0){
+            return (<div className='main-listbook'>
+                <GeneratorListBook books={elements}/>
+                <PaginationComponent page={page} setPage={setPage}/>
+            </div>)
+        }
+        else{
+            return <GeneratorListBook books={elements}/>
+        }
+    }
+    else{
+        return (<></>);
+    }
+    
 }
 
 export default ListBooks;
