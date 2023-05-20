@@ -4,6 +4,7 @@ import EmptyList from '../../widgets/emptylist/emptylist';
 import Offline from '../offline/offline';
 import axios from 'axios';
 import { Api } from '../../utils/api';
+import Load from '../load/load';
 
 const Loading = ()=>{
     const [page,setPage] = useState<number>(0);
@@ -18,15 +19,7 @@ const Loading = ()=>{
     },10000)
 
     if(page === 0)
-        return (<div className='loading-container'>
-            <div className="load">
-                <div className="load__bar load__bar--1"></div>
-                <div className="load__bar load__bar--2"></div>
-                <div className="load__bar load__bar--3"></div>
-                <div className="load__bar load__bar--4"></div>
-                <div className="load__bar load__bar--5"></div>
-            </div>
-        </div>);
+        return (<Load/>);
     else if(page === 2)
         return (<Offline/>);
     else

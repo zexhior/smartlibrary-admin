@@ -6,7 +6,6 @@ import { SideTitle } from '../../../../styles/sidetitle';
 import { TitleColored } from '../../../../styles/titlescolored';
 import { Title } from '../../../../styles/title';
 import { FaCalendarWeek, FaHome, FaMailBulk, FaPhone } from 'react-icons/fa';
-import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import GetOneElement from '../../../controllers/GetOneElement';
 import { User } from '../../../models/users';

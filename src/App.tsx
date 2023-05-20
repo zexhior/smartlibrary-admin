@@ -27,6 +27,7 @@ import Category from './modules/views/category/category';
 import ListCategory from './modules/views/category/listcategory/listcategory';
 import HomeContent from './modules/views/home/homecontent/homecontent';
 import ViewProfil from './modules/views/users/viewprofil/viewprofil';
+import AuthGuardLogin from './utils/authguardlogin';
 
 const App : React.FC= () => {
   
@@ -34,7 +35,7 @@ const App : React.FC= () => {
     <BrowserRouter>
       <Provider store={store}>
         <Routes>
-          <Route path="/login" element={<Login/>}/>
+          <Route path="/login" element={<AuthGuardLogin children={<Login/>}/>}/>
           <Route path='/' element={<AuthGuard children={<Home/>}/>}>
             <Route index element={<HomeContent/>}/>
             <Route path='profil' element={<ViewProfil/>}/>

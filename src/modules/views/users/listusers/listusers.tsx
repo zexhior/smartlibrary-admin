@@ -13,6 +13,7 @@ import useGetAllElement from '../../../controllers/GetAllElement';
 import PaginationComponent from '../../../../widgets/pagination/pagination';
 import { useState } from 'react';
 import Loading from '../../../../common/loading/loading';
+import DeleteElement from '../../../controllers/DeleteElement';
 
 const ListUsers = ()=>{
     const [page,setPage] = useState<number>(1);
@@ -28,10 +29,13 @@ const ListUsers = ()=>{
     const keys = ["photo","name","email","address","birth_date"];
     const keys2 = ["photo","name"];
 
-    const HandlerDeleteUser = (e:any)=>{
+    const HandlerDeleteUser = (e:any,i:number)=>{
         e.preventDefault();
         dispatch(changeContent(<Message message='Voulez-vous vraiment supprimer cet utilisateur?'
-        allowedfunction={()=>{}}/>));
+        allowedfunction={async ()=>{
+            await DeleteElement('users/',elements[i]._id);
+            window.location.reload();
+        }}/>));
         dispatch(changeModal(true));
     }
 
@@ -61,7 +65,7 @@ const ListUsers = ()=>{
                                                         <Button className='button animation' onClick={(e)=>HandlerViewUser(e,i)}>
                                                             <FaEye size={"10px"}></FaEye>
                                                         </Button>
-                                                        <Button className='button animation' onClick={(e)=>HandlerDeleteUser(e)}>
+                                                        <Button className='button animation' onClick={(e)=>HandlerDeleteUser(e,i)}>
                                                             <FaTrashAlt></FaTrashAlt>
                                                         </Button>
                                                     </div>);
@@ -70,7 +74,7 @@ const ListUsers = ()=>{
                                                         <Button className='button animation' onClick={(e)=>HandlerViewUser(e,i)}>
                                                             <FaEye></FaEye>
                                                         </Button>
-                                                        <Button className='button animation' onClick={(e)=>HandlerDeleteUser(e)}>
+                                                        <Button className='button animation' onClick={(e)=>HandlerDeleteUser(e,i)}>
                                                             <FaTrashAlt></FaTrashAlt>
                                                         </Button>
                                                     </div>);
@@ -94,7 +98,7 @@ const ListUsers = ()=>{
                                             <Link to='/users/1' style={{textDecoration : "none"}}><Button className='button animation'>
                                                 <FaEye></FaEye>
                                             </Button></Link>
-                                            <Button className='button animation' onClick={(e)=>HandlerDeleteUser(e)}>
+                                            <Button className='button animation' onClick={(e)=>HandlerDeleteUser(e,i)}>
                                                 <FaTrashAlt></FaTrashAlt>
                                             </Button>
                                         </div>);
@@ -103,7 +107,7 @@ const ListUsers = ()=>{
                                             <Link to='/users/1' style={{textDecoration : "none"}}><Button className='button animation'>
                                                 <FaEye></FaEye>
                                             </Button></Link>
-                                            <Button className='button animation' onClick={(e)=>HandlerDeleteUser(e)}>
+                                            <Button className='button animation' onClick={(e)=>HandlerDeleteUser(e,i)}>
                                                 <FaTrashAlt></FaTrashAlt>
                                             </Button>
                                         </div>);

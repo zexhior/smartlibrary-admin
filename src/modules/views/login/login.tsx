@@ -12,6 +12,8 @@ import useLogin from '../../controllers/Login';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { getCurrentUser } from '../../../redux/myaccountredux';
+import Loading from '../../../common/loading/loading';
+import Load from '../../../common/load/load';
 
 interface DataLogin{
     email: string,
@@ -22,8 +24,8 @@ const Login = ()=>{
     const [style,setStyle] = useState("");
     const [data,setData] = useState<DataLogin | object>({email:"",password:""});
     const container = useRef<HTMLDivElement>(null);
-    const navigation = useNavigate();
     const dispatch = useDispatch();
+    const loading = useRef<HTMLDivElement>(null);
 
     useEffect(()=>{
         if(container.current){
@@ -42,16 +44,26 @@ const Login = ()=>{
     const SendDataLogin = async (e:any)=>{
         e.preventDefault();
         const value = data as DataLogin;
-        const response = await useLogin(value.email, value.password);
-        if(response.user._id){
-            dispatch(getCurrentUser(response.user));
-            navigation('/');
-        }else{
-            console.log(response);
+        if(loading.current){
+            loading.current.style.display = 'flex';
         }
+        useLogin(value.email, value.password)
+        .then((data)=>{
+            dispatch(getCurrentUser(data.user));
+            window.location.reload();
+        })
+        .catch((error)=>{
+            
+        });
+        
     }
 
     return(<div className='body-login color-gray'>
+        <div className='body-loading' ref={loading}>
+            <div className='body-loading-container'>
+                <Load/>
+            </div>
+        </div>
         <Card className='section'>
             <div className='container' ref={container}>
                 <div className='container-deco'>

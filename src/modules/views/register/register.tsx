@@ -19,7 +19,8 @@ interface MyStyle{
 
 const Register: React.FC<MyStyle> = ({style, setStyle})=>{
     const container = useRef<HTMLDivElement>(null)
-    const [user,setUser] = useState<User | object | string>({});
+    const [user, setUser] = useState<User>();
+    const [message, setMessage] = useState<string>("");
     const navigation = useNavigate();
     const dispatch = useDispatch();
 
@@ -35,12 +36,16 @@ const Register: React.FC<MyStyle> = ({style, setStyle})=>{
 
     const SendDataSignUp = async (e:any)=>{
         e.preventDefault();
-        const response = await SignUp(user as User);
-        if(response.user._id){
-            dispatch(getCurrentUser(response.user));
-            navigation('/');
+        if(user?.password === user?.passwordConfirm){
+            const response = await SignUp(user as User);
+            if(response.user._id){
+                dispatch(getCurrentUser(response.user));
+                navigation('/');
+            }else{
+                console.log(response);
+            }
         }else{
-            console.log(response);
+            setMessage("Mot de passe different!");
         }
     }
 
@@ -64,9 +69,10 @@ const Register: React.FC<MyStyle> = ({style, setStyle})=>{
             <InputComponent type='email' label='E-mail' placeholder="mail@mail" required={true} name="email" state={user} setState={setUser}/>
             <InputComponent type='password' label='Mot de passe' placeholder="Mot de passe" required={true} name="password" state={user} setState={setUser}/>
             <InputComponent type='password' label='Confirmer mot de passe' placeholder="Mot de passe" required={true} name='passwordConfirm' state={user} setState={setUser}/>
+            <p className="warning" style={{color: 'red', textAlign: 'center'}}>{message}</p>
             <div className='container-body-button'>
                 <Button type='submit' className='button button-login button-signup'>Creer mon compte</Button>
-            </div>  
+            </div>
         </form>
     </div>
 </div>);
