@@ -4,6 +4,8 @@ import { authorSlice } from './authorredux';
 import { bookSlice } from './bookredux';
 import { configureStore } from '@reduxjs/toolkit';
 import { modalSlice } from './redux';
+import { searchSlice } from './searchredux';
+import { categorySlice } from './categoryredux';
 
 export const store = configureStore({
     reducer: {
@@ -12,5 +14,7 @@ export const store = configureStore({
         author: authorSlice.reducer,
         currentUser: myAccountSlice.reducer,
         user: userSlice.reducer,
+        category: categorySlice.reducer,
+        search: searchSlice.reducer
     },
 })

@@ -4,10 +4,12 @@ import Navigation from '../../../common/navigation/navigation';
 import { closeModal } from '../../../redux/redux';
 import { Button } from '../../../styles/button';
 import './books.scss';
+import { changePageSearch } from '../../../redux/searchredux';
 
 const Books = ()=>{
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    dispatch(changePageSearch('book'));
 
     const HandlerCloseModal = (e:any)=>{
         e.preventDefault();

@@ -1,6 +1,9 @@
 .main-listbook{
     position: absolute;
+    background-color: white;
     width: 100%;
     height: 100%;
-    background-color: white;
+    & .listbooks-container{
+        margin-top: 0;
+    }
 }

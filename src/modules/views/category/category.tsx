@@ -1,13 +1,16 @@
 import { useDispatch } from 'react-redux';
-import { Outlet, useNavigate } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import Navigation from '../../../common/navigation/navigation';
-import { changeContent, changeModal, closeModal } from '../../../redux/redux';
+import { changeContent, changeModal } from '../../../redux/redux';
 import FloatButton from '../../../widgets/floatbutton/floatbutton';
 import AddCategoryModal from '../modal/addcategorymodal/addcategorymodal';
 import './category.scss';
+import { Button } from '../../../styles/button';
+import { changePageSearch } from '../../../redux/searchredux';
 
 const Category = ()=>{
     const dispatch = useDispatch();
+    dispatch(changePageSearch('category'));
 
     const HandlerCloseModal = (e:any)=>{
         e.preventDefault();
@@ -17,7 +20,7 @@ const Category = ()=>{
 
     return (<div className='category-container'>
         <Navigation/>
-        <FloatButton fonction={HandlerCloseModal}/>
+        <Button className='button animation add' onClick={(e)=>HandlerCloseModal(e)}>+</Button>
         <Outlet/>
     </div>)
 }

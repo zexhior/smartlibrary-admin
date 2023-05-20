@@ -1,11 +1,12 @@
 .home{
-    position: relative;
+    position: fixed;
     & .container-home{
         width: 100%;
         height: 100%;
         position: fixed;
         display: grid;
-        grid-template-columns: 20% 80%;
+        overflow: scroll;
+        grid-template-columns: 21% 79%;
         background-color:rgb(236, 236, 236);
         transition: all 300ms ease-in-out;
         & .home-content{

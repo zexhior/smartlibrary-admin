@@ -1,6 +1,7 @@
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import Loading from '../../../../common/loading/loading';
 import { setListAuthors, setUpdateAuthor } from '../../../../redux/authorredux';
 import { changeContent, changeModal } from '../../../../redux/redux';
 import { Button } from '../../../../styles/button';
@@ -17,9 +18,10 @@ import './listauthors.scss';
 
 const ListAuthors = ()=>{
     const [page,setPage] = useState<number>(1);
-    const {elements} = useGetAllElement<Authors>('authors',page,setListAuthors);
+    useGetAllElement<Authors>('authors',page,setListAuthors);
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const elements = useSelector((state:any)=>state.author.authors);
 
     const Body = (author:Authors)=>{
         const HandlerViewAuthor = (e:any,id:string)=>{
@@ -35,7 +37,6 @@ const ListAuthors = ()=>{
                 allowedfunction={(e:any)=>{
                     e.preventDefault();
                     DeleteElement('authors/',id);
-                    //setElements((state:any)=>state.filter((data:Authors)=>data._id!==id))
                     dispatch(changeModal(false));
                 }}/>
             ));
@@ -53,26 +54,26 @@ const ListAuthors = ()=>{
         </div>)
     }
 
-    if(elements && elements?.length > 0)
-        return (<div className='listauthors-container'>
+    return (<div className='listauthors-container'>
             <TitleColored>Liste des auteurs</TitleColored>
-            <div className='listauthors-list'>
-                {
-                    elements.map((data:Authors,i:number)=>{
-                        return (<div key={i}>
-                            <CardComponent img={data.photo} body={Body(data)}/>
-                        </div>);
-                    })
-                }
-            </div>
-            <PaginationComponent page={page} setPage={setPage}/>
-        </div>)
-    else{
-        return (<div className='listauthors-container'>
-            <TitleColored>Liste des auteurs</TitleColored>
-            <EmptyList/>
+            {
+                (elements?.length > 0)?
+                (<>
+                    <div className='listauthors-list'>
+                        {
+                            elements.map((data:Authors,i:number)=>{
+                                return (<div key={i}>
+                                    <CardComponent img={data.photo} body={Body(data)}/>
+                                </div>);
+                            })
+                        }
+                    </div>
+                    <PaginationComponent page={page} setPage={setPage}/>
+                </>):(
+                    <Loading/>
+                )
+            }
         </div>);
-    }
 }
 
 export default ListAuthors;

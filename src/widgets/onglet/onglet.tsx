@@ -17,12 +17,12 @@ const Onglet : React.FC<OngletProps> = ({options})=>{
                 if(index === i){
                     element.style.backgroundColor = 'white';
                     element.style.color = 'black';
-                    element.style.transform = 'scale(1.1)';
+                    element.style.transform = 'scaleX(1.1)';
                 }
                 else{
                     element.style.backgroundColor = 'rgba(5, 3, 133, 0.795)';
                     element.style.color = 'white';
-                    element.style.transform = 'scale(1)';
+                    element.style.transform = 'scaleX(1)';
                     element.style.marginLeft = '10px';
                 }
             })

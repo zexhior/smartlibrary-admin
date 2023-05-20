@@ -4,7 +4,7 @@ import './sidebar.scss';
 import User from '../../common/images/profil.jpg';
 import SideBarContent from './sidebarcontent/sidebarcontent';
 import { LogOut } from '../../modules/controllers/Logout';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 interface SideBarProps{
@@ -21,13 +21,13 @@ const SideBar : React.FC<SideBarProps> = ({groupelements})=>{
     }
 
     return (<div className='sidebar-container'>
-        <div className='sidebar-profil animation'>
+        <Link to={'/profil'} className='no-style'><div className='sidebar-profil animation'>
             <img  className='sidebar-profil-img' src={user.photo!=='default.jpg'?user.photo:User} alt='profil-user'/>
             <div className='sidebar-profil-name'>
                 <p className='sidebar-profil-name-last text-color-white'>{user.name}</p>
                 <p className='sidebar-profil-name-first text-color-white'>{user.first_name}</p>
             </div>
-        </div>
+        </div></Link>
         {
             groupelements.map((group,i)=>{
                 return (<span key={i}>

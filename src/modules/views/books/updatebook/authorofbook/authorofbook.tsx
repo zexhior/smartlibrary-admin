@@ -10,6 +10,7 @@ import SearchElement from '../../../../controllers/SearchElement';
 import { changeContent, changeModal } from '../../../../../redux/redux';
 import { addAuthorBook, deleteAuthorBook } from '../../../../../redux/bookredux';
 import './authorofbook.scss';
+import { setListAuthors } from "../../../../../redux/authorredux";
 
 interface AuthorOfBookProps{
     authors: Array<Authors>
@@ -54,7 +55,7 @@ const AuthorOfBook : React.FC<AuthorOfBookProps>= ({authors,setAuthors})=>{
                 <div className='section-author-option'>
                     <SearchBar text={search} setText={setSearch}/>
                     <Button className='search-button' onClick={(e)=>HandlerSearchAuthor(e)}>Rechercher</Button>
-                    <Button type='button' className='button animation add-author' onClick={(e)=>HandlerAddAuthor(e)}>+</Button>
+                    <Button type='button' className='animation ajout-author' onClick={(e)=>HandlerAddAuthor(e)}>+</Button>
                 </div>
                 {
                     results.length===0?(<div className='section-author-empty'>
@@ -63,27 +64,27 @@ const AuthorOfBook : React.FC<AuthorOfBookProps>= ({authors,setAuthors})=>{
                     (
                         <div className='section-author-list'>
                             <TableComponent titles={title} keys={proprieties} users={results}/>
-                            <table>
-                                <tr className='title-option'>
-                                    <td>Options</td>
-                                </tr>
+                            <div className="table">
+                                <div className='title-option'>
+                                    Options
+                                </div>
                                 {
                                     results.map((_author:any,i:number)=>{
                                         if(i%2===0)
                                             return (
-                                                <div key={i}>
-                                                    <div><input type='checkbox' onChange={(e)=>HandlerAddAuthorInBook(e.target.checked,i)}/></div>
+                                                <div className='td gray' key={i}>
+                                                    <input type='checkbox' onChange={(e)=>HandlerAddAuthorInBook(e.target.checked,i)}/>
                                                 </div>
                                             );
                                         else
                                             return (
-                                                <div key={i}>
-                                                    <div><input type='checkbox' onChange={(e)=>HandlerAddAuthorInBook(e.target.checked,i)}/></div>
+                                                <div className='td white' key={i}>
+                                                    <input type='checkbox' onChange={(e)=>HandlerAddAuthorInBook(e.target.checked,i)}/>
                                                 </div>
                                             );
                                     })
                                 }
-                            </table>
+                            </div>
                         </div>
                     )
                 }

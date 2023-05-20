@@ -25,6 +25,8 @@ import UpdateAuthor from './modules/views/authors/updateauthor/updateauthor';
 import CreateAuthor from './modules/views/authors/createauthor/createauthor';
 import Category from './modules/views/category/category';
 import ListCategory from './modules/views/category/listcategory/listcategory';
+import HomeContent from './modules/views/home/homecontent/homecontent';
+import ViewProfil from './modules/views/users/viewprofil/viewprofil';
 
 const App : React.FC= () => {
   
@@ -34,6 +36,8 @@ const App : React.FC= () => {
         <Routes>
           <Route path="/login" element={<Login/>}/>
           <Route path='/' element={<AuthGuard children={<Home/>}/>}>
+            <Route index element={<HomeContent/>}/>
+            <Route path='profil' element={<ViewProfil/>}/>
             <Route path='users' element={<Users/>}>
               <Route index element={<ListUsers/>}/>
               <Route path=':id' element={<InfoUser/>}>
@@ -57,7 +61,7 @@ const App : React.FC= () => {
               </Route>
               <Route path='create' element={<CreateAuthor/>}/>
             </Route>
-            <Route path='/category' element={<Category/>}>
+            <Route path='/categories' element={<Category/>}>
               <Route index element={<ListCategory/>}/>
             </Route>
           </Route>

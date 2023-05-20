@@ -1,4 +1,3 @@
-import React from "react";
 import { TitleColored } from "../../../../styles/titlescolored";
 import AddAuthorModal from '../../modal/addauthormodal/addauthormodal';
 import './createauthor.scss';

@@ -9,8 +9,8 @@ import {Book} from '../../../models/books';
 import CardComponent from '../../../../widgets/card/card';
 import StarsComponent from '../../../../widgets/stars/stars';
 import Message from '../../modal/message/message';
-import EmptyList from '../../../../widgets/emptylist/emptylist';
 import DeleteElement from '../../../controllers/DeleteElement';
+import Loading from '../../../../common/loading/loading';
 
 interface GeneratorListBookProps{
     books: Array<Book>;
@@ -46,24 +46,25 @@ const GeneratorListBook : React.FC<GeneratorListBookProps>= ({books})=>{
         </>)
     };
 
-    if(books && books.length > 0)
-        return (<div className="listbooks-container">
-                    <TitleColored>Liste Livres</TitleColored>
-                    <div className='listbooks-list'>
-                        {
-                            books.map((element:any,i)=>{
-                                return (<div key={i} >
-                                    <CardComponent img={element.cover} body={Body(element)}/>
-                                </div>);
-                            })
-                        }
-                    </div>
-                </div>)
-    else
-        return (<div>
+    return (<div className="listbooks-container">
                 <TitleColored>Liste Livres</TitleColored>
-                <EmptyList/>
-            </div>)
-    }
+                {
+                    (books?.length > 0)?
+                    (<>
+                        <div className='listbooks-list'>
+                            {
+                                books.map((element:any,i)=>{
+                                    return (<div key={i} >
+                                        <CardComponent img={element.cover} body={Body(element)}/>
+                                    </div>);
+                                })
+                            }
+                        </div>
+                    </>):(
+                        <Loading/>
+                    )
+                }
+            </div>);
+}
 
 export default GeneratorListBook;

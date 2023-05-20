@@ -1,12 +1,11 @@
 .listbooks-container{
     position: relative;
     width: 100%;
-    margin-top: 10px;
+    height: 75%;
     & .listbooks-list{
         display: flex;
         flex-wrap: wrap;
         overflow: scroll;
-        background-color: white;
         & .card{
             position: relative;
             height: 320px;
@@ -16,6 +15,7 @@
                 justify-content: space-evenly;
                 width: 100%;
                 & .button{
+                    border-radius: 5px;
                     padding: 5px;
                     margin: 0;
                     width: 45%;

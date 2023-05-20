@@ -1,4 +1,6 @@
+import { Book } from "./books";
+
 export interface Classification{
-    book: string,
+    book: Book,
     category: string
 }

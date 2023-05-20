@@ -1,5 +1,4 @@
-import React, { ReactNode } from 'react';
-import { SideTitle } from '../../../styles/sidetitle';
+import React, { ReactNode, useRef } from 'react';
 import './groupsidebar.scss';
 
 interface SideBarParameter{
@@ -7,8 +6,9 @@ interface SideBarParameter{
 }
 
 const GroupSideBar : React.FC<SideBarParameter> = ({elements})=>{
-    return (<div className='groupsidebar-container'>
-        {/*<SideTitle className='groupsidebar-container-title text-color-white'>Element</SideTitle>*/}
+    const sidebarelement = useRef<HTMLDivElement>(null);
+    
+    return (<div className='groupsidebar-container' ref={sidebarelement}>
         {
             elements.map((element,i)=>{
                 return (<span key={i}>

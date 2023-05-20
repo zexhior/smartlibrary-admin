@@ -33,3 +33,16 @@ body{
 .full-width{
   width: 100%;
 }
+
+.no-style{
+  text-decoration: none;
+}
+
+textarea{
+  font-family: inherit;
+  font-size: 15px;
+}
+
+.main-background{
+  background-color: #000080;
+}

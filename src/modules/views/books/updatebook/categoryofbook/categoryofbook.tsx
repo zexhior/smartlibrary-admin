@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React from "react";
 import { ImCross } from 'react-icons/im';
 import { Label } from '../../../../../styles/label';
 import { Button } from '../../../../../styles/button';
@@ -13,11 +13,13 @@ import GetCategoriesByClassification from "../../../../controllers/GetCategories
 
 interface CategoryOfBookProps{
     id: string,
-    categories: Array<Category>,
-    setCategories: React.Dispatch<React.SetStateAction<Array<Category>>>
+    categories: Array<any>,
+    delCategories: Array<string>,
+    setDelCategories: React.Dispatch<React.SetStateAction<Array<string>>>,
+    setCategories: React.Dispatch<React.SetStateAction<Array<any>>>
 }
 
-const CategoryOfBook : React.FC<CategoryOfBookProps> = ({id,categories,setCategories})=>{
+const CategoryOfBook : React.FC<CategoryOfBookProps> = ({id, delCategories, setDelCategories, categories, setCategories})=>{
     const dispatch = useDispatch();
     const category = GetAllElement<Category>('categories',0,setListCategory);
     
@@ -28,6 +30,8 @@ const CategoryOfBook : React.FC<CategoryOfBookProps> = ({id,categories,setCatego
     }
 
     const HandlerDeleteCategory = (index:number)=>{
+        const element = categories[index]._id;
+        setDelCategories([...delCategories, element]);
         setCategories(prevlist=>prevlist.filter((_,i)=>i!==index));
     }
     
@@ -53,10 +57,10 @@ const CategoryOfBook : React.FC<CategoryOfBookProps> = ({id,categories,setCatego
             </div>
             <div className='category-list'>
                 {
-                    categories?.map((categorie:Category, i:number)=>{
+                    categories?.map((categorie:any, i:number)=>{
                         return (<div className='categorie' key={i}>
                             <button onClick={(_e)=>HandlerDeleteCategory(i)}><ImCross/></button>
-                            <p style={{margin:'0 0 0 5px'}}>{categorie.wording}</p>
+                            <p style={{margin:'0 0 0 5px'}}>{categorie.category.wording}</p>
                         </div>)
                     })
                 }
