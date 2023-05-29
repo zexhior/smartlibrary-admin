@@ -72,13 +72,13 @@ const AuthorOfBook : React.FC<AuthorOfBookProps>= ({authors,setAuthors})=>{
                                     results.map((_author:any,i:number)=>{
                                         if(i%2===0)
                                             return (
-                                                <div className='td gray' key={i}>
+                                                <div className='td' key={i}>
                                                     <input type='checkbox' onChange={(e)=>HandlerAddAuthorInBook(e.target.checked,i)}/>
                                                 </div>
                                             );
                                         else
                                             return (
-                                                <div className='td white' key={i}>
+                                                <div className='td' key={i}>
                                                     <input type='checkbox' onChange={(e)=>HandlerAddAuthorInBook(e.target.checked,i)}/>
                                                 </div>
                                             );

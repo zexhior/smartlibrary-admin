@@ -15,15 +15,17 @@ const Onglet : React.FC<OngletProps> = ({options})=>{
             const elements = ref.current.querySelectorAll<HTMLElement>('.onglet');
             elements.forEach((element,i)=>{
                 if(index === i){
-                    element.style.backgroundColor = 'white';
-                    element.style.color = 'black';
-                    element.style.transform = 'scaleX(1.1)';
+                    element.style.backgroundColor = 'rgb(1, 0, 27)';
+                    element.style.color = 'white';
+                    element.style.transform = 'scale(1.1)';
+                    element.style.transition = 'transform 300ms ease-in-out';
                 }
                 else{
-                    element.style.backgroundColor = 'rgba(5, 3, 133, 0.795)';
+                    element.style.backgroundColor = 'rgb(5, 3, 133)';
                     element.style.color = 'white';
                     element.style.transform = 'scaleX(1)';
                     element.style.marginLeft = '10px';
+                    element.style.transition = 'transform 300ms ease-in-out';
                 }
             })
         }

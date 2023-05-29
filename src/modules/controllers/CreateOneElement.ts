@@ -5,6 +5,7 @@ const CreateOneElement = (url:string,data:any)=>{
         return Api.post(url,data).then((data)=>{
             return data.data.data;
         }).catch((error)=>{
+            console.log(error);
             return error;
         })
     }

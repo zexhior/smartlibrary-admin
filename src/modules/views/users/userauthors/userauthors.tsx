@@ -32,7 +32,7 @@ const UserAuthors = ()=>{
     ]
 
     return (<div className='userauthors'>
-        <TitleColored className='title-section'>Recommondation : </TitleColored>
+        <TitleColored className='title-section'>Recommandation : </TitleColored>
         <div className='authorrecommended'>
             {
                 AuthorsRecommended.map((element:any, i:number)=>{

@@ -9,10 +9,8 @@ import { SideTitle } from '../../../styles/sidetitle';
 import Register from '../register/register';
 import { useEffect, useRef, useState } from 'react';
 import useLogin from '../../controllers/Login';
-import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { getCurrentUser } from '../../../redux/myaccountredux';
-import Loading from '../../../common/loading/loading';
 import Load from '../../../common/load/load';
 
 interface DataLogin{

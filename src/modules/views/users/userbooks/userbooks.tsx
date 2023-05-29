@@ -49,7 +49,7 @@ const UserBooks = ()=>{
     ]
 
     return (<div className='userbooks'>
-        <TitleColored className='title-section'>Recommondation : </TitleColored>
+        <TitleColored className='title-section'>Recommandation : </TitleColored>
         <div className='bookrecommended'>
             {
                 BooksRecommended.map((element:any, i:number)=>{

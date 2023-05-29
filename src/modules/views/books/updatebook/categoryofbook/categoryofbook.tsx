@@ -25,7 +25,7 @@ const CategoryOfBook : React.FC<CategoryOfBookProps> = ({id, delCategories, setD
     
     const HandlerAddCategory = (i:number)=>{
         if(categories && !categories.includes(category.elements[i])){
-            setCategories(prevlist=>[...prevlist,category.elements[i]]);
+            setCategories(prevlist=>[...prevlist,{category: category.elements[i]}]);
         }
     }
 

@@ -33,7 +33,7 @@ const AddAuthorModal : React.FC<AddAuthorModalProps>= ({action})=>{
     const HandlerCreate = (e:any)=>{
         e.preventDefault();
         let formdata = new FormData();
-        formdata.append('image',authorImage as Blob);
+        formdata.append('photo',authorImage as Blob);
         formdata.append('last_name',author.first_name);
         formdata.append('first_name',author.last_name);
         formdata.append('star',author.star.toString());
@@ -46,14 +46,14 @@ const AddAuthorModal : React.FC<AddAuthorModalProps>= ({action})=>{
         e.preventDefault();
         let formdata = new FormData();
         if(authorImage)
-            formdata.append('image',authorImage as Blob);
+            formdata.append('photo',authorImage as Blob);
         formdata.append('last_name',author.first_name);
         formdata.append('first_name',author.last_name);
         formdata.append('photo',author.photo);
         formdata.append('star',author.star.toString());
         formdata.append('description', author.description);
         UpdateElement('authors/',author._id,formdata);
-        navigate('/authors/');
+        //navigate('/authors/');
     }
 
     return (<div className='addauthormodal'>

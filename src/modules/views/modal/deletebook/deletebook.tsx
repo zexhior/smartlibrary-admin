@@ -1,8 +1,12 @@
 import { changeModal } from '../../../../redux/redux';
 import { Button } from '../../../../styles/button';
+import DeleteElement from '../../../controllers/DeleteElement';
 import './deletebook.scss';
 
 const DeleteBook = ()=>{
+    const HandlerDelete = ()=>{
+        //const response = DeleteElement('books/',)
+    }
     
     const HandlerCancelAction = ()=>{
         dispatch(changeModal(false));

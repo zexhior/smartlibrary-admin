@@ -1,8 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import './loading.scss';
 import EmptyList from '../../widgets/emptylist/emptylist';
 import Offline from '../offline/offline';
-import axios from 'axios';
 import { Api } from '../../utils/api';
 import Load from '../load/load';
 

@@ -1,19 +1,18 @@
 .users-container-content-info{
     position: absolute;
-    background-color: white;
     width: 100%;
+    margin: 0;
     & .info-window{
         display: flex;
         & .table:first-child{
-            background-color: red;
             width: 100px;
         }
         & .option-element{
+            background-color: rgb(255, 255, 255);
+            padding-right: 10px;
             & .option-title{
-                background-color: #00001A;
-                color: white;
-                font-family: inherit;
-                font-weight: 500;
+                color: rgb(41, 41, 41);
+                border-bottom: 1px solid rgb(167, 167, 167);
                 padding: 2px 0 2px 5px;
                 height: 50px;
                 display: flex;
@@ -41,21 +40,18 @@
 
 @media screen and (max-width:700px) {
     .users-container-content-info{
-        position: absolute;
-        width: 100%;
-        background-color: white;
         & .info-window{
             display: none;
         }
         & .mini-info-window{
             display: flex;
             & .option-element{
+                background-color: rgb(255, 255, 255);
+                padding-right: 10px;
                 & .option-title{
-                    background-color: #00001A;
-                    color: white;
-                    font-family: inherit;
-                    font-weight: 500;
-                    padding-left: 5px;
+                    color: rgb(41, 41, 41);
+                    border-bottom: 1px solid rgb(167, 167, 167);
+                    padding: 2px 0 2px 5px;
                     height: 50px;
                     display: flex;
                     align-items: center;
@@ -63,10 +59,14 @@
                 }
                 & .option{
                     display: flex;
-                    padding-left: 5px;
+                    padding: 2px 0 2px 5px;
                     height: 50px;
                     & .button{
-                        width: 50px;
+                        width: 30px;
+                        height: 30px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
                     }
                 }
             }

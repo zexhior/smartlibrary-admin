@@ -15,6 +15,11 @@ import useGetAllElement from '../../../controllers/GetAllElement';
 import { Authors } from '../../../models/authors';
 import Message from '../../modal/message/message';
 import './listauthors.scss';
+import styled from 'styled-components';
+
+const CardStyle = styled.div`
+    width: 200px;
+`;
 
 const ListAuthors = ()=>{
     const [page,setPage] = useState<number>(1);
@@ -43,7 +48,7 @@ const ListAuthors = ()=>{
             dispatch(changeModal(true));
         }
 
-        return (<div className=''>
+        return (<CardStyle>
             <h3>{author.last_name}</h3>
             <p>{author.first_name}</p>
             <StarComponent star={author.star}/>
@@ -51,7 +56,7 @@ const ListAuthors = ()=>{
                 <Button className='button animation' onClick={(e)=>HandlerViewAuthor(e,author?._id)}>Voir</Button>
                 <Button className='button animation' onClick={(e)=>HandlerDeleteAuthor(e,author?._id)}>Supprimer</Button>
             </div>
-        </div>)
+        </CardStyle>)
     }
 
     return (<div className='listauthors-container'>

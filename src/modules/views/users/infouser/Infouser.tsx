@@ -10,6 +10,7 @@ import { useParams } from 'react-router-dom';
 import GetOneElement from '../../../controllers/GetOneElement';
 import { User } from '../../../models/users';
 import { setUpdateUser } from '../../../../redux/userredux';
+import Loading from '../../../../common/loading/loading';
 
 const InfoUser = ()=>{
     const {id} = useParams();
@@ -52,9 +53,7 @@ const InfoUser = ()=>{
                     </div>
                 </div>);
     }else{
-        return(<div>
-            zavatra
-        </div>)
+        return(<Loading/>)
     }
 }
 

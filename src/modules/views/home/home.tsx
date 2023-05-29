@@ -20,7 +20,6 @@ const Home = ()=>{
 
     const elements = [
             <Link to='/users' className='no-style' onClick={(e)=>HandlerClickSection()}><SideBarContent icon={<FaUser width={""} fill='#FFFFFF'/>} element="Utilisateurs"/></Link>,
-            /*<SideBarContent icon={<FaUser fill='#FFFFFF'/>} element="Administrateurs"/>,*/
             <Link to='/books' className='no-style' onClick={(e)=>HandlerClickSection()}><SideBarContent icon={<FaBookOpen fill='#FFFFFF'/>} element="Livres"/></Link>,
             <Link to='/authors' className='no-style' onClick={(e)=>HandlerClickSection()}><SideBarContent icon={<FaPen fill='#FFFFFF' />} element="Auteurs" /></Link>,
             <Link to='/categories' className='no-style' onClick={(e)=>HandlerClickSection()}><SideBarContent icon={<FaPen fill='#FFFFFF' />} element="Categories" /></Link>,

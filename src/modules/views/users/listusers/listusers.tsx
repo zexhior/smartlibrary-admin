@@ -61,7 +61,7 @@ const ListUsers = ()=>{
                                 {
                                     elements?.map((user:User,i:number)=>{
                                         if(i%2===0)
-                                            return (<div className='option' key={i} style={{backgroundColor: 'rgb(226, 226, 226)'}}>
+                                            return (<div className='option' key={i} >
                                                         <Button className='button animation' onClick={(e)=>HandlerViewUser(e,i)}>
                                                             <FaEye size={"10px"}></FaEye>
                                                         </Button>
@@ -70,7 +70,7 @@ const ListUsers = ()=>{
                                                         </Button>
                                                     </div>);
                                         else
-                                            return (<div className='option' key={i} style={{backgroundColor: 'rgb(247, 247, 247)'}}>
+                                            return (<div className='option' key={i}>
                                                         <Button className='button animation' onClick={(e)=>HandlerViewUser(e,i)}>
                                                             <FaEye></FaEye>
                                                         </Button>
@@ -94,7 +94,7 @@ const ListUsers = ()=>{
                     {
                         elements?.map((user:User,i:number)=>{
                             if(i%2===0)
-                                return (<div className='option' style={{backgroundColor: 'rgb(226, 226, 226)'}}>
+                                return (<div className='option'>
                                             <Link to='/users/1' style={{textDecoration : "none"}}><Button className='button animation'>
                                                 <FaEye></FaEye>
                                             </Button></Link>
@@ -103,7 +103,7 @@ const ListUsers = ()=>{
                                             </Button>
                                         </div>);
                             else
-                                return (<div className='option' style={{backgroundColor: 'rgb(247, 247, 247)'}}>
+                                return (<div className='option'>
                                             <Link to='/users/1' style={{textDecoration : "none"}}><Button className='button animation'>
                                                 <FaEye></FaEye>
                                             </Button></Link>

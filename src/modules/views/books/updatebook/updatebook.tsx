@@ -51,12 +51,13 @@ const UpdateBook : React.FC<UpdateBookProps>= ({action})=>{
         formdata.append('synopsis',book.synopsis);
         if(action === 'create'){
             const new_book = await CreateOneElement('books',formdata);
-            categories.forEach((data:Category)=>{
-                CreateOneElement('classifications',{book: new_book._id, category: data._id});
+            console.log(new_book);
+            categories.forEach((data:any)=>{
+                CreateOneElement('classifications',{book: new_book._id, category: data.category._id});
             });
             authors.forEach((data:Authors)=>{
                 CreateOneElement('works',{book: new_book._id, author: data._id})
-            })
+            });
         }else{
             UpdateElement('books/',book._id,formdata);
             console.log(lastCategories);

@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react';
 import { setBookCategory } from '../../redux/bookredux';
 
 const GetCategoriesByClassification = (id:string | undefined)=>{
-    const [categories,setCategories] = useState<Array<any>>(new Array<any>());
+    const [categories,setCategories] = useState<Array<Category>>(new Array<Category>());
     const [lastCategories,setLastCategories] = useState<number>(0);
     const dispatch = useDispatch();
     const last = useSelector((state:any)=>state.book.sizecategories);

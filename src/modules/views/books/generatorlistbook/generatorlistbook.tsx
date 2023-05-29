@@ -11,6 +11,11 @@ import StarsComponent from '../../../../widgets/stars/stars';
 import Message from '../../modal/message/message';
 import DeleteElement from '../../../controllers/DeleteElement';
 import Loading from '../../../../common/loading/loading';
+import styled from 'styled-components';
+
+const CardStyle = styled.div`
+    width: 200px;
+`;
 
 interface GeneratorListBookProps{
     books: Array<Book>;
@@ -23,8 +28,8 @@ const GeneratorListBook : React.FC<GeneratorListBookProps>= ({books})=>{
     const Body = (element: Book)=>{
         const HandlerDeleteBook = (id:string)=>{
             dispatch(changeContent(<Message message='Voulez-vous vraiment supprimer ce livre?' 
-            allowedfunction={()=>{
-                DeleteElement('books/',id);
+            allowedfunction={async ()=>{
+                await DeleteElement('books/',id);
                 dispatch(closeModal(false));
                 window.location.reload();
             }}/>));
@@ -35,15 +40,15 @@ const GeneratorListBook : React.FC<GeneratorListBookProps>= ({books})=>{
             navigate(`/books/${id}`);
         }
 
-        return (<>
+        return (<CardStyle>
             <h3>{element.title}</h3>
-            <p>{element.publishing_date}</p>
+            <p style={{color: 'gray'}}>{element.publishing_date}</p>
             <StarsComponent star={element.star}/>
             <div className='options-button'>
                 <Button className='button animation' onClick={(e)=>HandlerViewBook(element._id)}>Voir</Button>
                 <Button className='button animation' onClick={(e)=>HandlerDeleteBook(element._id)}>Supprimer</Button>
             </div>
-        </>)
+        </CardStyle>)
     };
 
     return (<div className="listbooks-container">

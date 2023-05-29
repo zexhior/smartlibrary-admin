@@ -2,20 +2,23 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    background-color: white;
+    //background-color: white;
     & .onglet-nav{
         display: flex;
         width: 100%;
-        background-color: rgba(5, 3, 133, 0.795);
+        //background-color: rgba(5, 3, 133, 0.795);
         padding-top: 10px;
         & .onglet{
-            background-color: rgba(59, 57, 221, 0.562);
-            padding: 15px 15px 5px 15px;
-            border-radius: 5px 5px 0 0;
+            //background-color: rgba(59, 57, 221, 0.562);
+            padding: 10px;
+            border-radius: 5px;
             font-size: 14px;
             font-weight: 450;
             margin-left: 5px;
             color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         & .onglet:active{
             color: black;
