@@ -9,10 +9,10 @@ const Stars : React.FC<StarsProps>= ({star})=>{
     const all_star = [];
     for(let i = 0; i < 5; i++){
         if(i<star){
-            all_star.push(<FaStar fill="#DECC16"/>);
+            all_star.push(<FaStar fill="#DECC16" size={10}/>);
         }
         else{
-            all_star.push(<FaStar fill="#B6A58A"/>)
+            all_star.push(<FaStar fill="#B6A58A" size={10}/>)
         }
     } 
 

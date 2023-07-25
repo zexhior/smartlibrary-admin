@@ -1,0 +1,282 @@
+body{
+    /*background-color: rgb(199, 199, 199);*/
+    background-color: #f3f3f3;
+    padding: 10px;
+}
+
+.refont{
+    display: grid;
+    grid-template-columns: 18% 62% 20%;
+
+    /*----------SidebarLeft-------------*/
+    & .sidebar-left{
+        padding: 10px;
+        color: #1a1a1a;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        &-head{
+            margin-bottom: 20px;
+            padding: 10px;
+            & .logo{
+                width: 160px;
+                height: 30px;
+            }
+        }
+        &-body{
+            margin-bottom: 30px;
+            border-bottom: 1px solid rgb(228, 228, 228);
+        }
+        &-foot{
+            position: relative;
+            background-color: white;
+            width: 90%;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            padding: 20px 10px;
+            box-shadow: 0px 5px 5px rgba(44, 44, 44, 0.164);
+            & .user-image{
+                width: 100px;
+                height: 100px;
+                border: 3px solid white;
+                outline: 3px solid #000080;
+                margin-top: -40px;
+                & img{
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 500px;
+                }
+            }
+            & .user-name{
+                margin-top: 10px;
+            }
+        }
+    }
+
+    /*----------------body-------------------*/
+    & .body{
+        background-color: white;
+        box-shadow: 0px 5px 5px rgba(44, 44, 44, 0.164);
+        border-radius: 10px;
+        padding: 5px 20px;
+        margin: 0 10px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        &-head{
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            &-text{
+                width: 50%;
+                & p{
+                    font-size: 14px;
+                    color: #555555;
+                }
+            }
+            &-img{
+                width: 50%;
+                text-align: center;
+                & .head-img{
+                    width: 200px;
+                    height: 200px;
+                }
+            }
+        }
+        &-content{
+            &-cntr{
+                display: grid;
+                grid-template-columns: 40% 60%;
+                &-left{
+                    & h5{
+                        margin: 2px;
+                        color: rgb(95, 95, 95);
+                    }
+                    &-list{
+                        display: flex;
+                        & .new-user{
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            margin: 10px 5px;
+                            & .user-img-new{
+                                & img{
+                                    width: 50px;
+                                    height: 50px;
+                                }
+                            }
+                            & p{
+                                margin: 1px;
+                                font-size: 12px;
+                            }
+                        }
+                    }
+                    &-total{
+                        display: grid;
+                        grid-template-columns: 33% 33% 33%;
+                        & .total{
+                            background-color: #6a6af7;
+                            margin: 10px 5px;
+                            padding: 5px;
+                            border-radius: 5px;
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            color: white;
+                            font-size: 15px;
+                            font-weight: 600;
+                            text-align: center;
+                            box-shadow: 0px 5px 5px rgba(44, 44, 44, 0.295);
+                            & .icon{
+                                background-color: rgb(84, 84, 247);
+                                padding: 5px;
+                                margin: 5px 0;
+                                border-radius: 5px;
+                            }
+                        }
+                    }
+                }
+                &-right{
+                    &-feature{
+                        padding: 10px;
+                        border-radius: 5px;
+                        display: flex;
+                        margin-bottom: 5px;
+                        & .feature-bar{
+                            width: 15px;
+                            margin-right: 10px;
+                            border-radius: 10px;
+                        }
+                        & .feature-img{
+                            width: 100px;
+                            height: 100px;
+                            margin-right: 20px;
+                        }
+                        & .feature-detail{
+                            & h3{
+                                margin: 10px 0;
+                            }
+                            & p{
+                                margin: 0;
+                                font-size: 14px;
+                            }
+                        }
+                        & #book-bar{
+                            background-color: #b5b5f8;
+                        }
+                        & #author-bar{
+                            background-color: #000080;
+                        }
+                    }
+                    & #book{
+                        background-color: #000080;
+                        color: white;
+                    }
+                    & #author
+                    {                           
+                        background-color: #b5b5f8;
+                    }
+                }
+            }
+        }
+    }
+    & .sidebar-right{
+        &-ispm{
+            display: flex;
+            border-radius: 5px;
+            background-color: white;
+            text-align: center;
+            padding: 10px;
+            box-shadow: 0px 5px 5px rgba(44, 44, 44, 0.164);
+            & img{
+                width: 100px;
+                height: 100px;
+            }
+            & h4{
+                margin: 5px;
+            }
+            & p{
+                margin: 5px;
+                font-size: 12px;
+                color: gray;
+            }
+        }
+        & .best-writer{
+            display: flex;
+            margin: 10px 0;
+            & .writer{
+                text-align: center;
+                & img{
+                    width: 50px;
+                    height: 50px;
+                }
+                & h5{
+                    margin: 5px;
+                    color: #555555;
+                }
+            }
+        }
+        & .best-book{
+            & .book{
+                background-color: rgb(243, 202, 202);
+                border-radius: 5px;
+                padding: 5px;
+                display: flex;
+                height: 90px;
+                margin: 5px;
+                & img{
+                    width: 20%;
+                    border-radius: 5px;
+                }
+                &-description{
+                    margin: 0 5px;
+                    & h5{
+                        margin: 0;
+                    }
+                    & .book-writer{
+                        display: flex;
+                        align-items: center;
+                        & img{
+                            width: 30px;
+                            height: 30px;
+                            border-radius: 500px;
+                            margin-right: 5px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.sidebar-element{
+    display: flex;
+    align-items: center;
+    padding: 15px 0px;
+    margin: 5px 0;
+    border-radius: 5px;
+    transition: all 300ms ease-in-out;
+    & span{
+        font-size: 13px;
+        font-weight: 450;
+    }
+}
+
+.sidebar-element:hover{
+    transform: translateX(5px);
+    background-color: rgb(0, 0, 121);
+    color: white;
+    transition: all 300ms ease-in-out;
+}
+
+.icon{
+    margin: 0 20px;
+}
+
+.button{
+    color: white;
+}

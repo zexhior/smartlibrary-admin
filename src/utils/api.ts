@@ -9,7 +9,7 @@ let config = {
 }
 
 export class Api{
-    static root = "http://127.0.0.1:3400/api/v1/";
+    static root = "http://10.42.0.1:3400/api/v1/";
 
     static get(url:string){
         return axios.get(Api.root+url, config);

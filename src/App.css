@@ -46,3 +46,20 @@ textarea{
 .main-background{
   background-color: #000080;
 }
+
+.bubble{
+  border-radius: 500px;
+}
+
+.button{
+  border: 0;
+  outline: 0;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: 450;
+}
+
+*{
+  box-sizing: border-box;
+}
