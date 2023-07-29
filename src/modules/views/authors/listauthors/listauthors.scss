@@ -1,0 +1,11 @@
+.listauthors-container{
+    width: 100%;
+    height: 100%;
+    & .listauthors-list{
+        display: flex;
+        flex-wrap: wrap;
+        & .card{
+            position: relative;
+        }
+    }
+}

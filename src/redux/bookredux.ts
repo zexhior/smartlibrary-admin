@@ -1,0 +1,72 @@
+import { Category } from './../modules/models/category';
+import { createSlice } from "@reduxjs/toolkit";
+import { Authors } from "../modules/models/authors";
+import { Book } from "../modules/models/books";
+
+export const bookSlice = createSlice({
+    name: 'book',
+    initialState: {
+        createbook: {
+            _id: "",
+            title: "",
+            isbn: "",
+            star: 0,
+            publishing_date: "",
+            cover: "",
+            synopsis: "",
+            file: "",
+            category: [],
+            authors: [],
+        },
+        updatebook: {
+            _id: "",
+            title: "",
+            isbn: "",
+            star: 0,
+            publishing_date: "",
+            cover: "",
+            synopsis: "",
+            file: "",
+        },
+        authors: new Array<Authors>(),
+        categories: new Array<Category>(),
+        sizeauthors: 0,
+        sizecategories: 0,
+        books : new Array<Book>(),
+    },
+    reducers: {
+        setUpdateBook: (state,action)=>{
+            state.updatebook = action.payload;
+            return state;
+        },
+        setBookAuthor: (state, action)=>{
+            state.authors = action.payload;
+            state.sizeauthors = action.payload.length;
+            return state;
+        },
+        setBookCategory: (state, action) => {
+            state.categories = action.payload;
+            state.sizecategories = action.payload.length;
+            return state;
+        },
+        addAuthorBook: (state, action)=>{
+            state.authors.push(action.payload);
+            return state;
+        },
+        deleteAuthorBook: (state,action)=>{
+            state.authors = state.authors.filter(data=>data!==action.payload);
+            return state;
+        },
+        setListBook: (state,action)=>{
+            state.books = action.payload;
+            return state;
+        }
+    }
+})
+
+export const {setUpdateBook,
+    setBookAuthor,
+    addAuthorBook, 
+    setListBook,
+    deleteAuthorBook,
+    setBookCategory} = bookSlice.actions;

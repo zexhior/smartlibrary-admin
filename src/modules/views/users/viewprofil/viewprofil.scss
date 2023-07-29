@@ -1,0 +1,45 @@
+.viewprofil-container{
+    width: 100%;
+    & .viewprofil-edit{
+        padding-top: 10px;
+        width: 100%;
+        & .viewprofil-photo{
+            width: 150px;
+            height: 150px;
+            margin: 0 auto;
+            & img{
+                width: 150px;
+                height: 150px;
+            }
+            & .button{
+                background-color: rgb(182, 182, 182);
+                position: absolute;
+                display: inline-block;
+                width: 40px;
+                height: 40px;
+                margin-bottom: -150px;
+                margin-left: -50px;
+                & span{
+                    
+                }
+                & input{
+                    left: 0;
+                    top: 0;
+                    width: 40px;
+                    height: 40px;
+                    opacity: 0;
+                    position: absolute;
+                    cursor: pointer;
+                    z-index: 5;
+                }
+            }
+            & .button:hover{
+                background-color: rgba(253, 253, 253, 0.804);
+            }
+        }
+        & form{
+            width: 80%;
+            margin: 0 auto;
+        }
+    }
+}

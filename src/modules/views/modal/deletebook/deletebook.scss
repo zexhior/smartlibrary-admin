@@ -1,0 +1,20 @@
+.deletebook-container{
+    background-color: white;
+    width: 30%;
+    margin: 50px auto;
+    padding: 10px;
+    & .options{
+        display: flex;
+        justify-content: right;
+        & button{
+            width: 100px;
+            margin-left: 10px;
+        }
+    }
+}
+
+@media screen and (max-width: 800px){
+    .deletebook-container{
+        width: 80%;
+    }
+}

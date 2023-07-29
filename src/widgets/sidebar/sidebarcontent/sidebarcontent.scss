@@ -1,0 +1,17 @@
+.sidebarcontent-container{
+    display: flex;
+    padding: 15px 0 15px 10px;
+    align-items: center;
+    height: 30px;
+    & p{
+        color: white;
+        font-size: 14px;
+        margin-left: 20px;
+        font-weight: 400;   
+    }
+}
+
+/*.sidebarcontent-container:hover{
+    background-color: #0000b138;
+    border-radius: 10px;
+}*/

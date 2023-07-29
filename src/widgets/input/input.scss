@@ -1,0 +1,18 @@
+.input{
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    & input{
+        margin: 10px 0 10px 0;
+    }
+    & input:focus, textarea:focus{
+        background-color: rgba(250, 250, 171, 0.966);
+        outline: 2px red solid;
+    }
+    & textarea{
+        height: 100px;
+        background-color: rgb(230, 230, 230);
+        border: 0;
+        outline: 0;
+    }
+}

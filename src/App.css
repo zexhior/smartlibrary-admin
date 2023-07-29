@@ -1,0 +1,83 @@
+body {
+  position: relative;
+}
+
+.color-gray {
+  background-color: rgb(235, 232, 232);
+}
+
+.color-white {
+  background-color: white;
+}
+
+.text-color-main {
+  color: #000080;
+}
+
+.text-color-lightgray {
+  color: rgb(184, 184, 184);
+}
+
+.text-color-white {
+  color: white;
+}
+
+.animation,
+.animation:hover {
+  transition: background-color 200ms ease-in-out;
+}
+
+.button:hover {
+  background-color: #00001a;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.no-style {
+  text-decoration: none;
+}
+
+textarea {
+  font-family: inherit;
+  font-size: 15px;
+}
+
+.main-background {
+  background-color: #000080;
+}
+
+.bubble {
+  border-radius: 500px;
+}
+
+.button {
+  border: 0;
+  outline: 0;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: 450;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h3,
+h4,
+h5,
+h6 {
+  margin: 5px 0;
+}
+
+p {
+  font-size: 13px;
+  font-weight: 600;
+  margin: 0 1px;
+}
+
+.title {
+  margin: 10px 0;
+}

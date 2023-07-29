@@ -1,0 +1,14 @@
+.userbooks{
+    width: 100%;
+    overflow: scroll;
+    scrollbar-width: none;
+    background-color: transparent;
+    & .title-section{
+        margin-top: 30px;
+    }
+    & .favbook, .bookrecommended{
+        height: 100%;
+        display: flex;
+        flex-wrap: wrap;
+    }
+}

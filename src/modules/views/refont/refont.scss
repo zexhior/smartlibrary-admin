@@ -1,0 +1,35 @@
+body {
+  background-image: url("../../../common/images/background.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 10px 10px;
+  & .main {
+    &-content {
+      display: grid;
+      grid-template-columns: 20% 80%;
+    }
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  body {
+    .main {
+      &-content {
+        display: grid;
+        grid-template-columns: 10% 90%;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 800px) {
+  body {
+    padding: 2px;
+    .main {
+      &-content {
+        display: grid;
+        grid-template-columns: 20% 80%;
+      }
+    }
+  }
+}

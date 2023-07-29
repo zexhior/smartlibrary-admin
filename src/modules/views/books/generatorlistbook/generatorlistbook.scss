@@ -1,0 +1,8 @@
+.listbooks-container{
+    position: relative;
+    width: 100%;
+    & .listbooks-list{
+        display: flex;
+        flex-wrap: wrap;
+    }
+}
