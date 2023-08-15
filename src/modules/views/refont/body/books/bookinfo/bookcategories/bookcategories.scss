@@ -1,0 +1,59 @@
+.bookcategories {
+  margin: 0 0 10px 10px;
+  &-label {
+    display: flex;
+    align-items: center;
+    &-icon {
+      background-color: blue;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-right: 10px;
+    }
+  }
+  &-list {
+    display: flex;
+    padding: 10px 0;
+    & .category {
+      background-color: white;
+      margin: 0 0 0 10px;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      & p {
+        margin: 0;
+        padding: 0;
+        font-size: 14px;
+        font-weight: 500;
+      }
+      & .button {
+        background-color: transparent;
+      }
+      & .button:hover {
+        background-color: rgb(232, 232, 232);
+      }
+    }
+    & .button {
+      width: 40px;
+      margin-left: 10px;
+    }
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .bookcategories {
+    margin-top: 10px;
+    &-list {
+      display: flex;
+      flex-wrap: wrap;
+      & .category {
+        margin: 5px;
+      }
+      & .button {
+        margin: 5px;
+      }
+    }
+  }
+}

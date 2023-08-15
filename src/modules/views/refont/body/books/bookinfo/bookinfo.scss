@@ -1,0 +1,41 @@
+.bookinfo {
+  display: grid;
+  grid-template-columns: 75% 25%;
+  margin: 10px 0 0 10px;
+  &-body {
+    &-detail {
+      display: grid;
+      grid-template-columns: 30% 70%;
+      margin: 10px 0 0 0;
+    }
+  }
+  &-sidebar {
+    padding: 10px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .bookinfo {
+    grid-template-columns: 100%;
+    &-sidebar {
+      display: none;
+      width: 0;
+    }
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .bookinfo {
+    grid-template-columns: 100%;
+    &-body {
+      &-detail {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+    &-sidebar {
+      display: none;
+      width: 0;
+    }
+  }
+}

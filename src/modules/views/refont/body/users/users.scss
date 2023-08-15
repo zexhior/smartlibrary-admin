@@ -1,75 +1,71 @@
 .users {
   padding: 10px;
-  display: grid;
-  grid-template-columns: 80% 20%;
   &-body {
     &-header {
-      &-list {
-        display: flex;
-        &-user {
-          position: relative;
-          width: 100px;
-          height: 150px;
-          border-radius: 10px;
-          margin-right: 10px;
-          & .new-user {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-            & img {
-              width: 100%;
-              height: 100%;
-              border-radius: 10px;
-            }
+      display: grid;
+      grid-template-columns: 80% 20%;
+      /*display: flex;
+      justify-content: space-between;*/
+      &-total {
+        width: 100%;
+        height: 150px;
+        display: grid;
+        background-color: #2999f4;
+        border-radius: 5px;
+        overflow: hidden;
+        &-icon {
+          width: 100%;
+          background-image: url(../../../../../common/images/mini-background.svg);
+          background-size: cover;
+          text-align: center;
+          padding: 10px;
+        }
+        &-text {
+          background-color: white;
+          padding: 10px;
+          text-align: center;
+          & h3 {
+            font-size: 20px;
           }
-          &-mirror {
-            background-image: linear-gradient(
-              to bottom,
-              transparent,
-              rgba(128, 128, 128, 0.631)
-            );
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border-radius: 10px;
-            color: white;
-            text-align: center;
-            z-index: 2;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
+          & p {
+            font-size: 16px;
           }
         }
       }
     }
+    &-content {
+      display: grid;
+      grid-template-columns: 35% 65%;
+    }
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .users {
     &-body {
-      & h4 {
+      &-header {
+        display: flex;
+        &-total {
+          width: 0;
+          display: none;
+        }
+      }
+      &-content {
+        grid-template-columns: 100% 0%;
+        & .userinfo {
+          display: none;
+          width: 0;
+        }
       }
     }
   }
-  &-sidebar {
-    &-total {
-      background-color: #2999f4;
-      border-radius: 5px;
-      overflow: hidden;
-      &-icon {
-        width: 100%;
-        background-image: url(../../../../../common/images/mini-background.svg);
-        background-size: cover;
-        text-align: center;
-        padding: 10px;
-      }
-      &-text {
-        background-color: white;
-        padding: 20px;
-        text-align: center;
-        & h3 {
-          font-size: 20px;
-        }
-        & p {
-          font-size: 16px;
-        }
+}
+
+@media screen and (max-width: 1350px) and (min-width: 1000px) {
+  .users {
+    &-body {
+      &-content {
+        grid-template-columns: 40% 60%;
       }
     }
   }

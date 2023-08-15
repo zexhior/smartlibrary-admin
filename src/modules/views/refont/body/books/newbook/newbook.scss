@@ -1,0 +1,30 @@
+.newbook {
+  height: 180px;
+  width: 100%;
+  &-list {
+    position: absolute;
+    display: flex;
+    &-item {
+      position: relative;
+      width: 120px;
+      height: 150px;
+      margin-right: 10px;
+      overflow: hidden;
+      &-background {
+        position: absolute;
+        & img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .newbook {
+    width: 100%;
+    overflow-x: scroll;
+    position: relative;
+  }
+}

@@ -13,7 +13,7 @@ const Header = () => {
         <div className="header-right-search">
           <input type="text" placeholder="Rechercher" />
           <button className="button">
-            <FaSearch color="white" size={15} />
+            <FaSearch color="gray" size={15} />
           </button>
         </div>
         <div className="header-right-user">

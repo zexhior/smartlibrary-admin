@@ -4,7 +4,7 @@ import Book from "../../../../../common/images/reading.png";
 import Writer from "../../../../../common/images/writer.png";
 import Users from "../../../../../common/images/users.png";
 import Welcome from "../../../../../common/images/hello.png";
-import Image2 from "../../../../../common/images/zelda/2.png";
+import Image2 from "../../../../../common/images/zelda/1.png";
 import Image3 from "../../../../../common/images/zelda/3.webp";
 import Image4 from "../../../../../common/images/zelda/4.jpg";
 import Cover from "../../../../../common/images/books/couv_8.png";

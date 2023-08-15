@@ -1,9 +1,9 @@
 body {
-  background-image: url("../../../common/images/background.svg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  padding: 10px 10px;
+  background-color: rgb(245, 245, 245);
   & .main {
+    background-image: url("../../../common/images/background.svg");
+    background-repeat: no-repeat;
+    padding: 10px;
     &-content {
       display: grid;
       grid-template-columns: 20% 80%;

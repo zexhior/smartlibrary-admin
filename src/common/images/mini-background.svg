@@ -9,9 +9,9 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="200mm"
+   width="300mm"
    height="200mm"
-   viewBox="0 0 200 200"
+   viewBox="0 0 300 200"
    version="1.1"
    id="svg4498"
    inkscape:version="0.92.1 r15371"
@@ -54,18 +54,18 @@
      id="layer1"
      transform="translate(0,-97)">
     <ellipse
-       style="opacity:1;fill:#00c2ff;fill-opacity:1;stroke-width:10;stroke-miterlimit:4;stroke-dasharray:none"
+       style="opacity:1;fill:#00c2ff;fill-opacity:1;stroke-width:21.04555702;stroke-miterlimit:4;stroke-dasharray:none"
        id="path5043"
-       cx="19.276785"
-       cy="273.56549"
-       rx="39.6875"
-       ry="37.041668" />
+       cx="10.583329"
+       cy="245.97322"
+       rx="81.64286"
+       ry="79.752975" />
     <ellipse
-       style="opacity:1;fill:#00b2ff;fill-opacity:1;stroke-width:13.60093498;stroke-miterlimit:4;stroke-dasharray:none"
+       style="opacity:1;fill:#00b2ff;fill-opacity:1;stroke-width:15.96735001;stroke-miterlimit:4;stroke-dasharray:none"
        id="path5043-1"
-       cx="191.25597"
-       cy="106.12202"
-       rx="53.294643"
-       ry="51.026787" />
+       cx="263.07144"
+       cy="140.89583"
+       rx="62.366074"
+       ry="60.098217" />
   </g>
 </svg>
