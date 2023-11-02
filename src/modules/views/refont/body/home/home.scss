@@ -1,0 +1,219 @@
+.home {
+  position: relative;
+  display: grid;
+  grid-template-columns: 70% 30%;
+  &-content {
+    &-header {
+      display: grid;
+      grid-template-columns: 33% 33% 33%;
+      padding: 10px 0;
+      &-element {
+        display: grid;
+        grid-template-columns: 40% 60%;
+        background-color: #2999f4;
+        border-radius: 5px 10px 10px 5px;
+        margin: 10px;
+        &-icon {
+          background-image: url(../../../../../common//images/mini-background.svg);
+          background-size: cover;
+          padding: 20px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 100%;
+          border-radius: 5px 0 0 5px;
+          margin: 0;
+        }
+        &-text {
+          height: 100%;
+          background-color: #ffffff;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          text-align: center;
+          border-radius: 0 5px 5px 0;
+          & h3 {
+            padding: 0;
+            margin: 0;
+          }
+          & p {
+            margin: 5px;
+            font-weight: 500;
+          }
+        }
+      }
+    }
+    &-body {
+      padding: 10px;
+      &-welcome {
+        border-radius: 5px;
+        padding: 20px;
+        text-align: center;
+        & img {
+          width: 100%;
+        }
+      }
+      &-content {
+        padding: 10px;
+        display: flex;
+        &-book {
+          width: 50%;
+          background-color: rgb(183, 183, 255);
+          border-radius: 5px;
+          padding: 20px;
+          color: #353535;
+          text-align: center;
+          & img {
+            width: 150px;
+            height: 150px;
+            background-color: rgba(255, 255, 255, 0.564);
+            padding: 10px;
+            border-radius: 5px;
+          }
+          &-text {
+            text-align: justify;
+          }
+        }
+        &-right {
+          margin: 0 10px;
+          width: 50%;
+          color: #353535;
+          &-element {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            & img {
+              width: 150px;
+              height: 150px;
+              background-color: rgba(255, 255, 255, 0.564);
+              padding: 10px;
+              border-radius: 5px;
+              margin: 10px;
+            }
+            &-text {
+              padding: 10px;
+              & h3 {
+                margin: 10px 5px;
+              }
+              & p {
+                font-size: 13px;
+                font-weight: 500;
+                margin: 5px;
+              }
+            }
+          }
+          & #author {
+            background-color: rgb(132, 243, 249);
+          }
+          & #users {
+            background-color: rgb(159, 196, 255);
+          }
+        }
+      }
+    }
+  }
+  &-sidebar {
+    padding: 10px;
+    &-element {
+      &-section {
+        display: flex;
+        justify-content: space-evenly;
+        padding: 10px;
+        & img {
+          width: 50px;
+          height: 50px;
+        }
+      }
+      &-book {
+        overflow: hidden;
+        background-color: #f8f8f8;
+        border-radius: 5px;
+        display: flex;
+        margin-bottom: 10px;
+        box-shadow: 0 5px 10px 1px #80808030;
+        & img {
+          width: 80px;
+          border-radius: 5px 0 0 5px;
+        }
+        &-text {
+          background-image: url(../../../../../common/images/mini-background.svg);
+          background-size: cover;
+          width: 80%;
+          padding: 10px;
+          &-author {
+            display: flex;
+            & .bubble {
+              border-radius: 500px;
+              width: 30px;
+              height: 30px;
+              margin-right: 5px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .home {
+    display: flex;
+    &-content {
+    }
+    &-sidebar {
+      display: none;
+    }
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .home {
+    display: flex;
+    &-content {
+      &-header {
+        width: 100%;
+        &-element {
+          display: flex;
+          flex-direction: column;
+          border-radius: 5px;
+          overflow: hidden;
+          & .icon {
+            border-radius: 5px 5px 0 0;
+          }
+          &-text {
+            border-radius: 0;
+          }
+        }
+      }
+      &-body {
+        &-content {
+          display: flex;
+          flex-direction: column;
+          &-book {
+            width: 100%;
+            margin: 0 0 10px 0;
+          }
+          &-right {
+            margin: 0;
+            width: 100%;
+            &-element {
+              padding: 5px;
+              width: 100%;
+              & img {
+                width: 100px;
+                height: 100px;
+              }
+              &-text {
+                padding: 5px;
+              }
+            }
+          }
+        }
+      }
+    }
+    &-sidebar {
+      display: none;
+    }
+  }
+}

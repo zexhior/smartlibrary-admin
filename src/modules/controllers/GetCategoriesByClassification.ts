@@ -5,7 +5,7 @@ import { Category } from './../models/category';
 import { useState, useEffect } from 'react';
 import { setBookCategory } from '../../redux/bookredux';
 
-const GetCategoriesByClassification = (id:string | undefined)=>{
+const GetCategoriesByClassification = (url:string,id:string | undefined)=>{
     const [categories,setCategories] = useState<Array<Category>>(new Array<Category>());
     const [lastCategories,setLastCategories] = useState<number>(0);
     const dispatch = useDispatch();
@@ -14,18 +14,21 @@ const GetCategoriesByClassification = (id:string | undefined)=>{
     useEffect(() => {
         async function fetch(){
             if(id){
-                const classifications = await Api.get(`classifications/${id}`);
+                const classifications = await Api.get(`${url}${id}`);
                 setLastCategories(classifications.data.data.length);
                 if(classifications.data.data && last === 0){
-                    /*classifications.data.data.forEach((element: Classification)=> {
+                    let temp : Array<Category>= [];
+                    classifications.data.data.forEach((element: any)=> {
                         temp.push(element.category);
-                    });*/
-                    setCategories(classifications.data.data);
+                    });
+                    setCategories([...temp]);
                 }
             }
         }
         fetch();
     },[id])
+
+    dispatch(setBookCategory(categories));
 
     return {categories,setCategories,lastCategories};
 }

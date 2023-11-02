@@ -8,7 +8,6 @@ import { setBookAuthor } from '../../redux/bookredux';
 const GetAuthorsByWork = (id:string | undefined)=>{
     const [authors,setAuthors] = useState<Array<Authors>>(new Array<Authors>());
     const [lastAuthors,setLastAuthors] = useState<number>(0);
-    const last = useSelector((state:any)=>state.book.sizeauthors);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -28,7 +27,7 @@ const GetAuthorsByWork = (id:string | undefined)=>{
         fetch();
     }, [id]);
     
-    //dispatch(setBookAuthor(authors));
+    dispatch(setBookAuthor(authors));
         
     return {authors,setAuthors,lastAuthors};
 }

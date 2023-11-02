@@ -1,0 +1,42 @@
+.bookfavorites {
+  & .userlist {
+    & .user {
+      background-color: white;
+      background-image: url("../../../../../../../common/images/mini-background.svg");
+      background-size: cover;
+      margin: 10px 0;
+      display: flex;
+      overflow: hidden;
+      &-header {
+        padding: 10px 0 10px 10px;
+        & img {
+          width: 100px;
+          height: 100px;
+        }
+      }
+      &-content {
+        padding: 10px 0 0 10px;
+        width: 100%;
+        height: 120px;
+        & h4,
+        h5 {
+          margin: 0;
+          padding: 0;
+        }
+        & h5 {
+          color: gray;
+          font-size: 14px;
+        }
+        &-item {
+          display: flex;
+          color: gray;
+          align-items: center;
+          & p {
+            margin-left: 5px;
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+}

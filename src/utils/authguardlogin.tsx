@@ -1,11 +1,14 @@
-import { Navigate } from 'react-router-dom';
-import Home from '../modules/views/home/home';
+import { Navigate } from "react-router-dom";
 
-const AuthGuardLogin = ({children = <Home/>})=>{
-    if(localStorage.getItem("bearer")){
-        return <Navigate to='/'/>
-    }
-    return children;
+interface AuthGuardLoginProps {
+  children: JSX.Element;
 }
+
+const AuthGuardLogin: React.FC<AuthGuardLoginProps> = ({ children }) => {
+  if (localStorage.getItem("bearer")) {
+    return <Navigate to="/" />;
+  }
+  return children;
+};
 
 export default AuthGuardLogin;

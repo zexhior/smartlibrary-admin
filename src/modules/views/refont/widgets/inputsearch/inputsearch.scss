@@ -1,0 +1,19 @@
+.search {
+  background-color: rgb(243, 243, 243);
+  display: grid;
+  grid-template-columns: 80% 20%;
+  padding: 5px;
+  & .custom-input {
+    border: 0;
+    outline: 0;
+    padding: 5px;
+    background-color: transparent;
+  }
+  & .button-search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 0;
+    background-color: transparent;
+  }
+}

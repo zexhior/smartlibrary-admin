@@ -1,0 +1,57 @@
+.authormodal {
+  background-color: white;
+  padding: 10px;
+  overflow: hidden;
+  & h4 {
+    text-align: center;
+  }
+  &-list {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+    height: 300px;
+    overflow-y: scroll;
+    &-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 5px;
+      background-color: rgb(233, 233, 233);
+      padding: 10px;
+      & img {
+        width: 80px;
+        height: 80px;
+      }
+      & h5,
+      h6 {
+        margin: 2px;
+      }
+    }
+    &-item:hover{
+      background-color: rgb(192, 192, 192);
+    }
+  }
+  & .button {
+    width: 100%;
+  }
+  
+  & .message{
+    color: red;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .authormodal {
+    &-list {
+      flex-direction: column;
+      &-item {
+        flex-direction: row;
+        width: 100%;
+        & .detail {
+          margin-left: 10px;
+        }
+      }
+    }
+  }
+}

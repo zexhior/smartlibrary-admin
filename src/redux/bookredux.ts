@@ -33,6 +33,10 @@ export const bookSlice = createSlice({
         sizeauthors: 0,
         sizecategories: 0,
         books : new Array<Book>(),
+        newbooks: new Array<Book>(),
+        bestbooks: new Array<Book>(),
+        newcategories: new Array<Category>(),
+        deletecategories: new Array<Category>()
     },
     reducers: {
         setUpdateBook: (state,action)=>{
@@ -60,6 +64,22 @@ export const bookSlice = createSlice({
         setListBook: (state,action)=>{
             state.books = action.payload;
             return state;
+        },
+        setListNewBook : (state, action)=>{
+            state.newbooks = action.payload;
+            return state;
+        },
+        setListBestBook : (state, action)=>{
+            state.bestbooks = action.payload;
+            return state;
+        },
+        setListNewCategories: (state, action) => {
+            state.newcategories = action.payload;
+            return state;
+        },
+        setListDeletedCategories: (state, action) => {
+            state.deletecategories = action.payload;
+            return state;
         }
     }
 })
@@ -69,4 +89,8 @@ export const {setUpdateBook,
     addAuthorBook, 
     setListBook,
     deleteAuthorBook,
-    setBookCategory} = bookSlice.actions;
+    setBookCategory,
+    setListNewBook,
+    setListDeletedCategories,
+    setListNewCategories,
+setListBestBook} = bookSlice.actions;

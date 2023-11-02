@@ -1,0 +1,52 @@
+.userlist {
+  & h4 {
+    padding: 0 0 5px 0;
+  }
+  &-items {
+    height: 500px;
+    overflow: scroll;
+    overflow-x: hidden;
+    scrollbar-width: none;
+    &-item {
+      display: flex;
+      padding: 10px;
+      margin: 10px;
+      background-color: white;
+      transition: all 150ms ease-in-out;
+      &-img {
+        width: 100px;
+        height: 100px;
+      }
+      &-body {
+        padding: 0 0 0 10px;
+        &-text {
+          display: flex;
+          color: gray;
+          & p {
+            margin-left: 10px;
+          }
+        }
+      }
+    }
+    &-item:hover {
+      background-color: #cacaca;
+      transition: all 300ms ease-in-out;
+    }
+  }
+}
+
+.mini {
+  display: none;
+  height: 0;
+}
+
+@media screen and (max-width: 800px) {
+  .userlist-items {
+    display: none;
+  }
+  .mini {
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+  }
+}

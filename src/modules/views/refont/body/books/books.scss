@@ -1,0 +1,58 @@
+.books {
+  padding: 10px;
+  display: grid;
+  grid-template-columns: 80% 20%;
+  &-body {
+    &-header {
+      margin-bottom: 10px;
+    }
+    &-content {
+      &-label {
+        display: flex;
+        align-items: center;
+        & .button {
+          margin-left: 10px;
+        }
+      }
+    }
+  }
+  &-sidebar {
+    padding: 20px 0;
+    &-total {
+      overflow: hidden;
+      margin: 0 0 10px 0;
+      &-header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-image: url("../../../../../common/images/mini-background.svg");
+        background-size: cover;
+        background-color: #2999f4;
+        padding: 20px;
+      }
+      &-body {
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        & h3,
+        h5 {
+          padding: 0;
+          margin: 0;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .books {
+    grid-template-columns: 100%;
+    &-sidebar {
+      display: none;
+      width: 0;
+    }
+  }
+}

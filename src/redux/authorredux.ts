@@ -20,7 +20,9 @@ export const authorSlice = createSlice({
             description: "",
             photo: ""
         },
-        authors: new Array<Authors>,
+        authors: new Array<Authors>(),
+        newauthors: new Array<Authors>(),
+        bestauthors: new Array<Authors>(),
         page: 1
     },
     reducers: {
@@ -29,8 +31,14 @@ export const authorSlice = createSlice({
         },
         setListAuthors: (state,action)=>{
             state.authors = action.payload;
+        },
+        setListNewAuthors: (state,action) => {
+            state.newauthors = action.payload;
+        },
+        setListBestAuthors: (state,action) => {
+            state.bestauthors = action.payload;
         }
     }
 })
 
-export const {setUpdateAuthor,setListAuthors} = authorSlice.actions;
+export const {setUpdateAuthor,setListAuthors,setListNewAuthors,setListBestAuthors} = authorSlice.actions;
