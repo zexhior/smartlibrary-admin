@@ -3,6 +3,7 @@ import { Api } from '../../utils/api';
 
 const SignUp = (user: User)=>{
     //const dispatch = useDispatch();
+    console.log(Api.root+"users/signup");
 
     function signup(){
         return Api.post("users/signup",user).then(response=>{

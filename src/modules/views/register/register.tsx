@@ -36,7 +36,8 @@ const Register: React.FC<MyStyle> = ({ style, setStyle }) => {
 
   const SendDataSignUp = async (e: any) => {
     e.preventDefault();
-    if (user?.password === user?.passwordConfirm) {
+    console.log("test");
+    /*if (user?.password === user?.passwordConfirm) {
       const response = await SignUp(user as User);
       if (response.user._id) {
         dispatch(setCurrentUser(response.user));
@@ -46,7 +47,7 @@ const Register: React.FC<MyStyle> = ({ style, setStyle }) => {
       }
     } else {
       setMessage("Mot de passe different!");
-    }
+    }*/
   };
 
   return (

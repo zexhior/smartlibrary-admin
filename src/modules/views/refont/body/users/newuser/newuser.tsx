@@ -16,7 +16,15 @@ const NewUser: React.FC<NewUserProps> = ({ users }) => {
         {users.map((user: User, key: number) => (
           <div key={key} className="users-body-header-list-user">
             <div className="new-user">
-              <img src={Api.root + user.photo} alt="new-user" />
+              <img
+                src={
+                  Api.root +
+                  (user?.photo.startsWith("/")
+                    ? user?.photo
+                    : `/${user?.photo.toString()}`)
+                }
+                alt="new-user"
+              />
             </div>
             <div className="users-body-header-list-user-mirror">
               <div className="name">

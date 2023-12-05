@@ -2,11 +2,12 @@ import "./header.scss";
 import Logo from "../../../../common/images/logo/logo-gray.png";
 import { FaSearch } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import Profil from "../../../../common/images/profil.jpg";
 import GetOneElement from "../../../controllers/GetOneElement";
 import { Api } from "../../../../utils/api";
 import { User } from "../../../models/users";
 import { setCurrentUser } from "../../../../redux/userredux";
+import { useEffect } from "react";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -39,7 +40,12 @@ const Header = () => {
             Déconnexion
           </button>
           <img
-            src={Api.root + element?.photo}
+            src={
+              Api.root +
+              (element?.photo.startsWith("/")
+                ? element?.photo
+                : `/${element?.photo.toString()}`)
+            }
             alt="user"
             className="header-right-user-photo bubble"
           />

@@ -9,11 +9,11 @@ let config = {
 }
 
 export class Api{
-    //static root = "http://127.0.0.1:3400";
+    static root = "http://127.0.0.1:3400";
     //static root = "http://192.168.100.168:3400";
     //static root = "http://10.42.0.1:3400";
     //static root = "http://192.168.100.125:3400"
-    static root = "http://192.168.1.134:3400";
+    //static root = "http://192.168.1.134:3400";
     static version = "/api/v1/"
 
     static get(url:string){

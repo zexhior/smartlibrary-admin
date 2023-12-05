@@ -7,7 +7,6 @@ import Welcome from "../../../../../common/images/hello.png";
 import Image2 from "../../../../../common/images/zelda/1.png";
 import Image3 from "../../../../../common/images/zelda/3.webp";
 import Image4 from "../../../../../common/images/zelda/4.jpg";
-import Cover from "../../../../../common/images/books/couv_8.png";
 import Stars from "../../../../../widgets/stars/stars";
 import useGetAllElement from "../../../../controllers/GetAllElement";
 import { setListUser } from "../../../../../redux/userredux";
@@ -117,7 +116,12 @@ const Home = () => {
             {users.elements.map((user: User, key: number) => (
               <div key={key}>
                 <img
-                  src={Api.root + user.photo}
+                  src={
+                    Api.root +
+                    (user?.photo.startsWith("/")
+                      ? user?.photo
+                      : `/${user?.photo.toString()}`)
+                  }
                   alt="user"
                   className="bubble"
                 />

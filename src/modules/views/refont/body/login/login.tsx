@@ -8,6 +8,8 @@ import RegisterImage from "../../../../../common/images/signup.png";
 import LoginImage from "../../../../../common/images/login.png";
 import { useNavigate } from "react-router-dom";
 import useLogin from "../../../../controllers/Login";
+import { setCurrentUser } from "../../../../../redux/userredux";
+import SignUp from "../../../../controllers/SignUp";
 
 const Login = () => {
   const [message, setMessage] = useState<string>("");
@@ -23,6 +25,24 @@ const Login = () => {
       navigate("/");
     } else {
       setMessage("Mon de passe ou addresse e-mail incorrect");
+    }
+  };
+
+  const CreateHandler = async (e: any) => {
+    e.preventDefault();
+    console.log("test");
+    console.log(user);
+    if (user?.password === user?.passwordConfirm) {
+      const response = await SignUp(user as User);
+      console.log(response);
+      if (response.user._id) {
+        dispatch(setCurrentUser(response.user));
+        navigate("/");
+      } else {
+        console.log(response);
+      }
+    } else {
+      setMessage("Mot de passe different!");
     }
   };
 
@@ -122,12 +142,14 @@ const Login = () => {
             <Input
               type={"password"}
               placeholder={"mot de passe"}
-              name={".passwordConfirm"}
+              name={"passwordConfirm"}
               label={"Confirmer mot de passe"}
               state={user}
               setState={setUser}
             />
-            <button className="button">Créer</button>
+            <button className="button" onClick={(e) => CreateHandler(e)}>
+              Créer
+            </button>
             <button className="button" onClick={(e) => setToggle(true)}>
               Authentification
             </button>
