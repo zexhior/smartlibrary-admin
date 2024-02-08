@@ -1,0 +1,17 @@
+.deletebook{
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px;
+    & .text{
+        font-size: 13px;
+        margin: 10px;
+    }
+    & .options{
+        display: flex;
+        justify-content: right;
+        & .btn{
+            margin: 5px;
+            padding: 5px 10px;
+        }
+    }
+}

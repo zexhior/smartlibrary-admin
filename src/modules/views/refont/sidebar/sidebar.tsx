@@ -1,9 +1,16 @@
 import { FaBook, FaEdit, FaHome, FaPowerOff, FaUser } from "react-icons/fa";
 import "./sidebar.scss";
 import ISPM from "../../../../common/images/logo/ispm.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const SideBar = () => {
+  const navigate = useNavigate();
+
+  const Deconnexion = () => {
+    localStorage.clear();
+    navigate("/login");
+  };
+
   return (
     <div className="sidebar">
       <div className="sidebar-section">
@@ -37,7 +44,11 @@ const SideBar = () => {
         <h5>Institut Supérieur Polytéchnique de Madagascar</h5>
         <p>Fahaizana-Fampandrosona-Fihavanana</p>
       </div>
-      <div id="deconnexion" className="sidebar-section">
+      <div
+        id="deconnexion"
+        className="sidebar-section"
+        onClick={(e) => Deconnexion()}
+      >
         <FaPowerOff color="#464646" size={20} className="deconnexion-button" />
       </div>
     </div>

@@ -16,6 +16,7 @@
       background-size: cover;
       padding: 10px;
       &-detail {
+        width: 60%;
         &-text {
           display: flex;
           margin: 10px 0 10px 0;
@@ -25,7 +26,6 @@
         }
       }
       &-img {
-        background-color: red;
         overflow: hidden;
         width: 200px;
         height: 250px;
@@ -92,6 +92,9 @@
 @media screen and (max-width: 800px) {
   .userinfo {
     &-content {
+      &-header {
+        flex-direction: column-reverse;
+      }
       &-body {
         &-options {
           display: flex;

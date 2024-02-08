@@ -3,16 +3,21 @@ import { Book } from "../../../../../../models/books";
 import "./info.scss";
 import Stars from "../../../../../../../widgets/stars/stars";
 import InputComponent from "../../../../../../../widgets/input/input";
+import { Api } from "../../../../../../../utils/api";
+import UpdateElement from "../../../../../../controllers/UpdateElement";
 
 interface InfoProps {
   book: Book;
-  setBook: React.Dispatch<React.SetStateAction<Book | null>>;
+  setBook: React.Dispatch<React.SetStateAction<Book | null | undefined>>;
 }
 
 const Info: React.FC<InfoProps> = ({ book, setBook }) => {
   const [edit, setEdit] = useState<boolean>(false);
 
   const HandlerEdit = () => {
+    if (edit) {
+      UpdateElement("books", book._id, book);
+    }
     edit ? setEdit(false) : setEdit(true);
   };
 
@@ -56,7 +61,7 @@ const Info: React.FC<InfoProps> = ({ book, setBook }) => {
         </button>
       </div>
       <div className="info-img">
-        <img src={book?.cover} alt="book" />
+        <img src={Api.root + book?.cover} alt="book" />
       </div>
     </div>
   );

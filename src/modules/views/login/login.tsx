@@ -10,8 +10,8 @@ import Register from "../register/register";
 import { useEffect, useRef, useState } from "react";
 import useLogin from "../../controllers/Login";
 import { useDispatch } from "react-redux";
-import { getCurrentUser } from "../../../redux/myaccountredux";
 import Load from "../../../common/load/load";
+import { setCurrentUser } from "../../../redux/userredux";
 
 interface DataLogin {
   email: string;
@@ -51,7 +51,7 @@ const Login = () => {
     }
     useLogin(value.email, value.password)
       .then((data) => {
-        dispatch(getCurrentUser(data.user));
+        dispatch(setCurrentUser(data.user));
         window.location.reload();
       })
       .catch((error) => {});

@@ -17,24 +17,6 @@
     align-items: center;
     justify-content: space-evenly;
     padding: 0 10px 0 0;
-    &-search {
-      display: flex;
-      align-items: center;
-      background-color: white;
-      border-radius: 5px;
-      height: 35px;
-      margin-right: 10px;
-      & input {
-        padding: 5px;
-        border: 0;
-        outline: 0;
-        background-color: transparent;
-        color: black;
-      }
-      & .button {
-        background-color: transparent;
-      }
-    }
     &-user {
       display: flex;
       align-items: center;
@@ -43,6 +25,7 @@
         color: white;
         font-weight: bold;
         margin-right: 10px;
+        margin-bottom: 0;
       }
       &-photo {
         width: 45px;

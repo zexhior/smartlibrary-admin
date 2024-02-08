@@ -1,26 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const Element = (<div>
-        zavatra
-    </div>);
-
 export const modalSlice = createSlice({
-    name: "modal",
-    initialState: {activation : false, content: Element},
-    reducers: {
-        changeModal: (state,action)=>{
-            if(state.activation)
-                state.activation = false;
-            else
-                state.activation = true;
-        },
-        changeContent : (state,action)=>{
-            state.content = action.payload;
-        },
-        closeModal : (state, action)=>{
-            state.activation = false;
-        }
-    }
+  name: "modal",
+  initialState: {
+    show: false,
+    place: 0,
+  },
+  reducers: {
+    setShowModal: (state, action) => {
+      state.show = action.payload;
+    },
+    setUpdatePlace: (state, action) => {
+      state.place = action.payload;
+    },
+  },
 });
 
-export const {changeModal, changeContent, closeModal} = modalSlice.actions;
+export const { setShowModal, setUpdatePlace } = modalSlice.actions;

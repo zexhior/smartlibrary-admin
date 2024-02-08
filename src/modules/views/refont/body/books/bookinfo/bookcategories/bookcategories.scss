@@ -15,10 +15,11 @@
   }
   &-list {
     display: flex;
+    flex-wrap: wrap;
     padding: 10px 0;
     & .category {
       background-color: white;
-      margin: 0 0 0 10px;
+      margin: 10px;
       padding: 10px;
       display: flex;
       align-items: center;
@@ -29,6 +30,7 @@
         font-weight: 500;
       }
       & .button {
+        margin: 0;
         background-color: transparent;
       }
       & .button:hover {
@@ -37,7 +39,7 @@
     }
     & .button {
       width: 40px;
-      margin-left: 10px;
+      margin: 10px;
     }
   }
 }

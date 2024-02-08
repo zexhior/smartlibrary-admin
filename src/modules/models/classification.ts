@@ -1,6 +1,6 @@
 import { Book } from "./books";
 
-export interface Classification{
-    book: Book,
-    category: string
+export interface Classification {
+  book: string;
+  category: string;
 }

@@ -1,0 +1,118 @@
+.login {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &-content {
+    width: 80%;
+    height: 80%;
+    display: grid;
+    grid-template-columns: 60% 40%;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    &-img {
+      background-color: rgba(0, 0, 255, 0.179);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      & img {
+        width: 80%;
+        height: 80%;
+      }
+    }
+    &-form {
+      padding: 10px;
+      background-color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      &-logo {
+        margin: 10px;
+        & .smartlibrary {
+          width: 100%;
+          margin: 10px 0;
+        }
+      }
+      & .button {
+        width: 100%;
+      }
+    }
+  }
+
+  & .register {
+    width: 80%;
+    height: 80%;
+    display: grid;
+    grid-template-columns: 60% 40%;
+    overflow: hidden;
+    &-img {
+      background-color: rgba(0, 0, 255, 0.179);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      & img {
+        width: 80%;
+        height: 80%;
+      }
+    }
+    &-form {
+      padding: 20px 10px;
+      background-color: white;
+      overflow-y: scroll;
+      &-logo {
+        margin: 10px;
+        & .smartlibrary {
+          width: 100%;
+          margin: 10px 0;
+        }
+      }
+      & .button {
+        width: 100%;
+      }
+      & .message {
+        color: red;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .login {
+    &-content {
+      height: auto;
+      grid-template-columns: 100%;
+      &-img {
+        display: none;
+        width: 0;
+        height: 0;
+      }
+      &-form {
+        display: inline;
+        height: auto;
+        padding: 20px;
+        &-logo {
+          margin: 30px 10px;
+        }
+      }
+    }
+    & .register {
+      height: auto;
+      grid-template-columns: 100%;
+      &-img {
+        display: none;
+        width: 0;
+        height: 0;
+      }
+      &-form {
+        display: inline;
+        height: 400px;
+        padding: 20px;
+        &-logo {
+          margin: 30px 10px;
+        }
+      }
+    }
+  }
+}

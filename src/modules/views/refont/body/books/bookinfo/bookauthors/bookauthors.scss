@@ -12,6 +12,9 @@
       align-items: center;
       margin-right: 10px;
     }
+    & .button {
+      margin-left: 10px;
+    }
   }
   &-list {
     display: flex;
@@ -24,13 +27,11 @@
       &-header {
       }
       &-body {
+        width: 100px;
         padding: 0 0 0 10px;
-        & p {
-          margin: 0 0 5px 0;
-        }
-        & .stars {
-          margin-bottom: 5px;
-        }
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
         & .button {
           width: 40px;
           padding: 10px;

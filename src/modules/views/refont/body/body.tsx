@@ -1,5 +1,4 @@
 import "./body.scss";
-import Users from "./users/users";
 import { Outlet } from "react-router-dom";
 
 const Body = () => {

@@ -1,3 +1,4 @@
+import { Api } from "../../../../../../utils/api";
 import Stars from "../../../../../../widgets/stars/stars";
 import { Book } from "../../../../../models/books";
 import "./bestbook.scss";
@@ -13,11 +14,11 @@ const BestBook: React.FC<BestBookProps> = ({ books }) => {
         return (
           <div key={key} className="book">
             <div className="book-header">
-              <img src={book.cover} alt="book" />
+              <img src={Api.root + book.cover} alt="book" />
             </div>
             <div className="book-body">
-              <h5>{book.title}</h5>
-              <h6>{book.publishing_date}</h6>
+              <h5 className="title">{book.title.slice(0, 18)}</h5>
+              <p className="subtitle">{book.publishing_date}</p>
               <Stars star={book.star} />
             </div>
           </div>

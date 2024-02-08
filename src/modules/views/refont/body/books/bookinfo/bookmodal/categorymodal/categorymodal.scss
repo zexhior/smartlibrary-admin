@@ -1,0 +1,22 @@
+.categorymodal {
+  background-color: white;
+  padding: 10px;
+  & h4 {
+    text-align: center;
+  }
+  & select {
+    width: 100%;
+    border: 0;
+    outline: 0;
+    background-color: rgb(242, 242, 242);
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  & .button {
+    width: 100%;
+  }
+  & .message{
+    color: red;
+    text-align: center;
+  }
+}

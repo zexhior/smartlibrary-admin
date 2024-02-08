@@ -11,8 +11,8 @@ const BookFavorites = () => {
     <div className="bookfavorites">
       <h4>Les utilisateurs adorant le livre</h4>
       <div className="userlist">
-        {users.map((user: User) => (
-          <div className="user border-radius box-shadow">
+        {users.map((user: User, key: number) => (
+          <div key={key} className="user border-radius box-shadow">
             <div className="user-header">
               <img src={user.photo} alt="user" className="border-radius" />
             </div>

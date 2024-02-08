@@ -10,7 +10,7 @@ import { User } from "../../models/users";
 import SignUp from "../../controllers/SignUp";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { getCurrentUser } from "../../../redux/myaccountredux";
+import { setCurrentUser } from "../../../redux/userredux";
 
 interface MyStyle {
   style: String;
@@ -36,17 +36,18 @@ const Register: React.FC<MyStyle> = ({ style, setStyle }) => {
 
   const SendDataSignUp = async (e: any) => {
     e.preventDefault();
-    if (user?.password === user?.passwordConfirm) {
+    console.log("test");
+    /*if (user?.password === user?.passwordConfirm) {
       const response = await SignUp(user as User);
       if (response.user._id) {
-        dispatch(getCurrentUser(response.user));
+        dispatch(setCurrentUser(response.user));
         navigation("/");
       } else {
         console.log(response);
       }
     } else {
       setMessage("Mot de passe different!");
-    }
+    }*/
   };
 
   return (

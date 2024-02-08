@@ -1,0 +1,36 @@
+.authorinfo {
+  padding: 20px 10px;
+  display: grid;
+  grid-template-columns: 75% 25%;
+  &-body {
+    &-header {
+    }
+    &-detail {
+      display: grid;
+      grid-template-columns: 30% 70%;
+      margin-top: 10px;
+      & .button{
+        margin-top: 10px;
+      }
+    }
+  }
+  &-sidebar {
+    padding: 10px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .authorinfo {
+    grid-template-columns: 100%;
+    &-body {
+      &-detail {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+    &-sidebar {
+      display: none;
+      width: 0;
+    }
+  }
+}

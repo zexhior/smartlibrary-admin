@@ -1,3 +1,4 @@
+import { Book } from '../modules/models/books';
 import { User } from './../modules/models/users';
 import { createSlice } from '@reduxjs/toolkit';
 
@@ -30,6 +31,7 @@ export const userSlice = createSlice({
             role: "",
             photo: "",
         },
+        favoriBook: new Array<Book>(),
         users: new Array<User>(),
         page: 1},
     reducers: {
@@ -39,13 +41,16 @@ export const userSlice = createSlice({
         setUpdateUser : (state, action) => {
             state.updateUser = action.payload;
         },
-        setUser : (state,action) => {
+        setCurrentUser : (state,action) => {
             state.currentUser = action.payload
         },
         setPage : (state, action) => {
             state.page = action.payload
+        },
+        setListFavoriteBook : (state, action) =>{
+            state.favoriBook = action.payload;
         }
     }
 })
 
-export const {setListUser, setUser, setUpdateUser} = userSlice.actions;
+export const {setListUser, setCurrentUser, setUpdateUser,setListFavoriteBook} = userSlice.actions;

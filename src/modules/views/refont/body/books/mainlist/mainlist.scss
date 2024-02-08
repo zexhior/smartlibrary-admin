@@ -23,8 +23,31 @@
       }
     }
     &-content {
+      width: 150px;
       padding: 10px;
       margin-left: 80px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      &-text {
+        display: flex;
+        flex-direction: column;
+        & .title {
+          font-size: 14px;
+          margin: 0;
+        }
+        & .subtitle {
+          font-size: 13px;
+          margin: 5px 0;
+          color: gray;
+        }
+      }
+      & .options {
+        display: flex;
+        & .button {
+          margin-right: 10px;
+        }
+      }
     }
   }
 }

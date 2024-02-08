@@ -1,11 +1,11 @@
-import { Navigate } from 'react-router-dom';
-import Home from '../modules/views/home/home';
+import { Navigate } from "react-router-dom";
+import ReFont from "../modules/views/refont/refont";
 
-const AuthGuard = ({children = <Home/>})=>{
-    if(!localStorage.getItem("bearer")){
-        return <Navigate to='/login'/>
-    }
-    return children;
-}
+const AuthGuard = ({ children = <ReFont /> }) => {
+  if (!localStorage.getItem("bearer")) {
+    return <Navigate to="/login" />;
+  }
+  return children;
+};
 
 export default AuthGuard;

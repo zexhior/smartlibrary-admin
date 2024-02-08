@@ -2,20 +2,20 @@
   & .userlist {
     & .user {
       background-color: white;
+      background-image: url("../../../../../../../common/images/mini-background.svg");
+      background-size: cover;
       margin: 10px 0;
+      display: flex;
       overflow: hidden;
       &-header {
         padding: 10px 0 10px 10px;
-        position: absolute;
         & img {
           width: 100px;
           height: 100px;
         }
       }
       &-content {
-        background-image: url("../../../../../../../common/images/mini-background.svg");
-        background-size: cover;
-        padding: 10px 0 0 120px;
+        padding: 10px 0 0 10px;
         width: 100%;
         height: 120px;
         & h4,

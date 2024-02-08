@@ -5,8 +5,12 @@
   padding: 10px 30px;
   background-image: url("../../../../../../../common/images/mini-background.svg");
   background-size: cover;
+  margin-top: 10px;
   &-img {
-    height: 100%;
+    width: 200px;
+    height: 250px;
+    overflow: hidden;
+    border-radius: 10px;
     & img {
       width: 100%;
       height: 100%;

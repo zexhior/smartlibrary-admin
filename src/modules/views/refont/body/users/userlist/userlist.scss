@@ -20,6 +20,7 @@
       &-body {
         padding: 0 0 0 10px;
         &-text {
+          margin: 10px 0 0 0;
           display: flex;
           color: gray;
           & p {
@@ -48,5 +49,22 @@
     display: flex;
     flex-direction: column;
     height: 500px;
+    width: 100%;
+    & .userlist-items {
+      &-item {
+        &-img {
+          width: 30%;
+        }
+        &-body {
+          width: 70%;
+          & h3 {
+            font-size: 15px;
+          }
+          &-text {
+            display: none;
+          }
+        }
+      }
+    }
   }
 }

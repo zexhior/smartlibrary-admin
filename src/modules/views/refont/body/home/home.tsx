@@ -7,10 +7,21 @@ import Welcome from "../../../../../common/images/hello.png";
 import Image2 from "../../../../../common/images/zelda/1.png";
 import Image3 from "../../../../../common/images/zelda/3.webp";
 import Image4 from "../../../../../common/images/zelda/4.jpg";
-import Cover from "../../../../../common/images/books/couv_8.png";
 import Stars from "../../../../../widgets/stars/stars";
+import useGetAllElement from "../../../../controllers/GetAllElement";
+import { setListUser } from "../../../../../redux/userredux";
+import { User } from "../../../../models/users";
+import { Api } from "../../../../../utils/api";
+import { setListBook } from "../../../../../redux/bookredux";
+import { Authors } from "../../../../models/authors";
+import { setListAuthors } from "../../../../../redux/authorredux";
+import { Book as Books } from "../../../../models/books";
 
 const Home = () => {
+  const users = useGetAllElement<User>("users", 1, setListUser);
+  const authors = useGetAllElement<Authors>("authors", 1, setListAuthors);
+  const books = useGetAllElement<Books>("books", 1, setListBook);
+
   return (
     <div className="home">
       <div className="home-content">
@@ -20,7 +31,7 @@ const Home = () => {
               <FaUser color="white" size={35} />
             </div>
             <div className="home-content-header-element-text">
-              <h3>123</h3>
+              <h3>{users.size}</h3>
               <p>Utilisateurs</p>
             </div>
           </div>
@@ -29,7 +40,7 @@ const Home = () => {
               <FaEdit color="white" size={35} />
             </div>
             <div className="home-content-header-element-text">
-              <h3>20</h3>
+              <h3>{authors.size}</h3>
               <p>Auteurs</p>
             </div>
           </div>
@@ -38,7 +49,7 @@ const Home = () => {
               <FaBook color="white" size={35} />
             </div>
             <div className="home-content-header-element-text">
-              <h3>50</h3>
+              <h3>{books.size}</h3>
               <p>Livres</p>
             </div>
           </div>
@@ -102,64 +113,49 @@ const Home = () => {
         <div className="home-sidebar-element">
           <h5>Les nouveaux utilisateurs</h5>
           <div className="home-sidebar-element-section">
-            <img src={Image2} alt="user" className="bubble" />
-            <img src={Image3} alt="user" className="bubble" />
-            <img src={Image4} alt="user" className="bubble" />
-            <img src={Image2} alt="user" className="bubble" />
-            <img src={Image3} alt="user" className="bubble" />
+            {users.elements.map((user: User, key: number) => (
+              <div key={key}>
+                <img
+                  src={Api.root + user.photo}
+                  alt="user"
+                  className="bubble"
+                />
+              </div>
+            ))}
           </div>
         </div>
         <div className="home-sidebar-element">
           <h5>Les meilleurs auteurs</h5>
           <div className="home-sidebar-element-section">
-            <img src={Image2} alt="writer" className="bubble" />
-            <img src={Image3} alt="writer" className="bubble" />
-            <img src={Image4} alt="writer" className="bubble" />
-            <img src={Image2} alt="writer" className="bubble" />
-            <img src={Image3} alt="writer" className="bubble" />
+            {authors.elements
+              .slice(0, 5)
+              .map((author: Authors, key: number) => (
+                <div key={key}>
+                  <img
+                    src={Api.root + author.photo}
+                    alt="writer"
+                    className="bubble"
+                  />
+                </div>
+              ))}
           </div>
         </div>
         <div className="home-sidebar-element">
           <h5>Les meilleurs livres</h5>
-          <div className="home-sidebar-element-book">
-            <img src={Cover} alt="book" />
-            <div className="home-sidebar-element-book-text">
-              <h4>Toute la nuit</h4>
-              <p>Gilles Bindi</p>
-              <Stars star={3} />
-              <div className="home-sidebar-element-book-text-author">
-                <img src={Image2} alt="author" className="bubble" />
-                <img src={Image3} alt="author" className="bubble" />
-                <img src={Image4} alt="author" className="bubble" />
+          {books.elements.slice(0, 3).map((book: Books, key: number) => (
+            <div key={key} className="home-sidebar-element-book">
+              <img src={Api.root + book.cover} alt="book" />
+              <div className="home-sidebar-element-book-text">
+                <h4>{book.title}</h4>
+                <Stars star={3} />
+                <div className="home-sidebar-element-book-text-author">
+                  <img src={Image2} alt="author" className="bubble" />
+                  <img src={Image3} alt="author" className="bubble" />
+                  <img src={Image4} alt="author" className="bubble" />
+                </div>
               </div>
             </div>
-          </div>
-          <div className="home-sidebar-element-book">
-            <img src={Cover} alt="book" />
-            <div className="home-sidebar-element-book-text">
-              <h4>Toute la nuit</h4>
-              <p>Gilles Bindi</p>
-              <Stars star={3} />
-              <div className="home-sidebar-element-book-text-author">
-                <img src={Image2} alt="author" className="bubble" />
-                <img src={Image3} alt="author" className="bubble" />
-                <img src={Image4} alt="author" className="bubble" />
-              </div>
-            </div>
-          </div>
-          <div className="home-sidebar-element-book">
-            <img src={Cover} alt="book" />
-            <div className="home-sidebar-element-book-text">
-              <h4>Toute la nuit</h4>
-              <p>Gilles Bindi</p>
-              <Stars star={3} />
-              <div className="home-sidebar-element-book-text-author">
-                <img src={Image2} alt="author" className="bubble" />
-                <img src={Image3} alt="author" className="bubble" />
-                <img src={Image4} alt="author" className="bubble" />
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </div>

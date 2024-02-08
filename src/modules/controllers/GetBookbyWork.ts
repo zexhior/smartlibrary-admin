@@ -5,7 +5,7 @@ import { Book } from '../models/books';
 import { Work } from '../models/work';
 
 const GetBookByWork = (url:string, id:string | undefined) => {
-    const [books,setBooks] = useState<Array<Book>>(new Array<Book>());
+    const [books,setBooks] = useState<Book[]>(new Array<Book>());
     
     useEffect(()=>{
         async function fetch(){
@@ -13,9 +13,10 @@ const GetBookByWork = (url:string, id:string | undefined) => {
                 const works = await Api.get(`${url}search?author=${id}`);
                 if(works.data.data){
                     const temp = new Array<any>();
-                    works.data.data.forEach((element:Work) => {
+                works.data.data.forEach((element:Work)=>{
+                    if(element.book)
                         temp.push(ConvertDate(element.book));
-                    });
+                });
                     setBooks(temp);
                 }
             }

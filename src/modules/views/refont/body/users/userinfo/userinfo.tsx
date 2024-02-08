@@ -2,16 +2,15 @@ import { FaBook, FaCalendarWeek, FaMailBulk, FaPhone } from "react-icons/fa";
 import { User } from "../../../../../models/users";
 import "./userinfo.scss";
 import BookList from "../../books/booklist/booklist";
-import { Book } from "../../../../../models/books";
-import { useState } from "react";
-import { BooksData } from "../../../../../../mock/database";
+import { Api } from "../../../../../../utils/api";
+import { GetUserFavoriteBook } from "../../../../../controllers/GetUserFavoriteBook";
 
 interface UserInfoProps {
-  user: User | null;
+  user: User | undefined;
 }
 
 const UserInfo: React.FC<UserInfoProps> = ({ user }) => {
-  const [books, setBooks] = useState<Array<Book>>(BooksData);
+  const { books } = GetUserFavoriteBook(`favoriteBooks`, user?._id);
 
   return (
     <div className="userinfo">
@@ -36,7 +35,7 @@ const UserInfo: React.FC<UserInfoProps> = ({ user }) => {
               </div>
             </div>
             <div className="userinfo-content-header-img border-radius">
-              <img src={user.photo} alt="user" />
+              <img src={Api.root + user.photo} alt="user" />
             </div>
           </div>
           <div className="userinfo-content-body">

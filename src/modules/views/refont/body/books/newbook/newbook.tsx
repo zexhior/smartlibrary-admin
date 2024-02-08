@@ -1,3 +1,4 @@
+import { Api } from "../../../../../../utils/api";
 import { Book } from "../../../../../models/books";
 import "./newbook.scss";
 
@@ -12,7 +13,7 @@ const NewBook: React.FC<NewBookProps> = ({ books }) => {
         {books.map((book: Book, key: number) => (
           <div key={key} className="newbook-list-item border-radius">
             <div className="newbook-list-item-background">
-              <img src={book.cover} alt="book" />
+              <img src={Api.root + book.cover} alt="book" />
             </div>
           </div>
         ))}

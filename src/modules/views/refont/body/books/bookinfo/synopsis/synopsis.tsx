@@ -2,17 +2,23 @@ import { useState } from "react";
 import { Book } from "../../../../../../models/books";
 import "./synopsis.scss";
 import { FaBook, FaPaperPlane } from "react-icons/fa";
+import UpdateElement from "../../../../../../controllers/UpdateElement";
 
 interface SynopsisProps {
   book: Book;
-  setBook: React.Dispatch<React.SetStateAction<Book | null>>;
+  setBook: React.Dispatch<React.SetStateAction<Book | null | undefined>>;
 }
 
 const Synopsis: React.FC<SynopsisProps> = ({ book, setBook }) => {
   const [edit, setEdit] = useState<boolean>(false);
 
   const HandlerEdit = () => {
+    if (edit) UpdateElement("books", book._id, book);
     edit ? setEdit(false) : setEdit(true);
+  };
+
+  const HandlerChange = (text: string) => {
+    setBook({ ...book, synopsis: text });
   };
 
   return (
@@ -23,7 +29,13 @@ const Synopsis: React.FC<SynopsisProps> = ({ book, setBook }) => {
         </div>
         <h4>Synopsis</h4>
       </div>
-      {edit ? <textarea>{book.synopsis}</textarea> : <p>{book.synopsis}</p>}
+      {edit ? (
+        <textarea onChange={(e) => HandlerChange(e.target.value)}>
+          {book.synopsis}
+        </textarea>
+      ) : (
+        <p>{book.synopsis}</p>
+      )}
       <button className="button" onClick={HandlerEdit}>
         {edit ? "Sauvegarder" : "Modifier"}
       </button>

@@ -1,4 +1,5 @@
-export interface Work{
-    book: string,
-    author: string,
+export interface Work {
+  _id: string;
+  book: string;
+  author: string;
 }
